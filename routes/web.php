@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('dashboard')
+->namespace('Dashboard')
+->name('dashboard.')
+->group(function() {
+	Route::resource('patients', "PatientController");
+	// Route::get('/home', 'HomeController@index')->name('home');
+});
