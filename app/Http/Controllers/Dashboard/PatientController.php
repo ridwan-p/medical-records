@@ -58,6 +58,27 @@ class PatientController extends Controller
 
     public function update(Patient $patient, Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'date_of_birth' => 'nullable|date',
+            'place_of_birth' => 'nullable',
+            'gender' => 'required|in:m,f',
+            'blood' => 'nullable|in:a,b,ab,o',
+            'phone' => 'nullable|max:25',
+            'parent' => 'required|max:50',
+            'allergies' => 'nullable|array'
+        ]);
+
+        $patient = DB::transaction(function() use ($request, $patient) {
+            $patient->fill($request->all());
+            $patient->save();
+            $patient->storeMeta($request->only('allergies'));
+            return $patient;
+        });
+
+        session()->flash('success', 'Update');
+
     	return redirect()->back();;
     }
 

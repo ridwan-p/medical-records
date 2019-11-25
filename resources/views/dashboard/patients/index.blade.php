@@ -33,6 +33,10 @@
 									<td>{{$patient->parent}}</td>
 									<td>{{implode(',', $patient->allergies)}}</td>
 									<td>{{$patient->name}}</td>
+									<td>
+										<a href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}" class="btn btn-sm btn-primary">Edit</a>
+										<div class="btn btn-sm btn-primary">Delete</div>
+									</td>
 								</tr>
 							@empty
 								<tr>
