@@ -6,7 +6,7 @@
 			<div class="card-body">
 				<div class="d-flex justify-content-between mb-3">
 					<h3 class="m-0">Patients</h3>
-					<a href="{{ route('dashboard.patients.create') }}" class="btn btn-sm btn-primary">Add</a>
+					<a href="{{ route('dashboard.patients.create') }}" class="btn btn-sm btn-primary">{{ __('Add') }}</a>
 				</div>
 				<div class="table-responsive">
 					<table class="table">
@@ -34,8 +34,8 @@
 									<td>{{implode(',', $patient->allergies)}}</td>
 									<td>{{$patient->name}}</td>
 									<td>
-										<a href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}" class="btn btn-sm btn-primary">Edit</a>
-										<div class="btn btn-sm btn-primary">Delete</div>
+										<a href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
+										<a href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}" class="btn btn-sm btn-primary" data-action="destroy" data-target="#destroy-patient" data-message="{{ __('Are you sure to delete this item?') }}">{{ __('Delete') }}</a>
 									</td>
 								</tr>
 							@empty
@@ -45,6 +45,10 @@
 							@endforelse
 						</tbody>
 					</table>
+					<form id="destroy-patient" method="POST">
+						@csrf
+						@method('DELETE')
+					</form>
 				</div>
 			</div>
 		</div>

@@ -82,7 +82,7 @@ class PatientController extends Controller
     	return redirect()->back();;
     }
 
-    public function delete(Patient $patient)
+    public function destroy(Patient $patient)
     {
     	$patient->delete();
     	return redirect()->back();

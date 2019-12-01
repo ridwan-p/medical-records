@@ -10,6 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/manifest.js') }}" defer></script>
+    <script src="{{ asset('js/vendor.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -33,7 +35,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('Patient') }}</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
