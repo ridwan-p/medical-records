@@ -13,6 +13,9 @@ class CreatePatientMetasTable extends Migration
      */
     public function up()
     {
+        /**
+         * data avatar, alergi, dll
+         */
         Schema::create('patient_meta', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('patient_id');

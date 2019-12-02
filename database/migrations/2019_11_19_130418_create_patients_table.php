@@ -13,7 +13,7 @@ class CreatePatientsTable extends Migration
      */
     public function up()
     {
-        // data tambahan untuk pasien ada di table meta 
+        // data tambahan untuk pasien ada di table meta
         // contoh data tambahan alergi
         Schema::create('patients', function (Blueprint $table) {
             $table->bigIncrements('id');

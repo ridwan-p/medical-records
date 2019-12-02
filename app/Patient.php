@@ -2,14 +2,17 @@
 
 namespace App;
 
+use App\Utils\MetadataChild;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
+	use MetadataChild;
 
     const META_ALLERGIES = 'allergies';
-
+    // const META_AVATAR = 'avatar';
+    //
     protected $fillable = [
     	'name',
     	'address',
@@ -18,12 +21,12 @@ class Patient extends Model
     	'gender',
     	'blood',
     	'phone',
-    	'parent'
+    	'parent',
     ];
 
     protected $appends = [
         'age',
-        'allergies'
+        'allergies',
     ];
 
     public function getAgeAttribute()
@@ -38,8 +41,12 @@ class Patient extends Model
         $allergies = $this->meta()
         ->where('meta_key', self::META_ALLERGIES)
         ->first();
-        // dump($allergies);
         return isset($allergies) ? $allergies->meta_value : [];
+    }
+
+    public function getMetaData()
+    {
+    	# code...
     }
 
 
@@ -58,7 +65,7 @@ class Patient extends Model
 
         $this->meta()->saveMany($models);
         // dd($models);
-       
+
         // foreach ($items as $key => $item) {
         //     $models = new PatientMeta(['meta_key' => $key, 'meta_value' => $item]);
         // }
