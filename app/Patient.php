@@ -28,7 +28,7 @@ class Patient extends Model
         'age',
     ];
 
-    protected $cast = [
+    protected $casts = [
         'allergies' => 'array'
     ];
 

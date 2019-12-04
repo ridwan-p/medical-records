@@ -34,6 +34,7 @@
 									<td>{{implode(',', $patient->allergies)}}</td>
 									<td>{{$patient->name}}</td>
 									<td>
+										<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}" class="btn btn-sm btn-primary">{{ __('Show') }}</a>
 										<a href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}" class="btn btn-sm btn-primary">{{ __('Edit') }}</a>
 										<a href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}" class="btn btn-sm btn-primary" data-action="destroy" data-target="#destroy-patient" data-message="{{ __('Are you sure to delete this item?') }}">{{ __('Delete') }}</a>
 									</td>
