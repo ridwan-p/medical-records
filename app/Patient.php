@@ -38,4 +38,9 @@ class Patient extends Model
 
         return Carbon::parse($this->date_of_birth)->age;
     }
+
+    public function journals()
+    {
+        return $this->hasMany(Journal::class);
+    }
 }
