@@ -31,14 +31,14 @@ class PatientController extends Controller
 	    	'blood' => 'nullable|in:a,b,ab,o',
 	    	'phone' => 'nullable|max:25',
 	    	'parent' => 'required|max:50',
-	    	'allergies' => 'nullable|array'
+	    	'allergies' => 'nullable|array',
+            'photo' => 'nullable|image'
     	]);
 
     	$patient = DB::transaction(function() use ($request) {
 	    	$patient = new Patient();
 	    	$patient->fill($request->all());
 	    	$patient->save();
-	    	$patient->storeMeta($request->only('allergies'));
 	    	return $patient;
     	});
 
@@ -67,13 +67,13 @@ class PatientController extends Controller
             'blood' => 'nullable|in:a,b,ab,o',
             'phone' => 'nullable|max:25',
             'parent' => 'required|max:50',
-            'allergies' => 'nullable|array'
+            'allergies' => 'nullable|array',
+            'photo' => 'nullable|image'
         ]);
 
         $patient = DB::transaction(function() use ($request, $patient) {
             $patient->fill($request->all());
             $patient->save();
-            $patient->storeMeta($request->only('allergies'));
             return $patient;
         });
 
