@@ -13,8 +13,6 @@ class CreatePatientsTable extends Migration
      */
     public function up()
     {
-        // data tambahan untuk pasien ada di table meta
-        // contoh data tambahan alergi
         Schema::create('patients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string("name");
@@ -25,6 +23,8 @@ class CreatePatientsTable extends Migration
             $table->enum("blood", ['a', 'b', 'ab', 'o'])->nullable();
             $table->string('phone')->nullable();
             $table->string('parent');
+            $table->json('allergies')->nullable();
+            $table->json('photo')->nullable();
             $table->timestamps();
         });
     }
