@@ -17,8 +17,8 @@ class Journals extends Model
     protected $cast = [
     	'anamnese' => 'array',
     	'diagnosis' => 'array',
-    	'note' => 'array',
-    	'action' => 'array'
+    	// 'note' => 'array',
+    	// 'action' => 'array'
     ];
 
     public function medications()

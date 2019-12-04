@@ -18,8 +18,8 @@ class CreateJournalsTable extends Migration
             $table->unsignedBigInteger('patient_id');
             $table->json('anamnese');
             $table->json('diagnosis');
-            $table->json('note');
-            $table->json('action');
+            $table->text('note');
+            $table->text('action');
             $table->timestamps();
         });
     }
