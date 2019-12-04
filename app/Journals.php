@@ -24,5 +24,7 @@ class Journals extends Model
     public function medications()
     {
     	return $this->belongsToMany(Medication::class)
+    		->using(JournalMedication::class)
+    		->withPivot(['note']);
     }
 }

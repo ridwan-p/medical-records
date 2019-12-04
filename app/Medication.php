@@ -10,8 +10,9 @@ class Medication extends Model
     	'name'
     ];
 
-    public function journals($value='')
+    public function journals()
     {
-    	return $this->belongsToMany(Journals::class);
+    	return $this->belongsToMany(Journals::class)
+    		->using(JournalMedication::class);;
     }
 }
