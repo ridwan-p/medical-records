@@ -8,17 +8,17 @@ class Journals extends Model
 {
     protected $fillable = [
     	'patient_id',
-    	'action',
+    	'therapy',
     	'note',
     	'anamnese',
     	'diagnosis'
     ];
 
     protected $cast = [
+    	'therapy' => 'array',
     	'anamnese' => 'array',
     	'diagnosis' => 'array',
     	// 'note' => 'array',
-    	// 'action' => 'array'
     ];
 
     public function medications()

@@ -16,10 +16,10 @@ class CreateJournalsTable extends Migration
         Schema::create('journals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('patient_id');
+            $table->json('therapy');
             $table->json('anamnese');
             $table->json('diagnosis');
             $table->text('note')->nullable();
-            $table->text('action');
             $table->timestamps();
         });
     }
