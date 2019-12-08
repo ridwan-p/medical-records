@@ -17,7 +17,9 @@ class JournalController extends Controller
 	    		$query->where('name', 'like', "%{$request->search}%")
 	    			->orWhere('parent','like', "%{$request->search}%");
     		}
-    	})->paginate();
+    	})
+        ->orderBy($request->column ?? 'created_at', $request->direction ?? 'desc')
+        ->paginate();
 
     	return view('dashboard.journals.index', compact('journals'));
     }
@@ -54,7 +56,8 @@ class JournalController extends Controller
 
     public function edit(Journal $journal)
     {
-    	return view('dashboard.journals.edit', compact('journal'));
+        $patients = Patient::all();
+    	return view('dashboard.journals.edit', compact('journal', 'patients'));
     }
 
     public function update(Request $request, Journal $journal)
@@ -71,12 +74,13 @@ class JournalController extends Controller
     	$journal = DB::transaction(function () use ($request, $journal) {
     		$journal->fill($request->all());
     		$journal->save();
+            $journal->storeToMany($request->only('medications'));
 
     		return $journal;
     	});
 
-    	session()->flash('success', 'Add');
-    	return redirect()->route('dashboard.journals.index'); 
+    	session()->flash('success', 'update');
+    	return back(); 
     }
 
     public function destroy(Journal $journal)

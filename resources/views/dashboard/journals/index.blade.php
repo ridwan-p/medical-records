@@ -30,6 +30,10 @@
                         <p>diagnosis : {{ implode(',', $journal->diagnosis) }}</p>
                         <p>medications : {{ optional($journal->medications)->pluck('name')->implode(',') }}</p>
                         <p>note : {{ $journal->note }}</p>
+                        <p>created_at : {{ $journal->created_at->diffForHumans() }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route('dashboard.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">edit</a>
                     </div>
                 </div>
             @empty
