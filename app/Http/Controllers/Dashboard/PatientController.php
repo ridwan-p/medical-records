@@ -91,6 +91,7 @@ class PatientController extends Controller
 
     public function destroy(Patient $patient)
     {
+        $patient->journals()->delete();
     	$patient->delete();
         session()->flash('success', 'Delete');
     	return redirect()->back();

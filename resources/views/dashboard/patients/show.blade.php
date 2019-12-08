@@ -8,7 +8,7 @@
 			</div>
 			<div class="col-md-6 my-3 d-flex justify-content-end">
 				<a href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}" class="btn btn-primary mx-1">Edit</a>
-				<a href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}" class="btn btn-danger mx-1">Delete</a>
+				<a href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}" class="btn btn-danger mx-1">Delete</a>
 			</div>
 		</div>
 		<div class="row">
@@ -55,7 +55,19 @@
 					</div>
 					<div class="card-body">
 						@forelse ($patient->journals as $journal)
-							journal name
+							<div class="card col-md-12 mb-3 bg-light">
+			                    <div class="card-body">
+			                        <p>therapy : {{ implode(',', $journal->therapy) }}</p>
+			                        <p>anamnese : {{ implode(',', $journal->anamnese) }}</p>
+			                        <p>diagnosis : {{ implode(',', $journal->diagnosis) }}</p>
+			                        <p>medications : {{ optional($journal->medications)->pluck('name')->implode(',') }}</p>
+			                        <p>note : {{ $journal->note }}</p>
+			                        <p>created_at : {{ $journal->created_at->diffForHumans() }}</p>
+			                    </div>
+			                    <div class="card-footer">
+			                        <a href="{{ route('dashboard.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">edit</a>
+			                    </div>
+			                </div>
 						@empty
 							This is empty ....
 						@endforelse
