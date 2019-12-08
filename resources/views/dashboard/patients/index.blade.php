@@ -2,7 +2,45 @@
 
 @section('content')
 	<div class="container">
-		<div class="card">
+		<div class="row mb-3">
+			<div class="col-md-9">
+				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary">{{ __('Add') }}</a>
+			</div>
+			<div class="col-md-3">
+				<div class="input-group">
+					<input type="search" class="form-control" placeholder="{{ __('Search') }}">
+					<div class="input-group-append">
+						<button class="btn btn-primary" type="button" id="button-addon2">{{ __('Search') }}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			@forelse ($patients as $patient)
+				<div class="col-md-3 my-1 px-1">
+					<div class="card">
+						<div class="card-body">
+							<div class="media">
+								<img src="{{ asset('images/user.svg') }}" alt="defaul avatar" width="60" class="align-self-center mr-3">
+								<div class="media-body">
+									<h6 class="font-weight-bolder my-0">{{ $patient->name }}</h6>
+									<p class="my-0 font-italic">{{ __('Parent') }}  : {{ $patient->parent }}</p>
+									<p class="my-0">{{ $patient->birth }}</p>
+									<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
+									<p class="my-0 text-muted"> 2 days ago</p>
+								</div>
+							</div>
+						</div>
+						<div class="card-footer text-center">
+							<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}" class="btn btn-link">{{ __('Details') }}</a>
+						</div>
+					</div>
+				</div>
+			@empty
+				Data is empty ....
+			@endforelse
+		</div>
+	{{-- 	<div class="card">
 			<div class="card-body">
 				<div class="d-flex justify-content-between mb-3">
 					<h3 class="m-0">Patients</h3>
@@ -52,6 +90,6 @@
 					</form>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 	</div>
 @endsection

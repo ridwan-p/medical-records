@@ -24,7 +24,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -35,7 +35,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('Dashboard') }}</a></li>
                         <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('Patient') }}</a></li>
+                        <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('Finance') }}</a></li>
+                        <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('History') }}</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
