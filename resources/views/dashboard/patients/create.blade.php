@@ -2,10 +2,10 @@
 
 @section('content')
 	<form action="{{ route('dashboard.patients.store') }}" method="POST" class="container" enctype="multipart/form-data">
+		@csrf
 		<div class="row">
 			<div class="col-md-12"><h3>Create</h3></div>
 		</div>
-		@csrf
 		<div class="row">
 			
 			<div class="form-group col-md-6">
@@ -118,11 +118,12 @@
 
 			<div class="form-group col-md-6">
 				<label for="photo">{{ __("Photo") }}</label>
-				<div class="input-group mb-3">
-				  <div class="custom-file">
-				    <input type="file" class="custom-file-input  @error('photo') is-invalid @enderror" name="photo" id="file-photo" >
-				    <label class="custom-file-label" for="file-photo">{{ __('Choose file') }}</label>
-				  </div>
+				<div class="input-group mb-3 d-flex align-items-center">
+			  		<img src="{{ asset('images/user.svg') }}" alt="photo" class="d-block mr-2" width="100">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input  @error('photo') is-invalid @enderror" name="photo" id="file-photo" >
+						<label class="custom-file-label" for="file-photo">{{ __('Choose file') }}</label>
+					</div>
 				</div>
 				@error('photo')
 	                <span class="invalid-feedback" role="alert">
@@ -136,13 +137,4 @@
 			</div>
 		</div>
 	</form>
-{{-- 	<div class="container">
-		<div class="card">
-			<div class="card-body">
-				
-				<div class="row">
-				</div>
-			</div>
-		</div>
-	</div> --}}
 @endsection
