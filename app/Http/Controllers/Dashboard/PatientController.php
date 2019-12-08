@@ -99,7 +99,7 @@ class PatientController extends Controller
         $patient->journals()->delete();
     	$patient->delete();
         session()->flash('success', 'Delete');
-    	return redirect()->back();
+    	return redirect()->route('dashboard.patients.index');
     }
 
     public function createJournal(Patient $patient)

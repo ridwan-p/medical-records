@@ -13,7 +13,11 @@
 			</div>
 			<div class="col-md-6 my-3 d-flex justify-content-end">
 				<a href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}" class="btn btn-primary mx-1">Edit</a>
-				<a href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}" class="btn btn-danger mx-1">Delete</a>
+				<a href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}" data-action='destroy' data-target="#form-delete-patient" class="btn btn-danger mx-1">Delete</a>
+				<form id='form-delete-patient' method="POST">
+					@method('DELETE')
+					@csrf
+				</form>
 			</div>
 		</div>
 		<div class="row">

@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+	<div class="container px-1">
+		@if(session('success'))
+			<div class="alert alert-success">{{session('success')}}</div>
+		@endif
+	</div>
 	<div class="container">
 		<div class="row mb-3">
 			<h4>{{ __('Patients') }}</h4>
