@@ -11,7 +11,13 @@ class PatientController extends Controller
 {
     public function index(Request $request)
     {
-    	$patients = Patient::paginate();
+    	$patients = Patient::where(function($query) use ($request) {
+            if($request->has('search')) {
+                $query->where('name', 'like', "%{$request->search}%")
+                    ->orWhere('parent', 'like', "%{$request->search}%");
+            }
+        })
+        ->paginate();
     	return view('dashboard.patients.index', compact('patients'));
     }
 

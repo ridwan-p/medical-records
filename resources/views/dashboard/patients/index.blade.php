@@ -10,12 +10,14 @@
 				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary">{{ __('Add') }}</a>
 			</div>
 			<div class="col-md-3 px-1">
-				<div class="input-group">
-					<input type="search" class="form-control" placeholder="{{ __('Search') }}">
-					<div class="input-group-append">
-						<button class="btn btn-primary" type="button" id="button-addon2">{{ __('Search') }}</button>
-					</div>
-				</div>
+				<form action="{{ route('dashboard.patients.index') }}" method="GET">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control" placeholder="{{ __('Search') }}" value="{{request()->search}}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit" id="button-addon2">{{ __('Search') }}</button>
+                        </div>
+                    </div>
+                </form>
 			</div>
 		</div>
 		<div class="row">
