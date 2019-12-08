@@ -58,13 +58,24 @@
 				</div>
 			</div>
 			<div class="col-md-9 px-2">
-				<div class="card my-3">
+				<div class="card my-3" style="z-index: -1">
 					<div class="card-header border-bottom-0 bg-white">
 						<h6 class="m-0"><strong>{{$patient->name}}</strong> {{__('Medical Journal')}}</h6>
 					</div>
 					<div class="card-body">
-						<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">Add</a>
 						<div class="row">
+							<div class="col-md-3">
+								<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">Add</a>
+							</div>
+							<div class="col-md-9">
+								<form action="">
+									<ul class='timeline'>
+									  <li class='active'><button name="timeline" type="submit" class="btn btn-link p-0">2017</button></li>
+									  <li><button name="timeline" type="submit" class="btn btn-link p-0">2018</button></li>
+									  <li><button name="timeline" type="submit" class="btn btn-link p-0">2019</button></li>
+									</ul>
+								</form>
+							</div>
 							@forelse ($patient->journals as $journal)
 								<div class="col-md-12">
 									<div class="card mb-3 bg-light">
