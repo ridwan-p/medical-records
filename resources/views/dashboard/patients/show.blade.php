@@ -2,6 +2,11 @@
 
 @section('content')
 	<div class="container">
+		@if(session('success'))
+			<div class="alert alert-success">{{session('success')}}</div>
+		@endif
+	</div>
+	<div class="container">
 		<div class="row">
 			<div class="col-md-6 my-3">
 				<h4><strong>{{$patient->name}}</strong> {{ __('Medical Record') }}</h4>
@@ -66,7 +71,7 @@
 			                        <p>created_at : {{ $journal->created_at->diffForHumans() }}</p>
 			                    </div>
 			                    <div class="card-footer">
-			                        <a href="{{ route('dashboard.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">edit</a>
+			                        <a href="{{ route('dashboard.patients.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">edit</a>
 			                    </div>
 			                </div>
 						@empty

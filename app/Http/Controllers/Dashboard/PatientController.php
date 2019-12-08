@@ -59,7 +59,7 @@ class PatientController extends Controller
         $patient->load(['journals' => function($query) {
             $query->orderBy('created_at', 'desc');
         }]);
-        
+
     	return view('dashboard.patients.show', compact('patient'));
     }
 
@@ -128,5 +128,34 @@ class PatientController extends Controller
 
         session()->flash('success', 'Add');
         return redirect()->route('dashboard.patients.show', ['patient' => $patient]); 
+    }
+
+    public function editJournal(Journal $journal)
+    {
+        $patient = $journal->patient;
+
+        return view('dashboard.patients.edit_journal', compact('journal', 'patient'));
+    }
+
+
+    public function updateJournal(Request $request, Journal $journal)
+    {
+        $request->validate([
+            'therapy' => 'required|array',
+            'anamnese' => 'required|array',
+            'diagnosis' => 'required|array',
+            'medications' => 'required|array',
+            'note' => 'nullable',
+        ]);
+
+        $journal = DB::transaction(function () use ($request, $journal) {
+            $journal->fill($request->except('medications'));
+            $journal->storeToMany($request->only('medications'));
+
+            return $journal;
+        });
+
+        session()->flash('success', 'update');
+        return back();
     }
 }
