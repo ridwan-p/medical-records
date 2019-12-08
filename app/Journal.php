@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Journals extends Model
+class Journal extends Model
 {
     protected $fillable = [
     	'patient_id',

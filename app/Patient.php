@@ -29,7 +29,8 @@ class Patient extends Model
     ];
 
     protected $casts = [
-        'allergies' => 'array'
+        'allergies' => 'array',
+        'date_of_birth' => 'date'
     ];
 
     public function getAgeAttribute()
