@@ -12,7 +12,14 @@ class JournalController extends Controller
 {
     public function index(Request $request)
     {
-    	return view('dashboard.journals.index');
+    	$journals = Journal::whereHas('patient', function ($query) use ( $request ) {
+    		if($request->has('search')) {
+	    		$query->where('name', 'like', "%{$request->search}%")
+	    			->orWhere('parent','like', "%{$request->search}%");
+    		}
+    	})->paginate();
+
+    	return view('dashboard.journals.index', compact('journals'));
     }
 
     public function create()
@@ -26,16 +33,17 @@ class JournalController extends Controller
     {
     	$request->validate([
     		'patient_id' => 'required|exists:patients,id',
-    		'therapy' => 'required',
+    		'therapy' => 'required|array',
+			'anamnese' => 'required|array',
+			'diagnosis' => 'required|array',
+			'medications' => 'required|array',
 			'note' => 'nullable',
-			'anamnese' => 'required',
-			'diagnosis' => 'required',
     	]);
-    	// dd($request->all());
-    	
+
     	$journal = DB::transaction(function () use ($request) {
-    		$journal = new Journal($request->all());
+    		$journal = new Journal($request->except('medications'));
     		$journal->save();
+    		$journal->storeToMany($request->only('medications'));
 
     		return $journal;
     	});
@@ -53,10 +61,11 @@ class JournalController extends Controller
     {
     	$request->validate([
     		'patient_id' => 'required|exists:patients,id',
-    		'therapy' => 'required',
+    		'therapy' => 'required|array',
+			'anamnese' => 'required|array',
+			'diagnosis' => 'required|array',
+			'medications' => 'required|array',
 			'note' => 'nullable',
-			'anamnese' => 'required',
-			'diagnosis' => 'required',
     	]);
 
     	$journal = DB::transaction(function () use ($request, $journal) {

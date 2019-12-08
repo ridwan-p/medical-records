@@ -50,6 +50,16 @@
 	                </span>
 	            @enderror
 			</div>
+			
+			<div class="form-group col-md-12">
+				<label for="medications">{{ __('Medications') }}</label>
+				<input type="text" class="form-control @error('medications[]') is-invalid @enderror" id='medications' name="medications[][name]" value={{ old('medications[][name]') }}>
+				@error('medications[][name]')
+	                <span class="invalid-feedback" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </span>
+	            @enderror
+			</div>
 
 			<div class="form-group col-md-12">
 				<label for="note">{{ __("Note") }}</label>
