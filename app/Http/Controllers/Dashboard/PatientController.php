@@ -18,6 +18,8 @@ class PatientController extends Controller
             }
         })
         ->paginate();
+
+        // dd($patients[7]->photo['medium']);
     	return view('dashboard.patients.index', compact('patients'));
     }
 
@@ -40,7 +42,6 @@ class PatientController extends Controller
 	    	'allergies' => 'nullable|array',
             'photo' => 'nullable|image'
     	]);
-
     	$patient = DB::transaction(function() use ($request) {
 	    	$patient = new Patient();
 	    	$patient->fill($request->all());

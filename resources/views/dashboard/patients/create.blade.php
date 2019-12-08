@@ -119,16 +119,16 @@
 			<div class="form-group col-md-6">
 				<label for="photo">{{ __("Photo") }}</label>
 				<div class="input-group mb-3 d-flex align-items-center">
-			  		<img src="{{ asset('images/user.svg') }}" alt="photo" class="d-block mr-2" width="100">
+			  		<img src="{{ asset('images/user.svg') }}" alt="photo" class="d-block mr-2 rounded-circle" width="100">
 					<div class="custom-file">
 						<input type="file" class="custom-file-input  @error('photo') is-invalid @enderror" name="photo" id="file-photo" >
 						<label class="custom-file-label" for="file-photo">{{ __('Choose file') }}</label>
 					</div>
 				</div>
 				@error('photo')
-	                <span class="invalid-feedback" role="alert">
+	                <small class="text-danger" role="alert">
 	                    <strong>{{ $message }}</strong>
-	                </span>
+	                </small>
 	            @enderror
 			</div>	
 

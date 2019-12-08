@@ -15,7 +15,7 @@
 			<div class="col-md-3 px-2">
 				<div class="card my-3">
 					<div class="p-3 d-flex justify-content-center">
-						<img src="{{ asset($patient->photo ?? 'images/user.svg') }}" width="150" alt="avatar default">
+						<img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" class="img-fluid rounded-circle" alt="avatar default">
 					</div>
 					<div class="card-body text-center">
 						<h5 class="font-weight-bold">{{$patient->name}}</h5>

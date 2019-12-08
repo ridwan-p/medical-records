@@ -26,7 +26,7 @@
 					<div class="card card-patient">
 						<div class="card-body">
 							<div class="media">
-								<img src="{{ asset($patient->photo ?? 'images/user.svg') }}" alt="defaul avatar" width="60" class="align-self-center mr-3">
+								<img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" alt="defaul avatar" width="60" class="align-self-center mr-3 rounded-circle">
 								<div class="media-body">
 									<h6 class="font-weight-bolder my-0">{{ $patient->name }}</h6>
 									<p class="my-0 font-italic">{{ __('Parent') }}  : {{ $patient->parent }}</p>
