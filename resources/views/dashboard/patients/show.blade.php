@@ -64,23 +64,27 @@
 					</div>
 					<div class="card-body">
 						<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">Add</a>
-						@forelse ($patient->journals as $journal)
-							<div class="card col-md-12 mb-3 bg-light">
-			                    <div class="card-body">
-			                        <p>therapy : {{ implode(',', $journal->therapy) }}</p>
-			                        <p>anamnese : {{ implode(',', $journal->anamnese) }}</p>
-			                        <p>diagnosis : {{ implode(',', $journal->diagnosis) }}</p>
-			                        <p>medications : {{ optional($journal->medications)->pluck('name')->implode(',') }}</p>
-			                        <p>note : {{ $journal->note }}</p>
-			                        <p>created_at : {{ $journal->created_at->diffForHumans() }}</p>
-			                    </div>
-			                    <div class="card-footer">
-			                        <a href="{{ route('dashboard.patients.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">edit</a>
-			                    </div>
-			                </div>
-						@empty
-							This is empty ....
-						@endforelse
+						<div class="row">
+							@forelse ($patient->journals as $journal)
+								<div class="col-md-12">
+									<div class="card mb-3 bg-light">
+					                    <div class="card-body">
+					                        <p>therapy : {{ implode(',', $journal->therapy) }}</p>
+					                        <p>anamnese : {{ implode(',', $journal->anamnese) }}</p>
+					                        <p>diagnosis : {{ implode(',', $journal->diagnosis) }}</p>
+					                        <p>medications : {{ optional($journal->medications)->pluck('name')->implode(',') }}</p>
+					                        <p>note : {{ $journal->note }}</p>
+					                        <p>created_at : {{ $journal->created_at->diffForHumans() }}</p>
+					                    </div>
+					                    <div class="card-footer">
+					                        <a href="{{ route('dashboard.patients.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">edit</a>
+					                    </div>
+					                </div>
+								</div>
+							@empty
+								This is empty ....
+							@endforelse
+						</div>
 						<nav class="mb-3">
 							{{ $patient->journals }}
 						</nav>
