@@ -45,7 +45,7 @@ class JournalController extends Controller
 
     public function edit(Journal $journal)
     {
-    	return view('dashboard.journals.edit', compact('journal'))
+    	return view('dashboard.journals.edit', compact('journal'));
     }
 
     public function update(Request $request, Journal $journal)

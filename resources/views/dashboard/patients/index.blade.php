@@ -3,6 +3,9 @@
 @section('content')
 	<div class="container">
 		<div class="row mb-3">
+			<h4>{{ __('Patients') }}</h4>
+		</div>
+		<div class="row mb-3">
 			<div class="col-md-9 px-1">
 				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary">{{ __('Add') }}</a>
 			</div>
