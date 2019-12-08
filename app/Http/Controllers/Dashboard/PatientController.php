@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Journal;
 use App\Patient;
-use Illuminate\Http\Request;
 use DB;
+use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
@@ -55,6 +56,10 @@ class PatientController extends Controller
 
     public function show(Patient $patient)
     {
+        $patient->load(['journals' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }]);
+        
     	return view('dashboard.patients.show', compact('patient'));
     }
 
@@ -95,5 +100,33 @@ class PatientController extends Controller
     	$patient->delete();
         session()->flash('success', 'Delete');
     	return redirect()->back();
+    }
+
+    public function createJournal(Patient $patient)
+    {
+        return view('dashboard.patients.create_journal', compact('patient'));
+    }
+
+
+    public function storeJournal(Request $request, Patient $patient)
+    {
+        $request->validate([
+            'therapy' => 'required|array',
+            'anamnese' => 'required|array',
+            'diagnosis' => 'required|array',
+            'medications' => 'required|array',
+            'note' => 'nullable',
+        ]);
+
+        $journal = DB::transaction(function () use ($request, $patient) {
+            $journal = new Journal($request->except('medications'));
+            $patient->journals()->save($journal);
+            $journal->storeToMany($request->only('medications'));
+
+            return $journal;
+        });
+
+        session()->flash('success', 'Add');
+        return redirect()->route('dashboard.patients.show', ['patient' => $patient]); 
     }
 }

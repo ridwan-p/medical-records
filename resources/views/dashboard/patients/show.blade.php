@@ -54,6 +54,7 @@
 						<h6 class="m-0"><strong>{{$patient->name}}</strong> {{__('Medical Journal')}}</h6>
 					</div>
 					<div class="card-body">
+						<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">Add</a>
 						@forelse ($patient->journals as $journal)
 							<div class="card col-md-12 mb-3 bg-light">
 			                    <div class="card-body">

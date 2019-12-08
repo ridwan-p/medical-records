@@ -29,6 +29,8 @@ Route::prefix('dashboard')
 ->group(function() {
 	Route::get('/', "DashboardController@index")->name('index');
 	Route::resource('patients', "PatientController");
+	Route::get('patients/{patient}/journals/add', "PatientController@createJournal")->name('patients.journals.add');
+	Route::post('patients/{patient}/journals/add', "PatientController@storeJournal")->name('patients.journals.store');
 	Route::resource('journals', "JournalController");
 	// Route::get('/home', 'HomeController@index')->name('home');
 });
