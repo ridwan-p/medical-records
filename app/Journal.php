@@ -20,6 +20,11 @@ class Journal extends Model
     	'diagnosis' => 'array',
     ];
 
+    // protected $dates = [
+    //     'created_at',
+    //     'updated_at',
+    // ];
+
     public function medications()
     {
     	return $this->belongsToMany(Medication::class)

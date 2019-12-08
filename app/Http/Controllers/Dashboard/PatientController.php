@@ -17,9 +17,8 @@ class PatientController extends Controller
                     ->orWhere('parent', 'like', "%{$request->search}%");
             }
         })
-        ->paginate();
+        ->paginate(8);
 
-        // dd($patients[7]->photo['medium']);
     	return view('dashboard.patients.index', compact('patients'));
     }
 

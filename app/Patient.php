@@ -45,6 +45,11 @@ class Patient extends Model
         return $this->hasMany(Journal::class);
     }
 
+    public function latestJournals()
+    {
+        return $this->journals()->latest()->first();
+    }
+
     public function setPhotoAttribute($photo)
     {
         $this->storePhoto($photo);

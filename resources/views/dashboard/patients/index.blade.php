@@ -22,7 +22,7 @@
 		</div>
 		<div class="row">
 			@forelse ($patients as $patient)
-				<div class="col-md-3 my-1 px-1">
+				<div class="col-lg-3 col-md-4 my-1 px-1">
 					<div class="card card-patient">
 						<div class="card-body">
 							<div class="media">
@@ -32,7 +32,9 @@
 									<p class="my-0 font-italic">{{ __('Parent') }}  : {{ $patient->parent }}</p>
 									<p class="my-0">{{ $patient->birth }}</p>
 									<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
-									<p class="my-0 text-muted"> 2 days ago</p>
+									@if (!empty($patient->latestJournals()))
+										<p class="my-0 text-muted"> {{$patient->latestJournals()->created_at->diffForHumans()}}</p>
+									@endif
 								</div>
 							</div>
 						</div>
@@ -44,6 +46,7 @@
 			@empty
 				Data is empty ....
 			@endforelse
+			<nav class="col-12 my-1">{{$patients->links()}}</nav>
 		</div>
 	</div>
 @endsection
