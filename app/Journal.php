@@ -14,11 +14,10 @@ class Journal extends Model
     	'diagnosis'
     ];
 
-    protected $cast = [
+    protected $casts = [
     	'therapy' => 'array',
     	'anamnese' => 'array',
     	'diagnosis' => 'array',
-    	// 'note' => 'array',
     ];
 
     public function medications()

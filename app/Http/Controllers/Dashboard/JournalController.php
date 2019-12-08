@@ -31,7 +31,8 @@ class JournalController extends Controller
 			'anamnese' => 'required',
 			'diagnosis' => 'required',
     	]);
-
+    	// dd($request->all());
+    	
     	$journal = DB::transaction(function () use ($request) {
     		$journal = new Journal($request->all());
     		$journal->save();

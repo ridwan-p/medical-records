@@ -22,6 +22,36 @@
 			</div>
 
 			<div class="form-group col-md-12">
+				<label for="therapy">{{ __('Therapy') }}</label>
+				<input type="text" class="form-control @error('therapy[]') is-invalid @enderror" id='therapy' name="therapy[]" value={{ old('therapy[]') }}>
+				@error('therapy[]')
+	                <span class="invalid-feedback" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </span>
+	            @enderror
+			</div>
+			
+			<div class="form-group col-md-12">
+				<label for="anamnese">{{ __('Anamnese') }}</label>
+				<input type="text" class="form-control @error('anamnese[]') is-invalid @enderror" id='anamnese' name="anamnese[]" value={{ old('anamnese[]') }}>
+				@error('anamnese[]')
+	                <span class="invalid-feedback" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </span>
+	            @enderror
+			</div>
+			
+			<div class="form-group col-md-12">
+				<label for="diagnosis">{{ __('Diagnosis') }}</label>
+				<input type="text" class="form-control @error('diagnosis[]') is-invalid @enderror" id='diagnosis' name="diagnosis[]" value={{ old('diagnosis[]') }}>
+				@error('diagnosis[]')
+	                <span class="invalid-feedback" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </span>
+	            @enderror
+			</div>
+
+			<div class="form-group col-md-12">
 				<label for="note">{{ __("Note") }}</label>
 				<textarea name="note" id="note" cols="30" rows="10" class="form-control @error('note') is-invalid @enderror">{{ old('note') }}</textarea>
 				@error('note')
