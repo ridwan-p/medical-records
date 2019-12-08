@@ -17,6 +17,7 @@ class PatientController extends Controller
                     ->orWhere('parent', 'like', "%{$request->search}%");
             }
         })
+        ->orderBy($request->column ?? 'created_at', $request->direction ?? 'desc')
         ->paginate(8);
 
     	return view('dashboard.patients.index', compact('patients'));
