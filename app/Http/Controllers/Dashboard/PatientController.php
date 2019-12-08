@@ -56,9 +56,11 @@ class PatientController extends Controller
 
     public function show(Patient $patient)
     {
-        $patient->load(['journals' => function($query) {
-            $query->orderBy('created_at', 'desc');
-        }]);
+        $journals = $patient->journals()
+            ->orderBy('created_at', 'desc')
+            ->paginate();
+
+        $patient->setRelation('journals', $journals);
 
     	return view('dashboard.patients.show', compact('patient'));
     }

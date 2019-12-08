@@ -81,6 +81,9 @@
 						@empty
 							This is empty ....
 						@endforelse
+						<nav class="mb-3">
+							{{ $patient->journals }}
+						</nav>
 					</div>
 				</div>
 			</div>
