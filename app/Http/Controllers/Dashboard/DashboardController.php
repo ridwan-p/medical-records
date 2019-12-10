@@ -9,6 +9,7 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-    	return view('dashboard.index');
+    	return redirect()->route('dashboard.patients.index');
+    	// return view('dashboard.index');
     }
 }
