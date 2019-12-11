@@ -82,16 +82,13 @@
 								<div class="col-md-12">
 									<div class="card mb-3 bg-light">
 					                    <div class="card-body">
-					                        <p>{{__("Name")}} : {{$journal->patient->name}}</p>
-				                            <p>{{__("Therapy")}} : {{ implode(',', $journal->therapy) }}</p>
+				                            <h5>{{ implode(',', $journal->diagnosis) }}</h5>
 				                            <p>{{__('Anamnese')}} : {{ implode(',', $journal->anamnese) }}</p>
-				                            <p>{{__('Diagnosis')}} : {{ implode(',', $journal->diagnosis) }}</p>
-				                            <p>{{__('Medications')}} : {{ optional($journal->medications)->pluck('name')->implode(',') }}</p>
-				                            <p>{{__('Note')}} : {{ $journal->note }}</p>
 				                            <p>{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
 					                    </div>
 					                    <div class="card-footer">
 					                        <a href="{{ route('dashboard.patients.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">{{__('Edit')}}</a>
+					                        <a href="{{ route('dashboard.journals.show', ['journal' => $journal]) }}" class="btn btn-link">{{__('Show')}}</a>
 					                    </div>
 					                </div>
 								</div>
