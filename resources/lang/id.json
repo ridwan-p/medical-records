@@ -39,5 +39,12 @@
   "Medical": "Medis",
   "Record": "Rekam",
   "Medical Record": "Rekam Medis",
-  "Toggle navigation": "Navigasi peralihan"
+  "Toggle navigation": "Navigasi peralihan",
+  "Therapy" : "Terapi",
+  "Anamnese" : "anamnese",
+  "Diagnosis" : "Diagnosa",
+  "Medications" : "Obat-obatan",
+  "Created at" : "Dibuat tanggal",
+  "Updated at" : "Disunting tanggal"
+
 }
