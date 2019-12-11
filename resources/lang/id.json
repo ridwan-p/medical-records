@@ -35,5 +35,9 @@
   "Parent" : "Orang Tua",
   "Journal" : "Jurnal",
   "History" : "Riwayat",
-  "Blood" : "Golongan Darah"
+  "Blood" : "Golongan Darah",
+  "Medical": "Medis",
+  "Record": "Rekam",
+  "Medical Record": "Rekam Medis",
+  "Toggle navigation": "Navigasi peralihan"
 }
