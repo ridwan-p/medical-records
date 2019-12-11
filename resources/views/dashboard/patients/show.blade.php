@@ -67,7 +67,7 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-3">
-								<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">Add</a>
+								<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">{{__('Add')}}</a>
 							</div>
 							<div class="col-md-9">
 								<form action="">
