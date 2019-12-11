@@ -22,18 +22,20 @@
         </div>
         <div class="row mb-3">
             @forelse ($journals as $index => $journal)
-                <div class="card col-md-12 mb-3">
-                    <div class="card-body">
-                        <p>{{__("Name")}} : {{$journal->patient->name}}</p>
-                        <p>{{__("Therapy")}} : {{ implode(',', $journal->therapy) }}</p>
-                        <p>{{__('Anamnese')}} : {{ implode(',', $journal->anamnese) }}</p>
-                        <p>{{__('Diagnosis')}} : {{ implode(',', $journal->diagnosis) }}</p>
-                        <p>{{__('Medications')}} : {{ optional($journal->medications)->pluck('name')->implode(',') }}</p>
-                        <p>{{__('Note')}} : {{ $journal->note }}</p>
-                        <p>{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{{ route('dashboard.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">{{__('Edit')}}</a>
+                <div class="col-md-6 p-1">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>{{__("Name")}} : {{$journal->patient->name}}</p>
+                            <p>{{__("Therapy")}} : {{ implode(',', $journal->therapy) }}</p>
+                            <p>{{__('Anamnese')}} : {{ implode(',', $journal->anamnese) }}</p>
+                            <p>{{__('Diagnosis')}} : {{ implode(',', $journal->diagnosis) }}</p>
+                            <p>{{__('Medications')}} : {{ optional($journal->medications)->pluck('name')->implode(',') }}</p>
+                            <p>{{__('Note')}} : {{ $journal->note }}</p>
+                            <p>{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ route('dashboard.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">{{__('Edit')}}</a>
+                        </div>
                     </div>
                 </div>
             @empty

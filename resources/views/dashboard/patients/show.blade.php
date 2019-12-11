@@ -29,14 +29,16 @@
 					<div class="card-body text-center">
 						<h5 class="font-weight-bold">{{$patient->name}}</h5>
 						<p class="my-0 font-italic">{{ __('Parent') }}  : {{ $patient->parent }}</p>
-						<p class="my-0">{{ $patient->age }} {{ __('old') }}</p>
+						<p class="my-0">{{ $patient->age }} {{ __('Year') }}</p>
 						<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
-						<p class="my-0 text-muted"> 2 days ago</p>
+						@if (!empty($patient->latestJournals()))
+							<p class="my-0 text-muted"> {{$patient->latestJournals()->created_at->diffForHumans()}}</p>
+                        @endif
 					</div>
 				</div>
 				<div class="card my-3">
 					<div class="card-body">
-						<p class="m-0"><i class="fas fa-phone"></i> {{ $patient->place_of_birth }}, {{$patient->date_of_birth->format('d M Y')}}</p>
+						<p class="m-0"><i class="fas fa-phone"></i> {{ $patient->place_of_birth }}, {{optional($patient->date_of_birth)->format('d M Y')}}</p>
 						<p class="m-0"> <i class="fas fa-phone"></i> {{$patient->phone}}</p>
 						<p class="m-0"><i class="fas fa-phone"></i> {{$patient->address}}</p>
 						<p class="m-0"><i class="fas fa-phone"></i> {{ __('Blood') }} : {{$patient->blood}}</p>
@@ -58,7 +60,7 @@
 				</div>
 			</div>
 			<div class="col-md-9 px-2">
-				<div class="card my-3" style="z-index: -1">
+				<div class="card my-3">
 					<div class="card-header border-bottom-0 bg-white">
 						<h6 class="m-0"><strong>{{$patient->name}}</strong> {{__('Medical Journal')}}</h6>
 					</div>

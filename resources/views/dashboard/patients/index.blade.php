@@ -27,7 +27,7 @@
 		</div>
 		<div class="row">
 			@forelse ($patients as $patient)
-				<div class="col-lg-3 col-md-4 my-1 px-1">
+				<div class="col-lg-3 col-md-4 p-1">
 					<div class="card card-patient">
 						<div class="card-body">
 							<div class="media">

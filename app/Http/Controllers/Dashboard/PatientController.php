@@ -119,6 +119,7 @@ class PatientController extends Controller
             'anamnese' => 'required|array',
             'diagnosis' => 'required|array',
             'medications' => 'required|array',
+            'medications.*.name' => 'required|max:255',
             'note' => 'nullable',
         ]);
 
@@ -148,7 +149,7 @@ class PatientController extends Controller
             'therapy' => 'required|array',
             'anamnese' => 'required|array',
             'diagnosis' => 'required|array',
-            'medications' => 'required|array',
+            'medications.*.name' => 'required|max:255',
             'note' => 'nullable',
         ]);
 

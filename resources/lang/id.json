@@ -41,10 +41,15 @@
   "Medical Record": "Rekam Medis",
   "Toggle navigation": "Navigasi peralihan",
   "Therapy" : "Terapi",
-  "Anamnese" : "anamnese",
+  "Anamnese" : "Anamnese",
   "Diagnosis" : "Diagnosa",
   "Medications" : "Obat-obatan",
   "Created at" : "Dibuat tanggal",
-  "Updated at" : "Disunting tanggal"
+  "Updated at" : "Disunting tanggal",
+  "Medical Journal": "Jurnal Medis",
+  "Note": "Catatan",
+  "Year": "Tahun",
+  "Save": "Simpan",
+  "Submit": "Simpan"
 
 }

@@ -133,7 +133,7 @@
 			</div>	
 
 			<div class="form-group col-md-12">
-				<button class="btn btn-primary">Submit</button>				
+				<button class="btn btn-primary">{{__('Submit')}}</button>				
 			</div>
 		</div>
 	</form>
