@@ -10,71 +10,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/manifest.js') }}" defer></script>
-    <script src="{{ asset('js/vendor.js') }}" defer></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/manifest.js') }}" defer></script>
+    <script src="{{ mix('js/vendor.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <style>
-        .timeline {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-          max-width: 500px;
-          float: right; 
-        }
-
-        .timeline li {
-          float: left;    
-          text-align: center;
-          width: 3.5em;   
-          position: relative;  
-        }
-
-        .timeline li:before {
-          content: "";
-          width: 1em;
-          height: 1em;
-          display: block;
-          border-radius: 100%;
-          border: 2px solid #ccc;
-          margin: 0 auto .3em auto;  
-          background: #fff;
-        }
-
-        .timeline li:after {
-          content: "";
-          width: 100%;
-          height: 1px;
-          background: #ccc;
-          display: block;
-          position: absolute;
-          top: 0.5em;
-          left: 50%;
-          z-index: -1;
-        }
-
-        .timeline li:last-child:after {
-          content: none;
-        }
-
-        .timeline li.active {
-          color: #3490dc;
-        }
-
-        .timeline li:first-child:before {
-          border-color: #3490dc;  
-        }
-        .timeline li:first-child:after {
-          background: #3490dc;  
-        }
-    </style>
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -91,10 +36,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('Dashboard') }}</a></li>
-                        <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('Patient') }}</a></li>
-                        <li class="nav-item"><a href="{{ route('dashboard.journals.index') }}" class="nav-link">{{ __('Journal') }}</a></li>
-                        {{-- <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('History') }}</a></li> --}}
+                        @auth
+                            <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('Dashboard') }}</a></li>
+                            <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('Patient') }}</a></li>
+                            <li class="nav-item"><a href="{{ route('dashboard.journals.index') }}" class="nav-link">{{ __('Journal') }}</a></li>
+                            <li class="nav-item"><a href="{{ route('dashboard.history.index') }}" class="nav-link">{{ __('History') }}</a></li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -110,6 +57,16 @@
                                 </li>
                             @endif
                         @else
+                     {{--        <div class="dropdown">
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown button
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                              </div>
+                            </div> --}}
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

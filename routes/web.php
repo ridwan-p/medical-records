@@ -35,5 +35,6 @@ Route::prefix('dashboard')
 	Route::put('patients/{journal}/journals/add', "PatientController@updateJournal")->name('patients.journals.update');
 	Route::patch('patients/{journal}/journals/add', "PatientController@updateJournal")->name('patients.journals.update');
 	Route::resource('journals', "JournalController");
+	Route::get('history', "HistoryController@index")->name('history.index');
 	// Route::get('/home', 'HomeController@index')->name('home');
 });
