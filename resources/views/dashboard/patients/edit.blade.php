@@ -11,7 +11,7 @@
 		@method('PUT')
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Edit <b>{{$patient->name}}</b></h3>
+				<h3>{{__('Edit')}} <b>{{$patient->name}}</b></h3>
 			</div>
 		</div>
 
@@ -66,7 +66,7 @@
 					<label for="gender-f" class="custom-control-label">{{__('Female')}}</label>
 				</div>
 				@error('gender')
-	                <small class="text-danger" role="alert">
+	                <small class="text-danger d-block" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </small>
 	            @enderror
@@ -91,9 +91,9 @@
 					<label for="blood-o" class="custom-control-label">O</label>
 				</div>
 				@error('blood')
-	                <smal class="text-danger" role="alert">
+	                <small class="text-danger d-block" role="alert">
 	                    <strong>{{ $message }}</strong>
-	                </smal>
+	                </small>
 	            @enderror
 			</div>
 			<div class="form-group col-md-12">

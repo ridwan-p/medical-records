@@ -4,7 +4,7 @@
 	<form action="{{ route('dashboard.patients.store') }}" method="POST" class="container" enctype="multipart/form-data">
 		@csrf
 		<div class="row">
-			<div class="col-md-12"><h3>Create</h3></div>
+			<div class="col-md-12"><h3>{{__('Create')}}</h3></div>
 		</div>
 		<div class="row">
 			
@@ -58,7 +58,7 @@
 					<label for="gender-f" class="custom-control-label">{{__('Female')}}</label>
 				</div>
 				@error('gender')
-	                <small class="text-danger" role="alert">
+	                <small class="text-danger d-block" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </small>
 	            @enderror
@@ -83,9 +83,9 @@
 					<label for="blood-o" class="custom-control-label">O</label>
 				</div>
 				@error('blood')
-	                <smal class="text-danger" role="alert">
+	                <small class="text-danger d-block" role="alert">
 	                    <strong>{{ $message }}</strong>
-	                </smal>
+	                </small>
 	            @enderror
 			</div>
 			<div class="form-group col-md-12">
