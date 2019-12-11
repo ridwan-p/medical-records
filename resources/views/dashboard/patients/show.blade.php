@@ -91,7 +91,7 @@
 				                            <p>{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
 					                    </div>
 					                    <div class="card-footer">
-					                        <a href="{{ route('dashboard.patients.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">edit</a>
+					                        <a href="{{ route('dashboard.patients.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">{{__('Edit')}}</a>
 					                    </div>
 					                </div>
 								</div>
