@@ -37,7 +37,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @auth
-                            <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('Dashboard') }}</a></li>
+                            <li class="nav-item"><a href="{{ route('dashboard.index') }}" class="nav-link">{{ __('Dashboard') }}</a></li>
                             <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link">{{ __('Patient') }}</a></li>
                             <li class="nav-item"><a href="{{ route('dashboard.journals.index') }}" class="nav-link">{{ __('Journal') }}</a></li>
                             <li class="nav-item"><a href="{{ route('dashboard.history.index') }}" class="nav-link">{{ __('History') }}</a></li>
