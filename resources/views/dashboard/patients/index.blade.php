@@ -8,13 +8,13 @@
 	</div>
 	<div class="container">
 		<div class="row mb-3">
-			<h4>{{ __('Patients') }}</h4>
+			<h4 class="p-2 m-0">{{ __('Patients') }}</h4>
 		</div>
 		<div class="row mb-3">
-			<div class="col-md-9 px-1">
+			<div class="col-md-9 p-2">
 				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary">{{ __('Add') }}</a>
 			</div>
-			<div class="col-md-3 px-1">
+			<div class="col-md-3 p-2">
 				<form action="{{ route('dashboard.patients.index') }}" method="GET">
                     <div class="input-group">
                         <input type="search" name="search" class="form-control" placeholder="{{ __('Search') }}" value="{{request()->search}}">
@@ -27,7 +27,7 @@
 		</div>
 		<div class="row">
 			@forelse ($patients as $patient)
-				<div class="col-lg-3 col-md-4 p-1">
+				<div class="col-lg-3 col-md-4 p-2">
 					<div class="card card-patient">
 						<div class="card-body">
 							<div class="media">
