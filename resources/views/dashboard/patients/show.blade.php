@@ -82,12 +82,13 @@
 								<div class="col-md-12">
 									<div class="card mb-3 bg-light">
 					                    <div class="card-body">
-					                        <p>therapy : {{ implode(',', $journal->therapy) }}</p>
-					                        <p>anamnese : {{ implode(',', $journal->anamnese) }}</p>
-					                        <p>diagnosis : {{ implode(',', $journal->diagnosis) }}</p>
-					                        <p>medications : {{ optional($journal->medications)->pluck('name')->implode(',') }}</p>
-					                        <p>note : {{ $journal->note }}</p>
-					                        <p>created_at : {{ $journal->created_at->diffForHumans() }}</p>
+					                        <p>{{__("Name")}} : {{$journal->patient->name}}</p>
+				                            <p>{{__("Therapy")}} : {{ implode(',', $journal->therapy) }}</p>
+				                            <p>{{__('Anamnese')}} : {{ implode(',', $journal->anamnese) }}</p>
+				                            <p>{{__('Diagnosis')}} : {{ implode(',', $journal->diagnosis) }}</p>
+				                            <p>{{__('Medications')}} : {{ optional($journal->medications)->pluck('name')->implode(',') }}</p>
+				                            <p>{{__('Note')}} : {{ $journal->note }}</p>
+				                            <p>{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
 					                    </div>
 					                    <div class="card-footer">
 					                        <a href="{{ route('dashboard.patients.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">edit</a>

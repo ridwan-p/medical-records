@@ -32,7 +32,7 @@
                                     <th>{{ __('Diagnosis') }}</th>
                                     <th>{{ __('Medications') }}</th>
                                     <th>{{ __('Note') }}</th>
-                                    <th>{{ __('Created At') }}</th>
+                                    <th>{{ __('Created at') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

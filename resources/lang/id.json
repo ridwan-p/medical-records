@@ -44,10 +44,11 @@
   "Anamnese" : "Anamnese",
   "Diagnosis" : "Diagnosa",
   "Medications" : "Obat-obatan",
-  "Created at" : "Dibuat tanggal",
-  "Updated at" : "Disunting tanggal",
+  "Created at" : "Tgl Buat",
+  "Updated at" : "Tgl Sunting",
   "Medical Journal": "Jurnal Medis",
   "Note": "Catatan",
+  "Age": "Umur",
   "Year": "Tahun",
   "Save": "Simpan",
   "Submit": "Simpan"
