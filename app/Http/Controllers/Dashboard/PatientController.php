@@ -63,7 +63,7 @@ class PatientController extends Controller
 
         $patient->setRelation('journals', $journals);
 
-    	return view('dashboard.patients.show', compact('patient'));
+    	return view('dashboard.patients.show', compact('patient', 'journals'));
     }
 
     public function edit(Patient $patient)

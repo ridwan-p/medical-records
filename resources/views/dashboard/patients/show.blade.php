@@ -78,7 +78,7 @@
 									</ul>
 								</form>
 							</div>
-							@forelse ($patient->journals as $journal)
+							@forelse ($journals as $journal)
 								<div class="col-md-12">
 									<div class="card mb-3 bg-light">
 					                    <div class="card-body">
@@ -100,7 +100,7 @@
 							@endforelse
 						</div>
 						<nav class="mb-3">
-							{{ $patient->journals }}
+							{{ $journals->links() }}
 						</nav>
 					</div>
 				</div>
