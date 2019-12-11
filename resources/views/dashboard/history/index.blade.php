@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row mb-3">
+    <div class="container-fluid">
+        <div class="row mb-3 mx-3">
             <h4>{{ __('History') }}</h4>
         </div>
-        <div class="row mb-3">
+        <div class="row mb-3 mx-3">
             <div class="card col-md-12">
                 <div class="card-body">
                     <div class="d-flex justify-content-end mb-3">
