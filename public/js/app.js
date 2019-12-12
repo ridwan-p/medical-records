@@ -22101,7 +22101,7 @@ try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+  __webpack_require__(/*! ./frameworks/bootstrap */ "./resources/js/frameworks/bootstrap.js");
 } catch (e) {}
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -22125,6 +22125,76 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/frameworks/bootstrap.js":
+/*!**********************************************!*\
+  !*** ./resources/js/frameworks/bootstrap.js ***!
+  \**********************************************/
+/*! exports provided: Util, Alert, Button, Collapse, Dropdown, Modal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bootstrap_js_src_alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/js/src/alert */ "./node_modules/bootstrap/js/src/alert.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Alert", function() { return bootstrap_js_src_alert__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var bootstrap_js_src_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/js/src/button */ "./node_modules/bootstrap/js/src/button.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return bootstrap_js_src_button__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var bootstrap_js_src_collapse__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap/js/src//collapse */ "./node_modules/bootstrap/js/src/collapse.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Collapse", function() { return bootstrap_js_src_collapse__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var bootstrap_js_src_dropdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap/js/src/dropdown */ "./node_modules/bootstrap/js/src/dropdown.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return bootstrap_js_src_dropdown__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var bootstrap_js_src_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! bootstrap/js/src/modal */ "./node_modules/bootstrap/js/src/modal.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Modal", function() { return bootstrap_js_src_modal__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var bootstrap_js_src_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! bootstrap/js/src/util */ "./node_modules/bootstrap/js/src/util.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Util", function() { return bootstrap_js_src_util__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+
+
+ // import Carousel from './carousel'
+
+
+
+ // import Popover from './popover'
+// import Scrollspy from './scrollspy'
+// import Tab from './tab'
+// import Toast from './toast'
+// import Tooltip from './tooltip'
+
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap (v4.3.1): index.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+(function () {
+  if (typeof jquery__WEBPACK_IMPORTED_MODULE_0___default.a === 'undefined') {
+    throw new TypeError('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.');
+  }
+
+  var version = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.fn.jquery.split(' ')[0].split('.');
+  var minMajor = 1;
+  var ltMajor = 2;
+  var minMinor = 9;
+  var minPatch = 1;
+  var maxMajor = 4;
+
+  if (version[0] < ltMajor && version[1] < minMinor || version[0] === minMajor && version[1] === minMinor && version[2] < minPatch || version[0] >= maxMajor) {
+    throw new Error('Bootstrap\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0');
+  }
+})();
+
+
 
 /***/ }),
 
