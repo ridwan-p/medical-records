@@ -11154,6 +11154,29 @@ a.text-dark:focus {
   background: #3490dc;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
+#app .footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .card-patient {
   min-height: 225px;
 }

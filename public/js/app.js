@@ -22250,8 +22250,8 @@ __webpack_require__(/*! ./destroy */ "./resources/js/utils/destroy.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/ridwan/Love/project/medical-records/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/ridwan/Love/project/medical-records/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/ridwan/Other/medical-records/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/ridwan/Other/medical-records/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

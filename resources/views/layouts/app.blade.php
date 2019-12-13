@@ -93,6 +93,15 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer class="mt-auto">
+            <nav class="navbar navbar-light bg-light d-flex justify-content-center">
+                <a href="{{ url('/') }}" class="text-dark">
+                    <img src="{{ asset('images/heart.svg') }}" width="30" height="30" alt="logo-brand" />
+                    {{ __(config('app.name', 'Laravel')) }} Copyright © {{now()->format('Y')}}
+                </a>
+            </nav>
+        </footer>
     </div>
 </body>
 </html>
