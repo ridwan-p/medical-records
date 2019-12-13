@@ -110,8 +110,8 @@
 			<div class="form-group col-md-6">
 				<label for="allergies">{{ __("Allergies") }}</label>
 				{{-- <input type="text" class="form-control @error('allergies') is-invalid @enderror" name="allergies[]" id="allergies" value="{{old('allergies[]')}}" autofocus> --}}
-				<tags-input valid="@error('allergies') is-invalid @enderror" value="{{old('allergies-text')}}" name="allergies"></tags-input>
-				@error('allergies')
+				<tags-input valid="@error('allergies.*') is-invalid @enderror" value="{{old('allergies-text')}}" name="allergies"></tags-input>
+				@error('allergies.*')
 	                <small class="text-danger d-block" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </small>

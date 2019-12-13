@@ -1819,11 +1819,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     value: String,
     valid: String,
-    name: String
+    name: String,
+    type: String,
+    object: String
   },
   data: function data() {
     return {
@@ -22115,49 +22123,88 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tags" }, [
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.textInput,
-          expression: "textInput"
-        }
-      ],
-      class: ["form-control", _vm.valid],
-      attrs: { type: "text", name: _vm.name + "-text" },
-      domProps: { value: _vm.textInput },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.textInput = $event.target.value
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "tag-group" },
-      [
-        _vm._l(_vm.tags, function(tag, i) {
-          return [
-            _c("input", {
-              attrs: { type: "hidden", name: _vm.name + "[" + i + "]" },
-              domProps: { value: tag }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "badge badge-pill badge-info mr-1" }, [
-              _vm._v(_vm._s(tag))
-            ])
+  return _c(
+    "div",
+    { staticClass: "tags" },
+    [
+      _vm.type === "textarea"
+        ? [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.textInput,
+                  expression: "textInput"
+                }
+              ],
+              class: ["form-control", _vm.valid],
+              attrs: { name: _vm.name + "-text", cols: "30", rows: "10" },
+              domProps: { value: _vm.textInput },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.textInput = $event.target.value
+                }
+              }
+            })
           ]
-        })
-      ],
-      2
-    )
-  ])
+        : [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.textInput,
+                  expression: "textInput"
+                }
+              ],
+              class: ["form-control", _vm.valid],
+              attrs: { type: "text", name: _vm.name + "-text" },
+              domProps: { value: _vm.textInput },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.textInput = $event.target.value
+                }
+              }
+            })
+          ],
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "tag-group" },
+        [
+          _vm._l(_vm.tags, function(tag, i) {
+            return [
+              _c("input", {
+                attrs: {
+                  type: "hidden",
+                  name:
+                    _vm.name +
+                    "[" +
+                    i +
+                    "]" +
+                    (_vm.object ? "[" + _vm.object + "]" : "")
+                },
+                domProps: { value: tag }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "badge badge-pill badge-info mr-1" }, [
+                _vm._v(_vm._s(tag))
+              ])
+            ]
+          })
+        ],
+        2
+      )
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
