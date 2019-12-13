@@ -39,14 +39,14 @@ class PatientController extends Controller
 	    	'gender' => 'required|in:m,f',
 	    	'blood' => 'nullable|in:a,b,ab,o',
 	    	'phone' => 'nullable|max:25',
-	    	'parent' => 'nullable|max:50', // temporarily 
+	    	'parent' => 'nullable|max:50', // temporarily
 	    	'allergies' => 'nullable|array',
             'photo' => 'nullable|image'
     	]);
     	$patient = DB::transaction(function() use ($request) {
 	    	$patient = new Patient();
 	    	$patient->fill($request->all());
-            $patient->parent = $request->parent ?? ''; 
+            $patient->parent = $request->parent ?? '';
 	    	$patient->save();
 	    	return $patient;
     	});
@@ -115,10 +115,13 @@ class PatientController extends Controller
     public function storeJournal(Request $request, Patient $patient)
     {
         $request->validate([
-            'therapy' => 'required|array',
-            'anamnese' => 'required|array',
-            'diagnosis' => 'required|array',
-            'medications' => 'required|array',
+            'therapy' => 'required|array|min:1',
+            'anamnese' => 'required|array|min:1',
+            'diagnosis' => 'required|array|min:1',
+            'medications' => 'required|array|min:1',
+            'therapy.*' => 'required|max:255',
+            'anamnese.*' => 'required|max:255',
+            'diagnosis.*' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
             'note' => 'nullable',
         ]);
@@ -132,7 +135,7 @@ class PatientController extends Controller
         });
 
         session()->flash('success', 'Add');
-        return redirect()->route('dashboard.patients.show', ['patient' => $patient]); 
+        return redirect()->route('dashboard.patients.show', ['patient' => $patient]);
     }
 
     public function editJournal(Journal $journal)
@@ -149,6 +152,9 @@ class PatientController extends Controller
             'therapy' => 'required|array',
             'anamnese' => 'required|array',
             'diagnosis' => 'required|array',
+            'therapy.*' => 'required|max:255',
+            'anamnese.*' => 'required|max:255',
+            'diagnosis.*' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
             'note' => 'nullable',
         ]);

@@ -9,8 +9,8 @@
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label for="therapy">{{ __('Therapy') }} <span class="text-danger">*</span></label>
-				<input type="text" class="form-control @error('therapy') is-invalid @enderror" id='therapy' name="therapy[]" value={{ old('therapy[]') }}>
-				@error('therapy')
+				<input type="text" class="form-control @error('therapy.*') is-invalid @enderror" id='therapy' name="therapy[]" value={{ old('therapy[]') }}>
+				@error('therapy.*')
 	                <span class="invalid-feedback" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </span>
@@ -19,8 +19,8 @@
 
 			<div class="form-group col-md-12">
 				<label for="anamnese">{{ __('Anamnese') }} <span class="text-danger">*</span></label>
-				<input type="text" class="form-control @error('anamnese[]') is-invalid @enderror" id='anamnese' name="anamnese[]" value={{ old('anamnese[]') }}>
-				@error('anamnese[]')
+				<input type="text" class="form-control @error('anamnese.*') is-invalid @enderror" id='anamnese' name="anamnese[]" value={{ old('anamnese[]') }}>
+				@error('anamnese.*')
 	                <span class="invalid-feedback" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </span>
@@ -29,8 +29,8 @@
 
 			<div class="form-group col-md-12">
 				<label for="diagnosis">{{ __('Diagnosis') }} <span class="text-danger">*</span></label>
-				<input type="text" class="form-control @error('diagnosis[]') is-invalid @enderror" id='diagnosis' name="diagnosis[]" value={{ old('diagnosis[]') }}>
-				@error('diagnosis[]')
+				<input type="text" class="form-control @error('diagnosis.*') is-invalid @enderror" id='diagnosis' name="diagnosis[]" value={{ old('diagnosis[]') }}>
+				@error('diagnosis.*')
 	                <span class="invalid-feedback" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </span>
@@ -39,8 +39,8 @@
 
 			<div class="form-group col-md-12">
 				<label for="medications">{{ __('Medications') }} <span class="text-danger">*</span></label>
-				<input type="text" class="form-control @error('medications[]') is-invalid @enderror" id='medications' name="medications[][name]" value={{ old('medications[][name]') }}>
-				@error('medications[][name]')
+				<input type="text" class="form-control @error('medications.*.name') is-invalid @enderror" id='medications' name="medications[][name]" value={{ old('medications[][name]') }}>
+				@error('medications.*.name')
 	                <span class="invalid-feedback" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </span>

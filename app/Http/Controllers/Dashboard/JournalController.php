@@ -39,6 +39,10 @@ class JournalController extends Controller
 			'anamnese' => 'required|array',
 			'diagnosis' => 'required|array',
 			'medications' => 'required|array',
+            'therapy.*' => 'required|max:255',
+            'anamnese.*' => 'required|max:255',
+            'diagnosis.*' => 'required|max:255',
+            'medications.*.name' => 'required|max:255',
 			'note' => 'nullable',
     	]);
 
@@ -51,7 +55,7 @@ class JournalController extends Controller
     	});
 
     	session()->flash('success', 'Add');
-    	return redirect()->route('dashboard.journals.index'); 
+    	return redirect()->route('dashboard.journals.index');
     }
 
     public function edit(Journal $journal)
@@ -68,6 +72,10 @@ class JournalController extends Controller
 			'anamnese' => 'required|array',
 			'diagnosis' => 'required|array',
 			'medications' => 'required|array',
+            'therapy.*' => 'required|max:255',
+            'anamnese.*' => 'required|max:255',
+            'diagnosis.*' => 'required|max:255',
+            'medications.*.name' => 'required|max:255',
 			'note' => 'nullable',
     	]);
 
@@ -80,7 +88,7 @@ class JournalController extends Controller
     	});
 
     	session()->flash('success', 'update');
-    	return back(); 
+    	return back();
     }
 
     public function destroy(Journal $journal)
