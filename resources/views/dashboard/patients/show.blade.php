@@ -31,17 +31,17 @@
 						<p class="my-0 font-italic">{{ __('Parent') }}  : {{ $patient->parent }}</p>
 						<p class="my-0">{{ $patient->age }} {{ __('Year') }}</p>
 						<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
-						@if (!empty($patient->latestJournals()))
+					{{-- 	@if (!empty($patient->latestJournals()))
 							<p class="my-0 text-muted"> {{$patient->latestJournals()->created_at->diffForHumans()}}</p>
-                        @endif
+                        @endif --}}
 					</div>
 				</div>
 				<div class="card my-3">
 					<div class="card-body">
-						<p class="m-0"><i class="material-icons text-dark">date_range</i> {{ $patient->place_of_birth }}, {{optional($patient->date_of_birth)->format('d M Y')}}</p>
-						<p class="m-0"> <i class="material-icons text-warning">contact_phone</i> {{$patient->phone}}</p>
-						<p class="m-0"><i class="material-icons text-info">map</i> {{$patient->address}}</p>
-						<p class="m-0"><i class="material-icons text-danger">nature_people</i> {{ __('Blood') }} : {{$patient->blood}}</p>
+						<p class="m-0"><i class="material-icons text-secondary">date_range</i> {{ $patient->place_of_birth }}, {{optional($patient->date_of_birth)->format('d M Y')}}</p>
+						<p class="m-0"> <i class="material-icons text-secondary">contact_phone</i> {{$patient->phone}}</p>
+						<p class="m-0"><i class="material-icons text-secondary">map</i> {{$patient->address}}</p>
+						<p class="m-0"><i class="material-icons text-secondary">nature_people</i> {{ __('Blood') }} : {{$patient->blood}}</p>
 					</div>
 				</div>
 				<div class="card my-3">
