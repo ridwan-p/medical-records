@@ -7,9 +7,9 @@
 			<div class="col-md-12"><h3>{{__('Create')}}</h3></div>
 		</div>
 		<div class="row">
-			
+
 			<div class="form-group col-md-6">
-				<label for="name">{{ __("Name") }}</label>
+				<label for="name">{{ __("Name") }} <span class="text-danger">*</span></label>
 				<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{old('name')}}" autofocus>
 				@error('name')
 	                <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
 			</div>
 
 			<div class="form-group col-md-6">
-				<label for="gender" class="d-block">{{ __("Gender") }}</label>
+				<label for="gender" class="d-block">{{ __("Gender") }} <span class="text-danger">*</span></label>
 				<div class="custom-control custom-radio custom-control-inline">
 					<input type="radio" id="gender-m" name="gender" value="m" class="custom-control-input @error('gender') is-invalid @enderror" @if(old('gender') === 'm') checked @endif>
 					<label for="gender-m" class="custom-control-label">{{__('Male')}}</label>
@@ -89,7 +89,7 @@
 	            @enderror
 			</div>
 			<div class="form-group col-md-12">
-				<label for="address">{{ __("Address") }}</label>
+				<label for="address">{{ __("Address") }} <span class="text-danger">*</span></label>
 				<textarea name="address" id="address" cols="30" rows="10" class="form-control @error('address') is-invalid @enderror">{{old('address')}}</textarea>
 				@error('address')
 	                <span class="invalid-feedback" role="alert">
@@ -105,7 +105,7 @@
 	                    <strong>{{ $message }}</strong>
 	                </span>
 	            @enderror
-			</div>	
+			</div>
 			<div class="form-group col-md-6">
 				<label for="allergies">{{ __("Allergies") }}</label>
 				<input type="text" class="form-control @error('allergies') is-invalid @enderror" name="allergies[]" id="allergies" value="{{old('allergies[]')}}" autofocus>
@@ -114,7 +114,7 @@
 	                    <strong>{{ $message }}</strong>
 	                </span>
 	            @enderror
-			</div>	
+			</div>
 
 			<div class="form-group col-md-6">
 				<label for="photo">{{ __("Photo") }}</label>
@@ -130,10 +130,10 @@
 	                    <strong>{{ $message }}</strong>
 	                </small>
 	            @enderror
-			</div>	
+			</div>
 
 			<div class="form-group col-md-12">
-				<button class="btn btn-primary">{{__('Submit')}}</button>				
+				<button class="btn btn-primary">{{__('Submit')}}</button>
 			</div>
 		</div>
 	</form>
