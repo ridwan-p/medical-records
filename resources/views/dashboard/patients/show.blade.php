@@ -31,9 +31,6 @@
 						<p class="my-0 font-italic">{{ __('Parent') }}  : {{ $patient->parent }}</p>
 						<p class="my-0">{{ $patient->age }} {{ __('Year') }}</p>
 						<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
-					{{-- 	@if (!empty($patient->latestJournals()))
-							<p class="my-0 text-muted"> {{$patient->latestJournals()->created_at->diffForHumans()}}</p>
-                        @endif --}}
 					</div>
 				</div>
 				<div class="card my-3">
