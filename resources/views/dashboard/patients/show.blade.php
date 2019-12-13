@@ -38,17 +38,17 @@
 				</div>
 				<div class="card my-3">
 					<div class="card-body">
-						<p class="m-0"><i class="fas fa-phone"></i> {{ $patient->place_of_birth }}, {{optional($patient->date_of_birth)->format('d M Y')}}</p>
-						<p class="m-0"> <i class="fas fa-phone"></i> {{$patient->phone}}</p>
-						<p class="m-0"><i class="fas fa-phone"></i> {{$patient->address}}</p>
-						<p class="m-0"><i class="fas fa-phone"></i> {{ __('Blood') }} : {{$patient->blood}}</p>
+						<p class="m-0"><i class="material-icons text-dark">date_range</i> {{ $patient->place_of_birth }}, {{optional($patient->date_of_birth)->format('d M Y')}}</p>
+						<p class="m-0"> <i class="material-icons text-warning">contact_phone</i> {{$patient->phone}}</p>
+						<p class="m-0"><i class="material-icons text-info">map</i> {{$patient->address}}</p>
+						<p class="m-0"><i class="material-icons text-danger">nature_people</i> {{ __('Blood') }} : {{$patient->blood}}</p>
 					</div>
 				</div>
 				<div class="card my-3">
 					<div class="card-header border-bottom-0 bg-white">
 						<h6 class="m-0">{{__('Allergies')}}</h6>
 					</div>
-					<div class="card-body">
+					<div class="card-body pt-0">
 						<ul class="pl-3">
 							@forelse ($patient->allergies as $allergie)
 								<li>{{ $allergie }}</li>
@@ -69,15 +69,6 @@
 							<div class="col-md-3">
 								<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">{{__('Add')}}</a>
 							</div>
-							<div class="col-md-9">
-								<form action="">
-									<ul class='timeline'>
-									  <li class='active'><button name="timeline" type="submit" class="btn btn-link p-0">2017</button></li>
-									  <li><button name="timeline" type="submit" class="btn btn-link p-0">2018</button></li>
-									  <li><button name="timeline" type="submit" class="btn btn-link p-0">2019</button></li>
-									</ul>
-								</form>
-							</div>
 							@forelse ($journals as $journal)
 								<div class="col-md-12">
 									<div class="card mb-3 bg-light">
@@ -93,7 +84,9 @@
 					                </div>
 								</div>
 							@empty
-								This is empty ....
+								<div class="col-md-12">
+									<div class="alert alert-info" role="alert">This is empty ....</div>
+								</div>
 							@endforelse
 						</div>
 						<nav class="mb-3">
