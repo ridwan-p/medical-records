@@ -141,7 +141,6 @@ class PatientController extends Controller
     public function editJournal(Journal $journal)
     {
         $patient = $journal->patient;
-
         return view('dashboard.patients.edit_journal', compact('journal', 'patient'));
     }
 
