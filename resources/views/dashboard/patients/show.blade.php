@@ -35,10 +35,10 @@
 				</div>
 				<div class="card my-3">
 					<div class="card-body">
-						<p class="m-0"><i class="material-icons text-secondary">location_city</i> {{$patient->address}}</p>
-						<p class="m-0"><i class="material-icons text-secondary">date_range</i> {{ $patient->place_of_birth }}, {{optional($patient->date_of_birth)->format('d M Y')}}</p>
-						<p class="m-0"> <i class="material-icons text-secondary">contact_phone</i> {{$patient->phone}}</p>
-						<p class="m-0"><i class="material-icons text-secondary">nature_people</i> {{ __('Blood') }} : {{strtoupper($patient->blood)}}</p>
+						<p class="m-0"><i class="material-icons text-primary">location_city</i> {{$patient->address}}</p>
+						<p class="m-0"><i class="material-icons text-primary">date_range</i> {{ $patient->place_of_birth }}, {{optional($patient->date_of_birth)->format('d M Y')}}</p>
+						<p class="m-0"> <i class="material-icons text-primary">contact_phone</i> {{$patient->phone}}</p>
+						<p class="m-0"><i class="material-icons text-primary">nature_people</i> {{ __('Blood') }} : {{strtoupper($patient->blood)}}</p>
 					</div>
 				</div>
 				<div class="card my-3">
@@ -71,7 +71,7 @@
 				            @endphp
 							@forelse ($journals as $index => $journal)
 								<div class="col-md-12 ">
-									<div class="card mb-3 border-{{$color[$index % 5]}}" style="border-left: 1em solid">
+									<div class="card mb-3 border-{{$color[$index % 5]}}" style="border-left: .5em solid">
 					                    <div class="card-body">
 					                    	<h5 class="my-0">{{__('Anamnese')}}</h5>
 				                            <p class="mb-1">{{ implode(', ', $journal->anamnese) }}</p>

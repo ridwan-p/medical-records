@@ -26,7 +26,7 @@
             @endphp
             @forelse ($journals as $index => $journal)
                 <div class="col-md-12 p-1">
-                    <div class="card border-{{$color[$index % 5]}}" style="border-left: 1em solid">
+                    <div class="card border-{{$color[$index % 5]}}" style="border-left: .5em solid">
                         <div class="card-body row align-items-center">
                             <div class="col-3">
                                 <h5 class="my-0">{{__('Anamnese')}}</h5>
@@ -35,15 +35,15 @@
                                 <p class="mb-1">{{ implode(', ', $journal->diagnosis) }}</p>
                             </div>
                             <div class="col-3 border-left border-light">
-                                <h5 class="font-weight-bold"><i class="material-icons">access_time</i> {{$journal->created_at->format("d F Y h:m")}}</h5>
+                                <h5 class="font-weight-bold"><i class="material-icons text-primary">access_time</i> {{$journal->created_at->format("d F Y h:m")}}</h5>
                                 <p class="my-0">{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
                             </div>
                             <div class="col-4 border-left border-light d-flex">
                                 <img src="{{ asset(asset($journal->patient->photo['medium'] ?? 'images/user.svg')) }}" alt="avatar" width="50" class="rounded-circle">
                                 <div class="ml-3">
                                     <h5 class="font-weight-bold">{{$journal->patient->name}}</h5>
-                                    <p class="my-0"><i class="material-icons text-secondary">people</i> {{$journal->patient->parent}}</p>
-                                    <p class="my-0"><i class="material-icons text-secondary">date_range</i> {{optional($journal->patient->date_of_birth)->format('d F Y')}}</p>
+                                    <p class="my-0"><i class="material-icons text-primary">people</i> {{$journal->patient->parent}}</p>
+                                    <p class="my-0"><i class="material-icons text-primary">date_range</i> {{optional($journal->patient->date_of_birth)->format('d F Y')}}</p>
                                 </div>
                             </div>
                             <div class="col-2 border-left border-light">
