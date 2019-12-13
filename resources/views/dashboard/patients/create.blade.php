@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 	<form action="{{ route('dashboard.patients.store') }}" method="POST" class="container" enctype="multipart/form-data">
 		@csrf
 		<div class="row">
@@ -108,11 +109,12 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label for="allergies">{{ __("Allergies") }}</label>
-				<input type="text" class="form-control @error('allergies') is-invalid @enderror" name="allergies[]" id="allergies" value="{{old('allergies[]')}}" autofocus>
-				@error('allergies[]')
-	                <span class="invalid-feedback" role="alert">
+				{{-- <input type="text" class="form-control @error('allergies') is-invalid @enderror" name="allergies[]" id="allergies" value="{{old('allergies[]')}}" autofocus> --}}
+				<tags-input valid="@error('allergies') is-invalid @enderror" value="{{old('allergies-text')}}" name="allergies"></tags-input>
+				@error('allergies')
+	                <small class="text-danger d-block" role="alert">
 	                    <strong>{{ $message }}</strong>
-	                </span>
+	                </small>
 	            @enderror
 			</div>
 
