@@ -39,7 +39,7 @@
                         @auth
                             {{-- <li class="nav-item"><a href="{{ route('dashboard.index') }}" class="nav-link @if(Route::is('dashboard.index')) active @endif"><i class="material-icons">dashboard</i> {{ __('Dashboard') }}</a></li> --}}
                             <li class="nav-item"><a href="{{ route('dashboard.patients.index') }}" class="nav-link @if(Route::is('dashboard.patients.*')) active @endif"><i class="material-icons">people</i> {{ __('Patient') }}</a></li>
-                            <li class="nav-item"><a href="{{ route('dashboard.journals.index') }}" class="nav-link @if(Route::is('dashboard.journals.*')) active @endif"><i class="material-icons">receipt</i> {{ __('Journal') }}</a></li>
+                            <li class="nav-item"><a href="{{ route('dashboard.journals.index') }}" class="nav-link @if(Route::is('dashboard.journals.*')) active @endif"><i class="material-icons">list_alt</i> {{ __('Journal') }}</a></li>
                             <li class="nav-item"><a href="{{ route('dashboard.history.index') }}" class="nav-link @if(Route::is('dashboard.history.*')) active @endif"> <i class="material-icons">today</i> {{ __('History') }}</a></li>
                         @endauth
                     </ul>
