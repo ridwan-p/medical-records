@@ -33,9 +33,6 @@
                                 <p class="mb-1">{{ implode(', ', $journal->anamnese) }}</p>
                                 <h5 class="my-0">{{__('Diagnosis')}}</h5>
                                 <p class="mb-1">{{ implode(', ', $journal->diagnosis) }}</p>
-      {{--                           <p>{{__('Anamnese')}} : {{ implode(', ', $journal->anamnese) }}</p>
-                                <p>{{__('Diagnosis')}} : {{ implode(', ', $journal->diagnosis) }}</p> --}}
-
                             </div>
                             <div class="col-3 border-left border-light">
                                 <h5 class="font-weight-bold"><i class="material-icons">access_time</i> {{$journal->created_at->format("d F Y h:m")}}</h5>

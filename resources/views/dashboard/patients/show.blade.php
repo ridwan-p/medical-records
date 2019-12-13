@@ -60,7 +60,7 @@
 				</div>
 			</div>
 			<div class="col-md-9 px-2">
-				<div class="card my-3">
+				<div class="card my-3" >
 					<div class="card-header border-bottom-0 bg-white">
 						<h6 class="m-0"><strong>{{$patient->name}}</strong> {{__('Medical Journal')}}</h6>
 					</div>
@@ -69,17 +69,21 @@
 							<div class="col-md-3">
 								<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">{{__('Add')}}</a>
 							</div>
-							@forelse ($journals as $journal)
-								<div class="col-md-12">
-									<div class="card mb-3 bg-light">
+							@php
+				                $color=[ 'primary', 'info', 'warning', 'danger' , 'success'];
+				            @endphp
+							@forelse ($journals as $index => $journal)
+								<div class="col-md-12 ">
+									<div class="card mb-3 border-{{$color[$index % 5]}}" style="border-left: 1em solid">
 					                    <div class="card-body">
-				                            <h5>{{ implode(',', $journal->diagnosis) }}</h5>
-				                            <p>{{__('Anamnese')}} : {{ implode(',', $journal->anamnese) }}</p>
-				                            <p>{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
+					                    	<h5 class="my-0">{{__('Anamnese')}}</h5>
+				                            <p class="mb-1">{{ implode(', ', $journal->anamnese) }}</p>
+			                                <h5 class="my-0">{{__('Diagnosis')}}</h5>
+			                                <p class="mb-1">{{ implode(', ', $journal->diagnosis) }}</p>
+				                            <p class="mb-1">{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
 					                    </div>
 					                    <div class="card-footer">
 					                        <a href="{{ route('dashboard.patients.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">{{__('Edit')}}</a>
-					                        <a href="{{ route('dashboard.journals.show', ['journal' => $journal]) }}" class="btn btn-link">{{__('Show')}}</a>
 					                    </div>
 					                </div>
 								</div>

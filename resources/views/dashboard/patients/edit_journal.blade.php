@@ -25,7 +25,6 @@
 
 			<div class="form-group col-md-12">
 				<label for="anamnese">{{ __('Anamnese') }} <span class="text-danger">*</span></label>
-				{{-- <input type="text" class="form-control @error('anamnese.*') is-invalid @enderror" id='anamnese' name="anamnese[]" value={{ old('anamnese[]', $journal->anamnese[0]) }}> --}}
 				<tags-input valid="@error('anamnese.*') is-invalid @enderror" value="{{old('anamnese-text', implode(', ', $journal->anamnese))}}" name="anamnese"></tags-input>
 				@error('anamnese.*')
 	                <small class="d-block text-danger" role="alert">
@@ -46,14 +45,7 @@
 
 			<div class="form-group col-md-12">
 				<label for="medications">{{ __('Medications') }} <span class="text-danger">*</span></label>
-				{{-- <input type="text" class="form-control @error('medications.*.name') is-invalid @enderror" id='medications' name="medications[][name]" value={{ old('medications[][name]', $journal->medications[0]->name) }}> --}}
 				<tags-input valid="@error('medications.*.name') is-invalid @enderror" value="{{old('medications-text', $journal->medications->implode('name', ', '))}}" name="medications" object="name"></tags-input>
-				@error('medications.*.name')
-	                <small class="d-block text-danger" role="alert">
-	                    <strong>{{ $message }}</strong>
-	                </small>
-	            @enderror
-				{{-- <input type="text" class="form-control @error('medications.*.name') is-invalid @enderror" id='medications' name="medications[][name]" value={{ old('medications[][name]') }}> --}}
 				@error('medications.*.name')
 	                <small class="d-block text-danger" role="alert">
 	                    <strong>{{ $message }}</strong>
