@@ -15,7 +15,6 @@
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label for="therapy">{{ __('Therapy') }} <span class="text-danger">*</span></label>
-				{{-- <input type="text" class="form-control @error('therapy.*') is-invalid @enderror" id='therapy' name="therapy[]" value={{ old('therapy[]',implode(', ', $journal->therapy)) }}> {{implode(', ', $journal->therapy)}} --}}
 				<tags-input valid="@error('therapy.*') is-invalid @enderror" value="{{old('therapy-text', implode(', ', $journal->therapy))}}" name="therapy"></tags-input>
 				@error('therapy.*')
 	                <small class="d-block text-danger" role="alert">
