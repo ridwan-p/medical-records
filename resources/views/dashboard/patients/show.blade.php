@@ -47,8 +47,8 @@
 					</div>
 					<div class="card-body pt-0">
 						<ul class="pl-3">
-							@forelse ($patient->allergies as $allergie)
-								<li>{{ $allergie }}</li>
+							@forelse ($patient->allergies as $allergi)
+								<li>{{ $allergi }}</li>
 							@empty
 								this is empty ....
 							@endforelse
