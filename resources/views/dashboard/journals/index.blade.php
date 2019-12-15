@@ -38,7 +38,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <p>{{__("Name")}} : {{$journal->patient->name}}</p>
-                                <p>{{__("Therapy")}} : {{ implode(',', $journal->therapy) }}</p>
+                                {{-- <p>{{__("Therapy")}} : {{ implode(',', $journal->therapy) }}</p> --}}
                                 <p>{{__('Anamnese')}} : {{ implode(',', $journal->anamnese) }}</p>
                                 <p>{{__('Diagnosis')}} : {{ implode(',', $journal->diagnosis) }}</p>
                                 <p>{{__('Medications')}} : {{ optional($journal->medications)->pluck('name')->implode(',') }}</p>
@@ -52,7 +52,7 @@
                     </div>
                 </div>
             @empty
-                This is empty ....
+                {{__('Data is empty')}}
             @endforelse
         </div>
     </div>

@@ -18,7 +18,7 @@
 			<div class="col-md-12"><h3>{{__('Edit')}} <strong>{{$patient->name}}</strong>  {{__('Medical Journal')}}</h3></div>
 		</div>
 		<div class="row">
-			<div class="form-group col-md-12">
+{{-- 			<div class="form-group col-md-12">
 				<label for="therapy">{{ __('Therapy') }} <span class="text-danger">*</span></label>
 				<tags-input valid="@error('therapy.*') is-invalid @enderror" value="{{old('therapy-text', implode(', ', $journal->therapy))}}" name="therapy"></tags-input>
 				@error('therapy.*')
@@ -26,7 +26,7 @@
 	                    <strong>{{ $message }}</strong>
 	                </small>
 	            @enderror
-			</div>
+			</div> --}}
 
 			<div class="form-group col-md-12">
 				<label for="anamnese">{{ __('Anamnese') }} <span class="text-danger">*</span></label>

@@ -35,11 +35,11 @@ class JournalController extends Controller
     {
     	$request->validate([
     		'patient_id' => 'required|exists:patients,id',
-    		'therapy' => 'required|array',
+    		// 'therapy' => 'required|array',
 			'anamnese' => 'required|array',
 			'diagnosis' => 'required|array',
-			'medications' => 'required|array',
-            'therapy.*' => 'required|max:255',
+			// 'medications' => 'required|array',
+            // 'therapy.*' => 'required|max:255',
             'anamnese.*' => 'required|max:255',
             'diagnosis.*' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
@@ -68,11 +68,11 @@ class JournalController extends Controller
     {
     	$request->validate([
     		'patient_id' => 'required|exists:patients,id',
-    		'therapy' => 'required|array',
+    		// 'therapy' => 'required|array',
 			'anamnese' => 'required|array',
 			'diagnosis' => 'required|array',
 			'medications' => 'required|array',
-            'therapy.*' => 'required|max:255',
+            // 'therapy.*' => 'required|max:255',
             'anamnese.*' => 'required|max:255',
             'diagnosis.*' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
