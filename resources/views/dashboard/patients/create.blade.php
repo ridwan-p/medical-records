@@ -8,7 +8,6 @@
 			<div class="col-md-12"><h3>{{__('Create')}}</h3></div>
 		</div>
 		<div class="row">
-
 			<div class="form-group col-md-6">
 				<label for="name">{{ __("Name") }} <span class="text-danger">*</span></label>
 				<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{old('name')}}" autofocus>
