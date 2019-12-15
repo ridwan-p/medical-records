@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="container">
+	<div class="container px-1">
 		@if(session('success'))
-			<div class="alert alert-success">{{session('success')}}</div>
+			<div class="alert alert-success">
+				<strong>{{ __('Success') }} !</strong> {{ __(session('success')) }}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+			</div>
 		@endif
 	</div>
 	<div class="container">
@@ -51,7 +56,7 @@
 							@forelse ($patient->allergies as $allergi)
 								<li>{{ $allergi }}</li>
 							@empty
-								this is empty ....
+								{{__('Data is empty')}}
 							@endforelse
 						</ul>
 					</div>
@@ -87,7 +92,7 @@
 								</div>
 							@empty
 								<div class="col-md-12">
-									<div class="alert alert-info" role="alert">This is empty ....</div>
+									<div class="alert alert-info" role="alert">{{__('Data is empty')}}</div>
 								</div>
 							@endforelse
 						</div>

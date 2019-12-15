@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container px-1">
+        @if(session('success'))
+            <div class="alert alert-success">
+                <strong>{{ __('Success') }} !</strong> {{ __(session('success')) }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+        @endif
+    </div>
+    
     <div class="container">
         <div class="row mb-3">
             <h4>{{ __('Journal') }}</h4>

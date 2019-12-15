@@ -35,6 +35,8 @@ class JournalController extends Controller
     		return $journal;
     	});
 
+        session()->flash('success', 'Data has been created');
+
     	return redirect()->route('dashbaord.patients.journals.index', ['patient' => $patient]);
     }
 
@@ -60,7 +62,9 @@ class JournalController extends Controller
     		return $journal;
     	});
 
-    	return redirect()->back();
+
+        session()->flash('success', 'Data has been updated');
+    	return redirect()->back(); 
     }
 
     public function destroy(Patient $patient, Journal $journal)
@@ -68,6 +72,7 @@ class JournalController extends Controller
     	$journal->medications()->detach();
     	$journal->delete();
 
+        session()->flash('success', 'Data has been deleted');
     	return redirect()->back();
     }
 }

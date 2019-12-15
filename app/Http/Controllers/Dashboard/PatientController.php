@@ -54,7 +54,7 @@ class PatientController extends Controller
 	    	return $patient;
     	});
 
-    	session()->flash('success', 'Patient has been created');
+    	session()->flash('success', 'Data has been created');
     	return redirect()->route('dashboard.patients.index');
     }
 
@@ -97,7 +97,7 @@ class PatientController extends Controller
             return $patient;
         });
 
-        session()->flash('success', 'Patient has been updated');
+        session()->flash('success', 'Data has been updated');
 
     	return redirect()->back();;
     }
@@ -106,7 +106,7 @@ class PatientController extends Controller
     {
         $patient->journals()->delete();
     	$patient->delete();
-        session()->flash('success', 'Patient has been deleted');
+        session()->flash('success', 'Data has been deleted');
     	return redirect()->route('dashboard.patients.index');
     }
 
@@ -138,7 +138,7 @@ class PatientController extends Controller
             return $journal;
         });
 
-        session()->flash('success', 'Add');
+        session()->flash('success', 'Data has been created');
         return redirect()->route('dashboard.patients.show', ['patient' => $patient]);
     }
 
@@ -169,7 +169,7 @@ class PatientController extends Controller
             return $journal;
         });
 
-        session()->flash('success', 'update');
+        session()->flash('success', 'Data has been updated');
         return back();
     }
 }

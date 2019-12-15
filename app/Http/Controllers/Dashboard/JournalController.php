@@ -54,7 +54,7 @@ class JournalController extends Controller
     		return $journal;
     	});
 
-    	session()->flash('success', 'Add');
+    	session()->flash('success', 'Data has been craeted');
     	return redirect()->route('dashboard.journals.index');
     }
 
@@ -87,7 +87,7 @@ class JournalController extends Controller
     		return $journal;
     	});
 
-    	session()->flash('success', 'update');
+    	session()->flash('success', 'Data has been updated');
     	return back();
     }
 
@@ -96,7 +96,7 @@ class JournalController extends Controller
     	$journal->medications()->detach();
     	$journal->delete();
 
-    	session()->flash('success', 'delete');
+    	session()->flash('success', 'Data has been deleted');
     	return back();
     }
 }

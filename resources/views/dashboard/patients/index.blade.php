@@ -13,7 +13,7 @@
 	</div>
 	<div class="container">
 		<div class="row mb-3">
-			<h4 class="p-2 m-0">{{ __('Patients') }}</h4>
+			<h4 class="p-2 m-0">{{ __('Patient') }}</h4>
 		</div>
 		<div class="row mb-3">
 			<div class="col-md-9 p-2">

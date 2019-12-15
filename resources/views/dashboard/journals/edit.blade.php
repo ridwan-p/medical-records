@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+	<div class="container px-1">
+		@if(session('success'))
+			<div class="alert alert-success">
+				<strong>{{ __('Success') }} !</strong> {{ __(session('success')) }}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+			</div>
+		@endif
+	</div>
+	
 	<form action="{{ route('dashboard.journals.update', ['journal' => $journal]) }}" method="POST" class="container" enctype="multipart/form-data">
 		@csrf
 		@method('PUT')

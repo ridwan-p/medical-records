@@ -46,7 +46,7 @@
   "Therapy" : "Terapi",
   "Anamnese" : "Anamnese",
   "Diagnosis" : "Diagnosa",
-  "Medications" : "Obat-obatan",
+  "Medications" : "Terapi",
   "Created at" : "Tgl Buat",
   "Updated at" : "Tgl Sunting",
   "Medical Journal": "Jurnal Medis",
@@ -55,11 +55,8 @@
   "Year": "Tahun",
   "Save": "Simpan",
   "Submit": "Simpan",
-  "Patient has been created" : "Pasien berhasil dibuat",
-  "Patient has been updated" : "Pasien berhasil diperbaharui",
-  "Patient has been deleted" : "Pasien berhasil dihapus",
-  "Journal has been created" : "Jurnal berhasil dibuat",
-  "Journal has been updated" : "Jurnal berhasil diperbaharui",
-  "Journal has been deleted" : "Jurnal berhasil dihapus"
-
+  "Data is empty" : "Pasien berhasil dibuat",
+  "Data has been created" : "Data berhasil dibuat",
+  "Data has been updated" : "Datas berhasil diperbaharui",
+  "Data has been deleted" : "Datas berhasil dihapus"
 }
