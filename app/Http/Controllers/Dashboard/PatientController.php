@@ -119,11 +119,11 @@ class PatientController extends Controller
     public function storeJournal(Request $request, Patient $patient)
     {
         $request->validate([
-            'therapy' => 'required|array|min:1',
+            // 'therapy' => 'required|array|min:1',
             'anamnese' => 'required|array|min:1',
             'diagnosis' => 'required|array|min:1',
             'medications' => 'required|array|min:1',
-            'therapy.*' => 'required|max:255',
+            // 'therapy.*' => 'required|max:255',
             'anamnese.*' => 'required|max:255',
             'diagnosis.*' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
@@ -152,10 +152,10 @@ class PatientController extends Controller
     public function updateJournal(Request $request, Journal $journal)
     {
         $request->validate([
-            'therapy' => 'required|array',
+            // 'therapy' => 'required|array',
             'anamnese' => 'required|array',
             'diagnosis' => 'required|array',
-            'therapy.*' => 'required|max:255',
+            // 'therapy.*' => 'required|max:255',
             'anamnese.*' => 'required|max:255',
             'diagnosis.*' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
