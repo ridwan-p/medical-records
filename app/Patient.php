@@ -11,6 +11,7 @@ use Intervention\Image\Facades\Image;
 class Patient extends Model
 {
     protected $fillable = [
+        'code',
     	'name',
     	'address',
     	'date_of_birth',

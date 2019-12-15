@@ -15,6 +15,7 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string("code")->unique();
             $table->string("name");
             $table->string("address");
             $table->date("date_of_birth")->nullable();

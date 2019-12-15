@@ -17,6 +17,7 @@
   "success" : "berhasil",
   "Forbbiden Access" : "Akses Tidak diijinkan",
   "Unauthorized" : "User tidak ada",
+  "Code" : "Kode",
   "Add" : "Tambah",
   "Create" : "Buat",
   "Edit" : "Sunting",
@@ -53,6 +54,12 @@
   "Age": "Umur",
   "Year": "Tahun",
   "Save": "Simpan",
-  "Submit": "Simpan"
+  "Submit": "Simpan",
+  "Patient has been created" : "Pasien berhasil dibuat",
+  "Patient has been updated" : "Pasien berhasil diperbaharui",
+  "Patient has been deleted" : "Pasien berhasil dihapus",
+  "Journal has been created" : "Jurnal berhasil dibuat",
+  "Journal has been updated" : "Jurnal berhasil diperbaharui",
+  "Journal has been deleted" : "Jurnal berhasil dihapus"
 
 }

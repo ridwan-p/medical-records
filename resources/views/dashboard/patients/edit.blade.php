@@ -27,9 +27,9 @@
 			</div>
 
 			<div class="form-group col-md-6">
-				<label for="parent">{{ __("Parent") }}</label>
-				<input type="text" class="form-control @error('parent') is-invalid @enderror" name="parent" id="parent" value="{{old('parent', $patient->parent)}}" autofocus>
-				@error('parent')
+				<label for="code">{{ __("Code") }} <span class="text-danger">*</span></label>
+				<input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" value="{{old('code', $patient->code)}}" autofocus>
+				@error('code')
 	                <span class="invalid-feedback" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </span>
@@ -96,6 +96,17 @@
 	                </small>
 	            @enderror
 			</div>
+
+			<div class="form-group col-md-12">
+				<label for="parent">{{ __("Parent") }}</label>
+				<input type="text" class="form-control @error('parent') is-invalid @enderror" name="parent" id="parent" value="{{old('parent', $patient->parent)}}" autofocus>
+				@error('parent')
+	                <span class="invalid-feedback" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </span>
+	            @enderror
+			</div>
+
 			<div class="form-group col-md-12">
 				<label for="address">{{ __("Address") }} <span class="text-danger">*</span></label>
 				<textarea name="address" id="address" cols="30" rows="10" class="form-control @error('address') is-invalid @enderror">{{old('address', $patient->address)}}</textarea>

@@ -145,6 +145,7 @@ return [
     */
 
     'attributes' => [
+        'code' => 'Kode',
         'name' => 'Nama lengkap',
         'address' => 'Alamat',
         'city' => 'Kota',

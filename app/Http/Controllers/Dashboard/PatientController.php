@@ -15,7 +15,8 @@ class PatientController extends Controller
     	$patients = Patient::where(function($query) use ($request) {
             if($request->has('search')) {
                 $query->where('name', 'like', "%{$request->search}%")
-                    ->orWhere('parent', 'like', "%{$request->search}%");
+                    ->orWhere('parent', 'like', "%{$request->search}%")
+                    ->orWhere('code', 'like', "%{$request->search}%");
             }
         })
         ->orderBy($request->column ?? 'created_at', $request->direction ?? 'desc')
@@ -32,6 +33,7 @@ class PatientController extends Controller
     public function store(Request $request)
     {
     	$request->validate([
+            'code' => 'required|unique:patients,code',
     		'name' => 'required',
 	    	'address' => 'required',
 	    	'date_of_birth' => 'nullable|date',
@@ -43,6 +45,7 @@ class PatientController extends Controller
 	    	'allergies' => 'nullable|array',
             'photo' => 'nullable|image'
     	]);
+
     	$patient = DB::transaction(function() use ($request) {
 	    	$patient = new Patient();
 	    	$patient->fill($request->all());
@@ -51,7 +54,7 @@ class PatientController extends Controller
 	    	return $patient;
     	});
 
-    	session()->flash('success', 'Add');
+    	session()->flash('success', 'Patient has been created');
     	return redirect()->route('dashboard.patients.index');
     }
 
@@ -74,6 +77,7 @@ class PatientController extends Controller
     public function update(Patient $patient, Request $request)
     {
         $request->validate([
+            'code' => 'required|unique:patients,code,'.$patient->id,
             'name' => 'required',
             'address' => 'required',
             'date_of_birth' => 'nullable|date',
@@ -93,7 +97,7 @@ class PatientController extends Controller
             return $patient;
         });
 
-        session()->flash('success', 'Update');
+        session()->flash('success', 'Patient has been updated');
 
     	return redirect()->back();;
     }
@@ -102,7 +106,7 @@ class PatientController extends Controller
     {
         $patient->journals()->delete();
     	$patient->delete();
-        session()->flash('success', 'Delete');
+        session()->flash('success', 'Patient has been deleted');
     	return redirect()->route('dashboard.patients.index');
     }
 

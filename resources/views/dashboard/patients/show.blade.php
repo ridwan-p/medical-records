@@ -28,7 +28,8 @@
 					</div>
 					<div class="card-body text-center">
 						<h5 class="font-weight-bold">{{$patient->name}}</h5>
-						<p class="my-0 font-italic">{{ __('Parent') }}  : {{ $patient->parent }}</p>
+						<p class="my-0 font-italic">{{ __('Code') }}  : {{ $patient->code }}</p>
+						<p class="my-0">{{ __('Parent') }}  : {{ $patient->parent }}</p>
 						<p class="my-0">{{ $patient->age }} {{ __('Year') }}</p>
 						<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
 					</div>
