@@ -16,14 +16,14 @@
 			<h4 class="p-2 m-0">{{ __('Patient') }}</h4>
 		</div>
 		<div class="row mb-3">
-			<div class="col-md-9 p-2">
-				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary">{{ __('Add') }}</a>
-				<form action="{{ route('dashboard.patients.export.list') }}" method="POST" enctype='multipart/form-data'>
+			<div class="col-md-9 p-2 d-inline-flex flex-row">
+				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary mr-2">{{ __('Add') }}</a>
+				<button class="btn btn-primary import-file" data-target=".import-file-upload"><i class="material-icons">insert_drive_file</i> Import</button>
+
+				<form action="{{ route('dashboard.patients.import.list') }}" id="form-import" method="POST" enctype='multipart/form-data'>
 					@csrf
-					<input type="file" class="form-control" name="file">
-					<button class="btn btn-primary">Export</button>
+					<input type="file" name="file" class="d-none import-file-upload">
 				</form>
-				{{-- <a href="{{ route('dashboard.patients.exportList') }}" class="btn btn-primary">{{ __('Export') }}</a> --}}
 			</div>
 			<div class="col-md-3 p-2">
 				<form action="{{ route('dashboard.patients.index') }}" method="GET">

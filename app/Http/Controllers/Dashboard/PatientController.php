@@ -174,7 +174,7 @@ class PatientController extends Controller
         return back();
     }
 
-    public function exportList(Request $request)
+    public function importList(Request $request)
     {
         $request->validate([
             'file' => 'required|file'
@@ -184,10 +184,10 @@ class PatientController extends Controller
         $headers = $csv->getHeader();
         $patients = $csv->getData();
         session(['upload_csv' => serialize($csv)]);
-        return view('dashboard.patients.export', compact('patients', 'headers'));
+        return view('dashboard.patients.import', compact('patients', 'headers'));
     }
 
-    public function exportStore()
+    public function importStore()
     {
         $csv = session('upload_csv');
         if(isset($csv)) {

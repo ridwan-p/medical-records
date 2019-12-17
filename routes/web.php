@@ -43,8 +43,8 @@ Route::prefix('dashboard')
 	Route::patch('patients/{journal}/journals/add', "PatientController@updateJournal")->name('patients.journals.update');
 
 	// export patient
-	Route::post('patients/export/list', "PatientController@exportList")->name('patients.export.list');
-	Route::post('patients/export/stroe', "PatientController@exportStore")->name('patients.export.store');
+	Route::post('patients/import/list', "PatientController@importList")->name('patients.import.list');
+	Route::post('patients/import/stroe', "PatientController@importStore")->name('patients.import.store');
 
 	// Journal
 	Route::resource('journals', "JournalController");
