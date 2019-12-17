@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helpers\CSVConverter;
 use App\Http\Controllers\Controller;
 use App\Journal;
 use App\Patient;
@@ -164,12 +165,45 @@ class PatientController extends Controller
 
         $journal = DB::transaction(function () use ($request, $journal) {
             $journal->fill($request->except('medications'));
-            $journal->storeToMany($request->only('medications'));
+            $journal->saveMany($request->only('medications'));
 
             return $journal;
         });
 
         session()->flash('success', 'Data has been updated');
         return back();
+    }
+
+    public function exportList(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file'
+        ]);
+
+        $csv = (new CSVConverter($request->file->path()))->execute();
+        $headers = $csv->getHeader();
+        $patients = $csv->getData();
+        session(['upload_csv' => serialize($csv)]);
+        return view('dashboard.patients.export', compact('patients', 'headers'));
+    }
+
+    public function exportStore()
+    {
+        $csv = session('upload_csv');
+        if(isset($csv)) {
+            $csv = unserialize($csv);
+            $data = array_map(function($item) {
+                $item['created_at'] = now();
+                $item['updated_at'] = now();
+                return $item;
+            }, $csv->getData());
+
+            $isInsert = DB::transaction(function() use ($data) {
+                return Patient::insert($data);
+            });
+        }
+
+        session()->flash('success', 'Data has been created');
+        return redirect()->route('dashboard.patients.index');
     }
 }
