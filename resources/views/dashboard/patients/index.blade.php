@@ -18,6 +18,7 @@
 		<div class="row mb-3">
 			<div class="col-md-9 p-2">
 				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary">{{ __('Add') }}</a>
+				{{-- <a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary">{{ __('Export') }}</a> --}}
 			</div>
 			<div class="col-md-3 p-2">
 				<form action="{{ route('dashboard.patients.index') }}" method="GET">

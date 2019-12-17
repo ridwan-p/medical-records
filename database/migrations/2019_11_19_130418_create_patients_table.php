@@ -23,7 +23,7 @@ class CreatePatientsTable extends Migration
             $table->enum("gender", ['m', 'f']);
             $table->enum("blood", ['a', 'b', 'ab', 'o'])->nullable();
             $table->string('phone')->nullable();
-            $table->string('parent');
+            $table->string('parent')->nullable();
             $table->json('allergies')->nullable();
             $table->json('photo')->nullable();
             $table->timestamps();
