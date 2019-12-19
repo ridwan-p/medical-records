@@ -36,27 +36,25 @@
                 </form>
 			</div>
 		</div>
-		<div class="row">
+		<div class="card-columns">
 			@forelse ($patients as $patient)
-				<div class="col-lg-3 col-md-4 p-2">
-					<div class="card card-patient shadow">
-						<div class="card-body">
-							<div class="media">
-								<img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" alt="defaul avatar" width="60" class="align-self-center mr-3 rounded-circle">
-								<div class="media-body">
-									<h6 class="font-weight-bolder my-0">{{ $patient->name }}</h6>
-									<p class="my-0 font-italic">{{ __('Code') }}  : {{ $patient->code }}</p>
-									<p class="my-0">{{ $patient->birth }}</p>
-									<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
-									@if (!empty($patient->latestJournals()))
-										<p class="my-0 text-muted"> {{$patient->latestJournals()->created_at->diffForHumans()}}</p>
-									@endif
-								</div>
+				<div class="card shadow">
+					<div class="card-body">
+						<div class="media">
+							<img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" alt="defaul avatar" width="60" class="align-self-center mr-3 rounded-circle">
+							<div class="media-body">
+								<h5 class="font-weight-bolder my-0">{{ $patient->name }}</h5>
+								<p class="my-0 font-italic">{{ __('Code') }}  : {{ $patient->code }}</p>
+								<p class="my-0"><i class="material-icons">date_range</i> {{ $patient->date_of_birth->format("d M Y") }}, {{ $patient->age }} {{ __('Year') }}</p>
+								<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
+								@if (!empty($patient->latestJournals()))
+									<p class="my-0 text-muted"> {{$patient->latestJournals()->created_at->diffForHumans()}}</p>
+								@endif
 							</div>
 						</div>
-						<div class="card-footer text-center">
-							<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}" class="btn btn-link">{{ __('Details') }}</a>
-						</div>
+					</div>
+					<div class="card-footer text-center">
+						<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}" class="btn btn-link">{{ __('Details') }}</a>
 					</div>
 				</div>
 			@empty

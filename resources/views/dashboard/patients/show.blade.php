@@ -34,15 +34,15 @@
 					<div class="card-body text-center">
 						<h5 class="font-weight-bold">{{$patient->name}}</h5>
 						<p class="my-0 font-italic">{{ __('Code') }}  : {{ $patient->code }}</p>
-						<p class="my-0">{{ __('Parent') }}  : {{ $patient->parent }}</p>
+						<p class="m-0"><i class="material-icons text-primary">date_range</i> {{ $patient->place_of_birth }}, {{optional($patient->date_of_birth)->format('d M Y')}}</p>
 						<p class="my-0">{{ $patient->age }} {{ __('Year') }}</p>
 						<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
 					</div>
 				</div>
 				<div class="card my-3">
 					<div class="card-body">
+						<p class="my-0"><i class="material-icons text-primary">group</i> {{ __('Parent') }}  : {{ $patient->parent }}</p>
 						<p class="m-0"><i class="material-icons text-primary">location_city</i> {{$patient->address}}</p>
-						<p class="m-0"><i class="material-icons text-primary">date_range</i> {{ $patient->place_of_birth }}, {{optional($patient->date_of_birth)->format('d M Y')}}</p>
 						<p class="m-0"> <i class="material-icons text-primary">contact_phone</i> {{$patient->phone}}</p>
 						<p class="m-0"><i class="material-icons text-primary">nature_people</i> {{ __('Blood') }} : {{strtoupper($patient->blood)}}</p>
 					</div>
