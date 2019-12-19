@@ -69,7 +69,7 @@
 	                $color=[ 'primary', 'info', 'warning', 'danger' , 'success'];
 	            @endphp
 				@forelse ($journals as $index => $journal)
-					<div class="card shadow mb-3 border-primary"  style="border-left: .7em solid">
+					<div class="card shadow mb-3 border-{{ $color[$index] }}"  style="border-left: .7em solid">
 	                    <div class="card-body">
 	                    	<h5 class="my-0">{{__('Anamnese')}}</h5>
                             <p class="mb-1">{{ implode(', ', $journal->anamnese) }}</p>
