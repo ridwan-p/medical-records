@@ -46,7 +46,6 @@
 								<div class="media-body">
 									<h6 class="font-weight-bolder my-0">{{ $patient->name }}</h6>
 									<p class="my-0 font-italic">{{ __('Code') }}  : {{ $patient->code }}</p>
-									<p class="my-0">{{ __('Parent') }}  : {{ $patient->parent }}</p>
 									<p class="my-0">{{ $patient->birth }}</p>
 									<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
 									@if (!empty($patient->latestJournals()))

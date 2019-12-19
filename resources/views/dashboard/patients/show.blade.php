@@ -27,7 +27,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3 px-2">
-				<div class="card my-3">
+				<div class="card my-3 shadow">
 					<div class="p-3 d-flex justify-content-center">
 						<img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" class="img-fluid rounded-circle" alt="avatar default">
 					</div>
@@ -47,7 +47,7 @@
 						<p class="m-0"><i class="material-icons text-primary">nature_people</i> {{ __('Blood') }} : {{strtoupper($patient->blood)}}</p>
 					</div>
 				</div>
-				<div class="card my-3">
+				<div class="card my-3 shadow">
 					<div class="card-header border-bottom-0 bg-white">
 						<h6 class="m-0">{{__('Allergies')}}</h6>
 					</div>
@@ -63,44 +63,30 @@
 				</div>
 			</div>
 			<div class="col-md-9 px-2">
-				<div class="card my-3" >
-					<div class="card-header border-bottom-0 bg-white">
-						<h6 class="m-0"><strong>{{$patient->name}}</strong> {{__('Medical Journal')}}</h6>
-					</div>
-					<div class="card-body">
-						<div class="row">
-							<div class="col-md-3">
-								<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">{{__('Add')}}</a>
-							</div>
-							@php
-				                $color=[ 'primary', 'info', 'warning', 'danger' , 'success'];
-				            @endphp
-							@forelse ($journals as $index => $journal)
-								<div class="col-md-12 ">
-									<div class="card mb-3 border-{{$color[$index % 5]}}" style="border-left: .5em solid">
-					                    <div class="card-body">
-					                    	<h5 class="my-0">{{__('Anamnese')}}</h5>
-				                            <p class="mb-1">{{ implode(', ', $journal->anamnese) }}</p>
-			                                <h5 class="my-0">{{__('Diagnosis')}}</h5>
-			                                <p class="mb-1">{{ implode(', ', $journal->diagnosis) }}</p>
-				                            <p class="mb-1">{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
-					                    </div>
-					                    <div class="card-footer">
-					                        <a href="{{ route('dashboard.patients.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">{{__('Edit')}}</a>
-					                    </div>
-					                </div>
-								</div>
-							@empty
-								<div class="col-md-12">
-									<div class="alert alert-info" role="alert">{{__('Data is empty')}}</div>
-								</div>
-							@endforelse
-						</div>
-						<nav class="mb-3">
-							{{ $journals->links() }}
-						</nav>
-					</div>
-				</div>
+				<h5 class="my-3"><strong>{{$patient->name}}</strong> {{__('Medical Journal')}}</h5>
+				<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">{{__('Add')}}</a>
+				@php
+	                $color=[ 'primary', 'info', 'warning', 'danger' , 'success'];
+	            @endphp
+				@forelse ($journals as $index => $journal)
+					<div class="card shadow mb-3 border-primary"  style="border-left: .7em solid">
+	                    <div class="card-body">
+	                    	<h5 class="my-0">{{__('Anamnese')}}</h5>
+                            <p class="mb-1">{{ implode(', ', $journal->anamnese) }}</p>
+                            <h5 class="my-0">{{__('Diagnosis')}}</h5>
+                            <p class="mb-1">{{ implode(', ', $journal->diagnosis) }}</p>
+                            <p class="mb-1">{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
+	                    </div>
+	                    <div class="card-footer">
+	                        <a href="{{ route('dashboard.patients.journals.edit', ['journal' => $journal]) }}" class="btn btn-link">{{__('Edit')}}</a>
+	                    </div>
+	                </div>
+				@empty
+					<div class="alert alert-info" role="alert">{{__('Data is empty')}}</div>
+				@endforelse
+				<nav class="mb-3">
+					{{ $journals->links() }}
+				</nav>
 			</div>
 		</div>
 	</div>
