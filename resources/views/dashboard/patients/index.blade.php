@@ -39,7 +39,7 @@
 		<div class="row">
 			@forelse ($patients as $patient)
 				<div class="col-lg-3 col-md-4 p-2">
-					<div class="card card-patient">
+					<div class="card card-patient shadow">
 						<div class="card-body">
 							<div class="media">
 								<img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" alt="defaul avatar" width="60" class="align-self-center mr-3 rounded-circle">
