@@ -54,9 +54,9 @@ class Patient extends Model
 
     // accessor
 
-    public function getAllergiesAttribute()
+    public function getAllergiesAttribute($allergies)
     {
-        return $this->allergies ?? [];
+        return json_decode($allergies) ?? [];
     }
 
     // mutator

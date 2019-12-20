@@ -92,6 +92,7 @@ class PatientController extends Controller
             'photo' => 'nullable|image',
             'age' => 'nullable|numeric'
         ]);
+        // dd($request->all());
 
         $patient = DB::transaction(function() use ($request, $patient) {
             $patient->fill($request->all());

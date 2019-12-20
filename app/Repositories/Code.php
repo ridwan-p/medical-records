@@ -22,7 +22,10 @@ class Code
 
 	public static function template($code_key)
 	{
-		$code = Model::firstOrCreate(['code_key' => $code_key ]);
+		$code = Model::firstOrCreate(
+			['code_key' => $code_key ],
+			['code_value' => 0, 'length' => 5, 'glue' => '-', 'increment' => 1]
+		);
 		return $code->template();
 	}
 }
