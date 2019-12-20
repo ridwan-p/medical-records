@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Repositories\Code;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -53,7 +54,10 @@ class Patient extends Model
 
     // accessor
 
-
+    public function getAllergiesAttribute()
+    {
+        return $this->allergies ?? [];
+    }
 
     // mutator
     public function setPhotoAttribute($photo)

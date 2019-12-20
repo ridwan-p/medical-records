@@ -26,7 +26,8 @@ class Code extends Model
 
 	public function generate($isSaved = true)
 	{
-		$pre = str_repeat('0', ($this->length - 1));
+		$length = ($this->length - 1) >= 0 ? ($this->length - 1) : 0;
+		$pre = str_repeat('0', $length);
 		$this->attributes['code_value'] += $this->increment;
 		$code = substr("{$pre}{$this->code_value}", -$this->length, $this->length);
 

@@ -45,7 +45,7 @@
 							<div class="media-body">
 								<h5 class="font-weight-bolder my-0">{{ $patient->name }}</h5>
 								<p class="my-0 font-italic">{{ __('Code') }}  : {{ $patient->code }}</p>
-								<p class="my-0"><i class="material-icons">date_range</i> {{ $patient->date_of_birth->format("d M Y") }}, {{ $patient->age }} {{ __('Year') }}</p>
+								<p class="my-0"><i class="material-icons">date_range</i> {{ optional($patient->date_of_birth)->format("d M Y") }}, {{ $patient->age }} {{ __('Year') }}</p>
 								<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
 								@if (!empty($patient->latestJournals()))
 									<p class="my-0 text-muted"> {{$patient->latestJournals()->created_at->diffForHumans()}}</p>

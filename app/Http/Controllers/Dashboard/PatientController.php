@@ -68,7 +68,7 @@ class PatientController extends Controller
             ->paginate();
 
         $patient->setRelation('journals', $journals);
-
+        
     	return view('dashboard.patients.show', compact('patient', 'journals'));
     }
 
@@ -80,7 +80,6 @@ class PatientController extends Controller
     public function update(Patient $patient, Request $request)
     {
         $request->validate([
-            'code' => 'required|unique:patients,code,'.$patient->id,
             'name' => 'required',
             'address' => 'required',
             'date_of_birth' => 'nullable|date',
@@ -96,7 +95,6 @@ class PatientController extends Controller
 
         $patient = DB::transaction(function() use ($request, $patient) {
             $patient->fill($request->all());
-            $patient->generateCode();
             $patient->save();
             return $patient;
         });
