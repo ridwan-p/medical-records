@@ -6,6 +6,7 @@ use App\Helpers\CSVConverter;
 use App\Http\Controllers\Controller;
 use App\Journal;
 use App\Patient;
+use App\Code;
 use DB;
 use Illuminate\Http\Request;
 
@@ -192,15 +193,28 @@ class PatientController extends Controller
     public function importStore()
     {
         $csv = session('upload_csv');
+
         if(isset($csv)) {
             $csv = unserialize($csv);
-            $data = array_map(function($item) {
+            $codes = $templates = [];
+            $data = array_map(function($item) use (&$codes, &$templates) {
+                $key = ucfirst(substr($item['name'], 0, 1));
+                $codes[$key] = isset($codes[$key]) ? ++$codes[$key] : 0;
+                $templates[$key] = $templates[$key] ?? Code::firstOrCreate(['code_key' => $key ]);
+                $templates[$key]->code_value = $codes[$key];
+
+                $item['code'] = $templates[$key]->template();
+                $item['date_of_birth'] = !empty($item['date_of_birth']) ? $item['date_of_birth'] : null;
                 $item['created_at'] = now();
                 $item['updated_at'] = now();
+
                 return $item;
             }, $csv->getData());
 
-            $isInsert = DB::transaction(function() use ($data) {
+            $isInsert = DB::transaction(function() use ($data, $templates) {
+                foreach ($templates as $template) {
+                    $template->save();
+                }
                 return Patient::insert($data);
             });
         }

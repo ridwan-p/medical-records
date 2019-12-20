@@ -112,7 +112,7 @@ class Patient extends Model
 
     public function generateCode($code_key = null)
     {
-        $key = substr(($code_key ?? $this->name), 0);
+        $key = substr(($code_key ?? $this->name), 0, 1);
         $this->attributes['code'] = Code::generate(ucfirst($key));
 
         return $this->code;

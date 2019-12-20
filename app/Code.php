@@ -17,6 +17,13 @@ class Code extends Model
 	// example A-0000000
 	//
 
+	// mutator
+	// public function setCodeValueAttribute($code_value)
+	// {
+	// 	// $value = $this->code_value ?? 0;
+	// 	$this->attributes['code_value'] = $code_value + $this->increment;
+	// }
+
 	public function generate($isSaved = true)
 	{
 		$pre = str_repeat('0', ($this->length - 1));
