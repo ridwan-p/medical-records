@@ -38,7 +38,7 @@
 		</div>
 		<div class="card-columns">
 			@forelse ($patients as $patient)
-				<div class="card shadow">
+				<div class="card">
 					<div class="card-body">
 						<div class="media">
 							<img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" alt="defaul avatar" width="60" class="align-self-center mr-3 rounded-circle">
@@ -60,7 +60,7 @@
 			@empty
 				Data is empty ....
 			@endforelse
-			<nav class="col-12 my-1">{{$patients->links()}}</nav>
 		</div>
+		{{ $patients->links() }}
 	</div>
 @endsection

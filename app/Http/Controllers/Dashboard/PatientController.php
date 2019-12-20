@@ -22,7 +22,7 @@ class PatientController extends Controller
             }
         })
         ->orderBy($request->column ?? 'created_at', $request->direction ?? 'desc')
-        ->paginate($request->per_page ?? 16);
+        ->paginate($request->per_page ?? 15);
 
     	return view('dashboard.patients.index', compact('patients'));
     }
