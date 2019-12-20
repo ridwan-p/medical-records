@@ -34,7 +34,7 @@ class PatientController extends Controller
     public function store(Request $request)
     {
     	$request->validate([
-            'code' => 'required|unique:patients,code',
+            // 'code' => 'required|unique:patients,code',
     		'name' => 'required',
 	    	'address' => 'required',
 	    	'date_of_birth' => 'nullable|date',
@@ -44,13 +44,14 @@ class PatientController extends Controller
 	    	'phone' => 'nullable|max:25',
 	    	'parent' => 'nullable|max:50', // temporarily
 	    	'allergies' => 'nullable|array',
-            'photo' => 'nullable|image'
+            'photo' => 'nullable|image',
+            'age' => 'nullable|numeric'
     	]);
 
     	$patient = DB::transaction(function() use ($request) {
 	    	$patient = new Patient();
 	    	$patient->fill($request->all());
-            $patient->parent = $request->parent ?? '';
+            $patient->generateCode();
 	    	$patient->save();
 	    	return $patient;
     	});
@@ -88,12 +89,13 @@ class PatientController extends Controller
             'phone' => 'nullable|max:25',
             'parent' => 'nullable|max:50',
             'allergies' => 'nullable|array',
-            'photo' => 'nullable|image'
+            'photo' => 'nullable|image',
+            'age' => 'nullable|numeric'
         ]);
 
         $patient = DB::transaction(function() use ($request, $patient) {
             $patient->fill($request->all());
-            $patient->parent = $request->parent ?? '';
+            $patient->generateCode();
             $patient->save();
             return $patient;
         });

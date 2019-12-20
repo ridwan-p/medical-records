@@ -51,11 +51,22 @@ class Patient extends Model
         return $this->journals()->latest()->first();
     }
 
+    // accessor
+
+
+
+    // mutator
     public function setPhotoAttribute($photo)
     {
         $this->storePhoto($photo);
     }
 
+    public function setNameAttribute($name)
+    {
+        $this->attributes['name'] = ucwords($name);
+    }
+
+    // other
     public function deletePhoto()
     {
         $id = $this->attributes['id'] ?? 'undefined';
@@ -97,5 +108,13 @@ class Patient extends Model
             'medium' => "storage/photo/m-{$file_name}",
             'large' => "storage/photo/s-{$file_name}",
         ]);
+    }
+
+    public function generateCode($code_key = null)
+    {
+        $key = substr(($code_key ?? $this->name), 0);
+        $this->attributes['code'] = Code::generate(ucfirst($key));
+
+        return $this->code;
     }
 }
