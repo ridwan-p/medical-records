@@ -21,8 +21,8 @@ class PatientController extends Controller
                     ->orWhere('code', 'like', "%{$request->search}%");
             }
         })
-        ->orderBy($request->column ?? 'created_at', $request->direction ?? 'desc')
-        ->paginate($request->per_page ?? 24);
+        ->orderBy($request->column ?? 'name', $request->direction ?? 'asc')
+        ->paginate($request->per_page);
 
     	return view('dashboard.patients.index', compact('patients'));
     }

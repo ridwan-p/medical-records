@@ -36,7 +36,49 @@
                 </form>
 			</div>
 		</div>
-		<div class="card-columns">
+		<div class="table-responsive rounded-top">
+			<table class="table table-striped">
+				<thead class="bg-primary text-white">
+					<tr>
+						<th>
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="all-patient">
+								<label class="custom-control-label" for="all-patient"></label>
+							</div>
+						</th>
+						<th>{{__('Code')}}</th>
+						<th>{{__('Name')}}</th>
+						<th>{{__('Address')}}</th>
+						<th>{{__('Date of birth')}}</th>
+						<th>{{__('Age')}}</th>
+						<th>{{__('Action')}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					@forelse ($patients as $index => $patient)
+						<tr>
+							<td>
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input patient" id="patient-{{$index}}">
+									<label class="custom-control-label" for="patient-{{$index}}"></label>
+								</div>
+							</td>
+							<td>{{$patient->code}}</td>
+							<td>
+								<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}"><img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" alt="defaul avatar" width="30" class="rounded-circle"> {{$patient->name}}</a>
+							</td>
+							<td>{{ $patient->address }}</td>
+							<td>{{ optional($patient->date_of_birth)->format("d M Y") }}</td>
+							<td>{{ $patient->age }} </td>
+							<td></td>
+						</tr>
+					@empty
+						{{-- empty expr --}}
+					@endforelse
+				</tbody>
+			</table>
+		</div>
+		{{-- <div class="card-columns">
 			@forelse ($patients as $patient)
 				<div class="card">
 					<div class="card-body">
@@ -54,13 +96,13 @@
 						</div>
 					</div>
 					<div class="card-footer text-center">
-						<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}" class="btn btn-link">{{ __('Details') }}</a>
+						<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}" class="btn btn-link"><i class="material-icons">details</i> {{ __('Details') }}</a>
 					</div>
 				</div>
 			@empty
 				Data is empty ....
 			@endforelse
-		</div>
+		</div> --}}
 		{{ $patients->links() }}
 	</div>
 @endsection
