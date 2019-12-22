@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="container px-1">
+	<div class="container">
 		@if(session('success'))
 			<div class="alert alert-success">
 				<strong>{{ __('Success') }} !</strong> {{ __(session('success')) }}
@@ -10,15 +10,13 @@
 				  </button>
 			</div>
 		@endif
-	</div>
-	<div class="container">
 		<div class="row mb-3">
 			<h4 class="p-2 m-0">{{ __('Patient') }}</h4>
 		</div>
 		<div class="row mb-3">
 			<div class="col-md-9 p-2 d-inline-flex flex-row">
-				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary mr-2">{{ __('Add') }}</a>
-				<button class="btn btn-primary import-file" data-target=".import-file-upload"><i class="material-icons">insert_drive_file</i> Import</button>
+				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary mr-2"><i class="material-icons">post_add</i> {{ __('Add') }}</a>
+				<button class="btn btn-info import-file" data-target=".import-file-upload"><i class="material-icons">library_add</i> Import</button>
 
 				<form action="{{ route('dashboard.patients.import.list') }}" id="form-import" method="POST" enctype='multipart/form-data'>
 					@csrf
@@ -40,14 +38,15 @@
 			<table class="table table-striped">
 				<thead class="bg-primary text-white">
 					<tr>
-						<th>
+						{{-- <th>
 							<div class="custom-control custom-checkbox">
 								<input type="checkbox" class="custom-control-input" id="all-patient">
 								<label class="custom-control-label" for="all-patient"></label>
 							</div>
-						</th>
-						<th>{{__('Code')}}</th>
+						</th> --}}
+						<th>{{__('No')}}</th>
 						<th>{{__('Name')}}</th>
+						<th>{{__('Code')}}</th>
 						<th>{{__('Address')}}</th>
 						<th>{{__('Date of birth')}}</th>
 						<th>{{__('Age')}}</th>
@@ -57,52 +56,38 @@
 				<tbody>
 					@forelse ($patients as $index => $patient)
 						<tr>
-							<td>
+							{{-- <td>
 								<div class="custom-control custom-checkbox">
 									<input type="checkbox" class="custom-control-input patient" id="patient-{{$index}}">
 									<label class="custom-control-label" for="patient-{{$index}}"></label>
 								</div>
-							</td>
-							<td>{{$patient->code}}</td>
+							</td> --}}
+							<td>{{ $patients->firstItem() + $index }}</td>
 							<td>
 								<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}"><img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" alt="defaul avatar" width="30" class="rounded-circle"> {{$patient->name}}</a>
 							</td>
+							<td>{{$patient->code}}</td>
 							<td>{{ $patient->address }}</td>
 							<td>{{ optional($patient->date_of_birth)->format("d M Y") }}</td>
 							<td>{{ $patient->age }} </td>
-							<td></td>
+							<td>
+								<div class="dropdown">
+								    <button class="btn btn-outline-primary btn-icon material-icons" type="button" id="dropdownMenuButton" data-toggle="dropdown">more_horiz</button>
+								    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								        <a class="dropdown-item" href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}">{{ __('Edit') }}</a>
+								        <a class="dropdown-item" href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}">{{ __('Delete') }}</a>
+								    </div>
+								</div>
+							</td>
 						</tr>
 					@empty
-						{{-- empty expr --}}
+						<tr>
+							<td colspan="8">{{ __('Data is empty') }} ...</td>
+						</tr>
 					@endforelse
 				</tbody>
 			</table>
 		</div>
-		{{-- <div class="card-columns">
-			@forelse ($patients as $patient)
-				<div class="card">
-					<div class="card-body">
-						<div class="media">
-							<img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" alt="defaul avatar" width="60" class="align-self-center mr-3 rounded-circle">
-							<div class="media-body">
-								<h5 class="font-weight-bolder my-0">{{ $patient->name }}</h5>
-								<p class="my-0 font-italic">{{ __('Code') }}  : {{ $patient->code }}</p>
-								<p class="my-0"><i class="material-icons">date_range</i> {{ optional($patient->date_of_birth)->format("d M Y") }}, {{ $patient->age }} {{ __('Year') }}</p>
-								<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
-								@if (!empty($patient->latestJournals()))
-									<p class="my-0 text-muted"> {{$patient->latestJournals()->created_at->diffForHumans()}}</p>
-								@endif
-							</div>
-						</div>
-					</div>
-					<div class="card-footer text-center">
-						<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}" class="btn btn-link"><i class="material-icons">details</i> {{ __('Details') }}</a>
-					</div>
-				</div>
-			@empty
-				Data is empty ....
-			@endforelse
-		</div> --}}
 		{{ $patients->links() }}
 	</div>
 @endsection

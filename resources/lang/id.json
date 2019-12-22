@@ -58,5 +58,6 @@
   "Data has been created" : "Data berhasil dibuat",
   "Data has been updated" : "Datas berhasil diperbaharui",
   "Data has been deleted" : "Datas berhasil dihapus",
-  "Choose file": "Pilih file"
+  "Choose file": "Pilih file",
+  "Action": "Aksi"
 }

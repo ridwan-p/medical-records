@@ -17,7 +17,7 @@ class PatientController extends Controller
     	$patients = Patient::where(function($query) use ($request) {
             if($request->has('search')) {
                 $query->where('name', 'like', "%{$request->search}%")
-                    ->orWhere('parent', 'like', "%{$request->search}%")
+                    ->orWhere('address', 'like', "%{$request->search}%")
                     ->orWhere('code', 'like', "%{$request->search}%");
             }
         })
