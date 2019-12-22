@@ -56,8 +56,9 @@
   "Submit": "Simpan",
   "Data is empty" : "Data kosong",
   "Data has been created" : "Data berhasil dibuat",
-  "Data has been updated" : "Datas berhasil diperbaharui",
-  "Data has been deleted" : "Datas berhasil dihapus",
+  "Data has been updated" : "Data berhasil diperbaharui",
+  "Data has been deleted" : "Data berhasil dihapus",
   "Choose file": "Pilih file",
-  "Action": "Aksi"
+  "Action": "Aksi",
+  "Are you sure delete it": "Apa kamu yakin hapus data ini"
 }

@@ -75,7 +75,7 @@
 								    <button class="btn btn-outline-primary btn-icon material-icons" type="button" id="dropdownMenuButton" data-toggle="dropdown">more_horiz</button>
 								    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								        <a class="dropdown-item" href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}">{{ __('Edit') }}</a>
-								        <a class="dropdown-item" href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}">{{ __('Delete') }}</a>
+								        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="{{ __('Are you sure delete it') }} !!!" href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}">{{ __('Delete') }}</a>
 								    </div>
 								</div>
 							</td>
@@ -90,4 +90,9 @@
 		</div>
 		{{ $patients->links() }}
 	</div>
+
+	<form id='form-delete-patient' method="POST">
+		@method('DELETE')
+		@csrf
+	</form>
 @endsection
