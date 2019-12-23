@@ -1,19 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-	@if ($errors->any())
-	    <div class="alert alert-danger">
-	        <ul>
-	            @foreach ($errors->all() as $error)
-	                <li>{{ $error }}</li>
-	            @endforeach
-	        </ul>
-	    </div>
-	@endif
 	<form action="{{ route('dashboard.patients.journals.store', ['patient' => $patient]) }}" method="POST" class="container">
 		@csrf
 		<div class="row">
-			<div class="col-md-12"><h3>{{__('Create')}} <strong>{{$patient->name}}</strong>  {{__('Medical Journal')}}</h3></div>
+			<div class="col-md-12"><h3>{{__('Create')}} {{__('Medical Journal')}} <strong>{{$patient->name}}</strong> </h3></div>
 		</div>
 		<div class="row">
 
@@ -30,6 +21,8 @@
 			<div class="form-group col-md-12">
 				<label for="diagnosis">{{ __('Diagnosis') }} <span class="text-danger">*</span></label>
 				<tags-input valid="@error('diagnosis.*.name') is-invalid @enderror" value="{{old('diagnosis-text')}}" name="diagnosis" object="name"></tags-input>
+				<searching-tags url="/local-api/diagnosis" column="name"></searching-tags>
+				{{-- <search-component url="/local-api/diagnosis" column="name"></search-component> --}}
 				@error('diagnosis.*.name')
 	                <small class="d-block text-danger" role="alert">
 	                    <strong>{{ $message }}</strong>
