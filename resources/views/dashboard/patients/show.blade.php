@@ -74,7 +74,7 @@
 	                    	<h5 class="my-0">{{__('Anamnese')}}</h5>
                             <p class="mb-1">{{ implode(', ', $journal->anamnese) }}</p>
                             <h5 class="my-0">{{__('Diagnosis')}}</h5>
-                            <p class="mb-1">{{ implode(', ', $journal->diagnosis) }}</p>
+                            <p class="mb-1">{{ $journal->diagnosis->implode('name', ', ') }}</p>
                             <p class="mb-1">{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
 	                    </div>
 	                    <div class="card-footer">

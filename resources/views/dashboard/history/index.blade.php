@@ -43,11 +43,11 @@
                                         <td>{{$journal->patient->age}}/ {{ $journal->patient->gender ? __('Male') : __("Female") }}</td>
                                         <td>{{ $journal->patient->address }}</td>
                                         <td>{{ implode(',', $journal->anamnese) }}</td>
-                                        <td>{{ implode(',', $journal->diagnosis) }}</td>
+                                        <td>{{ $journal->diagnosis->implode('name', ', ') }}</td>
                                         <td>{{ $journal->medications->implode('name', ',') }}</td>
                                         <td>{{ $journal->note }}</td>
                                         <td>{{ $journal->created_at->format("d M Y h:m:s") }}</td>
-                                    </tr>                        
+                                    </tr>
                                 @empty
                                     <tr>
                                         <td colspan="9">This is empty ....</td>

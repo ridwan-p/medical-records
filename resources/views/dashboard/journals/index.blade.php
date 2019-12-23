@@ -11,7 +11,7 @@
             </div>
         @endif
     </div>
-    
+
     <div class="container">
         <div class="row mb-3">
             <h4>{{ __('Journal') }}</h4>
@@ -43,7 +43,7 @@
                                 <h5 class="my-0">{{__('Anamnese')}}</h5>
                                 <p class="mb-1">{{ implode(', ', $journal->anamnese) }}</p>
                                 <h5 class="my-0">{{__('Diagnosis')}}</h5>
-                                <p class="mb-1">{{ implode(', ', $journal->diagnosis) }}</p>
+                                <p class="mb-1">{{ $journal->diagnosis->implode('name', ', ') }}</p>
                             </div>
                             <div class="col-3 border-left border-light">
                                 <h5 class="font-weight-bold"><i class="material-icons">access_time</i> {{$journal->created_at->format("d F Y h:m")}}</h5>
@@ -66,7 +66,7 @@
             @empty
                 {{__('Data is empty')}}
             @endforelse
-            
+
             {{$journals->links()}}
         </div>
     </div>

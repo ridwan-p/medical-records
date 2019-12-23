@@ -1,22 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+	@if ($errors->any())
+	    <div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif
 	<form action="{{ route('dashboard.patients.journals.store', ['patient' => $patient]) }}" method="POST" class="container">
 		@csrf
 		<div class="row">
 			<div class="col-md-12"><h3>{{__('Create')}} <strong>{{$patient->name}}</strong>  {{__('Medical Journal')}}</h3></div>
 		</div>
 		<div class="row">
-{{-- 			<div class="form-group col-md-12">
-				<label for="therapy">{{ __('Therapy') }} <span class="text-danger">*</span></label>
-				<tags-input valid="@error('therapy.*') is-invalid @enderror" value="{{old('therapy-text')}}" name="therapy"></tags-input>
-
-				@error('therapy.*')
-	                <small class="d-block text-danger" role="alert">
-	                    <strong>{{ $message }}</strong>
-	                </small>
-	            @enderror
-			</div> --}}
 
 			<div class="form-group col-md-12">
 				<label for="anamnese">{{ __('Anamnese') }} <span class="text-danger">*</span></label>
@@ -30,8 +29,8 @@
 
 			<div class="form-group col-md-12">
 				<label for="diagnosis">{{ __('Diagnosis') }} <span class="text-danger">*</span></label>
-				<tags-input valid="@error('diagnosis.*') is-invalid @enderror" value="{{old('diagnosis-text')}}" name="diagnosis"></tags-input>
-				@error('diagnosis.*')
+				<tags-input valid="@error('diagnosis.*.name') is-invalid @enderror" value="{{old('diagnosis-text')}}" name="diagnosis" object="name"></tags-input>
+				@error('diagnosis.*.name')
 	                <small class="d-block text-danger" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </small>
@@ -42,6 +41,17 @@
 				<label for="medications">{{ __('Medications') }} <span class="text-danger">*</span></label>
 				<tags-input valid="@error('medications.*.name') is-invalid @enderror" value="{{old('medications-text')}}" name="medications" object="name"></tags-input>
 				@error('medications.*.name')
+	                <small class="d-block text-danger" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </small>
+	            @enderror
+			</div>
+
+			<div class="form-group col-md-12">
+				<label for="action">{{ __('Action') }}</label>
+				<tags-input valid="@error('action.*') is-invalid @enderror" value="{{old('action-text')}}" name="action"></tags-input>
+
+				@error('action.*')
 	                <small class="d-block text-danger" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </small>

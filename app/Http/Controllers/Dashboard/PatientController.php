@@ -68,7 +68,7 @@ class PatientController extends Controller
             ->paginate();
 
         $patient->setRelation('journals', $journals);
-        
+
     	return view('dashboard.patients.show', compact('patient', 'journals'));
     }
 
@@ -121,13 +121,13 @@ class PatientController extends Controller
     public function storeJournal(Request $request, Patient $patient)
     {
         $request->validate([
-            // 'therapy' => 'required|array|min:1',
+            'action' => 'nullable|array',
             'anamnese' => 'required|array|min:1',
             'diagnosis' => 'required|array|min:1',
             'medications' => 'required|array|min:1',
-            // 'therapy.*' => 'required|max:255',
+            // 'action.*' => 'string',
             'anamnese.*' => 'required|max:255',
-            'diagnosis.*' => 'required|max:255',
+            'diagnosis.*.name' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
             'note' => 'nullable',
         ]);
@@ -135,7 +135,7 @@ class PatientController extends Controller
         $journal = DB::transaction(function () use ($request, $patient) {
             $journal = new Journal($request->except('medications'));
             $patient->journals()->save($journal);
-            $journal->storeToMany($request->only('medications'));
+            $journal->storeToMany($request->only('medications', 'diagnosis'));
 
             return $journal;
         });
@@ -154,12 +154,13 @@ class PatientController extends Controller
     public function updateJournal(Request $request, Journal $journal)
     {
         $request->validate([
-            // 'therapy' => 'required|array',
-            'anamnese' => 'required|array',
-            'diagnosis' => 'required|array',
-            // 'therapy.*' => 'required|max:255',
+            'action' => 'nullable|array',
+            'anamnese' => 'required|array|min:1',
+            'diagnosis' => 'required|array|min:1',
+            'medications' => 'required|array|min:1',
+            // 'action.*' => 'string',
             'anamnese.*' => 'required|max:255',
-            'diagnosis.*' => 'required|max:255',
+            'diagnosis.*.name' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
             'note' => 'nullable',
         ]);
