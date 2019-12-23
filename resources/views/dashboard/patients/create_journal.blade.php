@@ -21,7 +21,7 @@
 			<div class="form-group col-md-12">
 				<label for="diagnosis">{{ __('Diagnosis') }} <span class="text-danger">*</span></label>
 				<tags-input valid="@error('diagnosis.*.name') is-invalid @enderror" value="{{old('diagnosis-text')}}" name="diagnosis" object="name"></tags-input>
-				<searching-tags url="/local-api/diagnosis" column="name"></searching-tags>
+				{{-- <searching-tags url="/local-api/diagnosis" column="name"></searching-tags> --}}
 				{{-- <search-component url="/local-api/diagnosis" column="name"></search-component> --}}
 				@error('diagnosis.*.name')
 	                <small class="d-block text-danger" role="alert">
