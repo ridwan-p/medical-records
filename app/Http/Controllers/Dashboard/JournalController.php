@@ -35,21 +35,21 @@ class JournalController extends Controller
     {
     	$request->validate([
     		'patient_id' => 'required|exists:patients,id',
-    		// 'therapy' => 'required|array',
-			'anamnese' => 'required|array',
-			'diagnosis' => 'required|array',
-			// 'medications' => 'required|array',
-            // 'therapy.*' => 'required|max:255',
+    		'action' => 'nullable|array',
+            'anamnese' => 'required|array|min:1',
+            'diagnosis' => 'required|array|min:1',
+            'medications' => 'required|array|min:1',
+            // 'action.*' => 'string',
             'anamnese.*' => 'required|max:255',
-            'diagnosis.*' => 'required|max:255',
+            'diagnosis.*.name' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
-			'note' => 'nullable',
+            'note' => 'nullable',
     	]);
 
     	$journal = DB::transaction(function () use ($request) {
-    		$journal = new Journal($request->except('medications'));
+    		$journal = new Journal($request->except('medications', 'diagnosis'));
     		$journal->save();
-    		$journal->storeToMany($request->only('medications'));
+    		$journal->storeToMany($request->only('medications', 'diagnosis'));
 
     		return $journal;
     	});
@@ -68,21 +68,21 @@ class JournalController extends Controller
     {
     	$request->validate([
     		'patient_id' => 'required|exists:patients,id',
-    		// 'therapy' => 'required|array',
-			'anamnese' => 'required|array',
-			'diagnosis' => 'required|array',
-			'medications' => 'required|array',
-            // 'therapy.*' => 'required|max:255',
+    		'action' => 'nullable|array',
+            'anamnese' => 'required|array|min:1',
+            'diagnosis' => 'required|array|min:1',
+            'medications' => 'required|array|min:1',
+            // 'action.*' => 'string',
             'anamnese.*' => 'required|max:255',
-            'diagnosis.*' => 'required|max:255',
+            'diagnosis.*.name' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
-			'note' => 'nullable',
+            'note' => 'nullable',
     	]);
 
     	$journal = DB::transaction(function () use ($request, $journal) {
-    		$journal->fill($request->all());
+    		$journal->fill($request->except('diagnosis', 'medications'));
     		$journal->save();
-            $journal->storeToMany($request->only('medications'));
+            $journal->storeToMany($request->only('medications', 'diagnosis'));
 
     		return $journal;
     	});

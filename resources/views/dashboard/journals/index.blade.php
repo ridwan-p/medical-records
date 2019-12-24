@@ -18,14 +18,14 @@
         </div>
         <div class="row mb-3">
             <div class="col-md-9 px-1">
-                <a href="{{ route('dashboard.journals.create') }}" class="btn btn-primary">{{ __('Add') }}</a>
+                <a href="{{ route('dashboard.journals.create') }}" class="btn btn-primary"><i class="material-icons">post_add</i> {{ __('Add') }}</a>
             </div>
             <div class="col-md-3 px-1">
                 <form action="{{ route('dashboard.journals.index') }}" method="GET">
                     <div class="input-group">
                         <input type="search" name="search" class="form-control" placeholder="{{ __('Search') }}" value="{{request()->search}}">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" id="button-addon2">{{ __('Search') }}</button>
+                            <button class="btn btn-primary" type="submit" id="button-addon2"><i class="material-icons">search</i> </button>
                         </div>
                     </div>
                 </form>

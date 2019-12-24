@@ -15,7 +15,7 @@
 		@csrf
 		@method('PUT')
 		<div class="row">
-			<div class="col-md-12"><h3>{{__('Edit')}} <strong>{{$patient->name}}</strong>  {{__('Medical Journal')}}</h3></div>
+			<div class="col-md-12"><h3>{{__('Edit')}} {{__('Medical Journal')}} <strong>{{$patient->name}}</strong></h3></div>
 		</div>
 		<div class="row">
 {{-- 			<div class="form-group col-md-12">
@@ -40,7 +40,7 @@
 
 			<div class="form-group col-md-12">
 				<label for="diagnosis">{{ __('Diagnosis') }} <span class="text-danger">*</span></label>
-				<tags-input valid="@error('diagnosis.*') is-invalid @enderror" value="{{old('diagnosis-text', implode(', ', $journal->diagnosis))}}" name="diagnosis"></tags-input>
+				<tags-input valid="@error('diagnosis.*') is-invalid @enderror" value="{{old('diagnosis-text', $journal->diagnosis->implode('name', ', ')) }}" name="diagnosis" object="name"></tags-input>
 				@error('diagnosis.*')
 	                <small class="d-block text-danger" role="alert">
 	                    <strong>{{ $message }}</strong>
@@ -52,6 +52,17 @@
 				<label for="medications">{{ __('Medications') }} <span class="text-danger">*</span></label>
 				<tags-input valid="@error('medications.*.name') is-invalid @enderror" value="{{old('medications-text', $journal->medications->implode('name', ', '))}}" name="medications" object="name"></tags-input>
 				@error('medications.*.name')
+	                <small class="d-block text-danger" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </small>
+	            @enderror
+			</div>
+
+			<div class="form-group col-md-12">
+				<label for="action">{{ __('Action') }}</label>
+				<tags-input valid="@error('action.*') is-invalid @enderror" value="{{old('action-text', implode(', ', $journal->action))}}" name="action"></tags-input>
+
+				@error('action.*')
 	                <small class="d-block text-danger" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </small>

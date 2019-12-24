@@ -106,8 +106,13 @@ class PatientController extends Controller
 
     public function destroy(Patient $patient)
     {
-        $patient->journals()->delete();
-    	$patient->delete();
+        $patient = DB::transaction(function () use ($patient) {
+            $patient->journals()->delete();
+            $patient->diagnosis()->delete();
+            $patient->delete();
+
+            return $patient;
+        });
         session()->flash('success', 'Data has been deleted');
     	return redirect()->route('dashboard.patients.index');
     }
@@ -133,7 +138,7 @@ class PatientController extends Controller
         ]);
 
         $journal = DB::transaction(function () use ($request, $patient) {
-            $journal = new Journal($request->except('medications'));
+            $journal = new Journal($request->except('medications', 'diagnosis'));
             $patient->journals()->save($journal);
             $journal->storeToMany($request->only('medications', 'diagnosis'));
 
@@ -166,8 +171,9 @@ class PatientController extends Controller
         ]);
 
         $journal = DB::transaction(function () use ($request, $journal) {
-            $journal->fill($request->except('medications'));
-            $journal->saveMany($request->only('medications'));
+            $journal->fill($request->except('medications', 'diagnosis'));
+            $journal->save();
+            $journal->storeToMany($request->only('medications', 'diagnosis'));
 
             return $journal;
         });

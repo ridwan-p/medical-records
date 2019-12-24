@@ -28,7 +28,7 @@
                     <div class="input-group">
                         <input type="search" name="search" class="form-control" placeholder="{{ __('Search') }}" value="{{request()->search}}">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" id="button-addon2">{{ __('Search') }}</button>
+                            <button class="btn btn-primary" type="submit" id="button-addon2"><i class="material-icons">search</i> </button>
                         </div>
                     </div>
                 </form>

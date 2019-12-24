@@ -32,7 +32,7 @@
         },
         computed: {
             tags(){
-                return this.textInput.split(/[\s,]+/)
+                return this.textInput.split(",")
             }
         },
 
