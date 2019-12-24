@@ -18,15 +18,6 @@
 			<div class="col-md-12"><h3>{{__('Edit')}} {{__('Medical Journal')}} <strong>{{$patient->name}}</strong></h3></div>
 		</div>
 		<div class="row">
-{{-- 			<div class="form-group col-md-12">
-				<label for="therapy">{{ __('Therapy') }} <span class="text-danger">*</span></label>
-				<tags-input valid="@error('therapy.*') is-invalid @enderror" value="{{old('therapy-text', implode(', ', $journal->therapy))}}" name="therapy"></tags-input>
-				@error('therapy.*')
-	                <small class="d-block text-danger" role="alert">
-	                    <strong>{{ $message }}</strong>
-	                </small>
-	            @enderror
-			</div> --}}
 
 			<div class="form-group col-md-12">
 				<label for="anamnese">{{ __('Anamnese') }} <span class="text-danger">*</span></label>
@@ -81,6 +72,7 @@
 
 			<div class="form-group col-md-12">
 				<button class="btn btn-primary">{{__('Submit')}}</button>
+				<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}" class="btn btn-outline-primary">{{ __('Back') }}</a>
 			</div>
 		</div>
 	</form>

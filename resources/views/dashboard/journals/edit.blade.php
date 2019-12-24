@@ -86,6 +86,7 @@
 
 			<div class="form-group col-md-12">
 				<button class="btn btn-primary">{{__('Submit')}}</button>
+				<a href="{{ route('dashboard.journals.index') }}" class="btn btn-outline-primary">{{ __('Back') }}</a>
 			</div>
 		</div>
 	</form>
