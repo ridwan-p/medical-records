@@ -53,7 +53,7 @@
                                 <img src="{{ asset(asset($journal->patient->photo['medium'] ?? 'images/user.svg')) }}" alt="avatar" width="50" class="rounded-circle">
                                 <div class="ml-3">
                                     <h5 class="font-weight-bold">{{$journal->patient->name}}</h5>
-                                    <p class="my-0"><i class="material-icons text-secondary">people</i> {{$journal->patient->parent}}</p>
+                                    <p class="my-0"><i class="material-icons text-secondary">location_city</i> {{optional($journal->patient)->address}}</p>
                                     <p class="my-0"><i class="material-icons text-secondary">date_range</i> {{optional($journal->patient->date_of_birth)->format('d F Y')}}</p>
                                 </div>
                             </div>
