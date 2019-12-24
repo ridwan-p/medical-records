@@ -20,11 +20,11 @@
                         </div>
                     </form>
                     </div>
-                    <div class="table-responsive">
+                    <div class="table-responsive rounded-top">
                         <table class="table table-striped">
-                            <thead>
+                            <thead class="bg-primary text-white">
                                 <tr>
-                                    <th>No</th>
+                                    <th>{{ __('No') }}</th>
                                     <th>{{ __('Name') }}</th>
                                     <th>{{ __('Age')}} / {{ __('Gender') }}</th>
                                     <th>{{ __('Address') }}</th>

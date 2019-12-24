@@ -59,6 +59,7 @@
   "Data has been updated" : "Data berhasil diperbaharui",
   "Data has been deleted" : "Data berhasil dihapus",
   "Choose file": "Pilih file",
-  "Action": "Aksi",
-  "Are you sure delete it": "Apa kamu yakin hapus data ini"
+  "Action": "Tindakan",
+  "Are you sure delete it": "Apa kamu yakin hapus data ini",
+  "items": "butir"
 }

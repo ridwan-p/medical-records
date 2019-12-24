@@ -50,7 +50,7 @@
 						<th>{{__('Address')}}</th>
 						<th>{{__('Date of birth')}}</th>
 						<th>{{__('Age')}}</th>
-						<th>{{__('Action')}}</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -74,8 +74,9 @@
 								<div class="dropdown">
 								    <button class="btn btn-outline-primary btn-icon material-icons" type="button" id="dropdownMenuButton" data-toggle="dropdown">more_horiz</button>
 								    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								        <a class="dropdown-item" href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}">{{ __('Edit') }}</a>
-								        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="{{ __('Are you sure delete it') }} !!!" href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}">{{ __('Delete') }}</a>
+								        <a class="dropdown-item" href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}"><i class="material-icons">remove_red_eye</i> {{ __('Show') }}</a>
+								        <a class="dropdown-item" href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}"><i class="material-icons">edit</i>  {{ __('Edit') }}</a>
+								        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="{{ __('Are you sure delete it') }} !!!" href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}"><i class="material-icons">delete_outline</i> {{ __('Delete') }}</a>
 								    </div>
 								</div>
 							</td>
