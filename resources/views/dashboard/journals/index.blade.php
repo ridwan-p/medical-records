@@ -14,7 +14,7 @@
 
     <div class="container">
         <div class="row mb-3">
-            <h4>{{ __('Journal') }}</h4>
+            <h4>{{ __('List Journal') }}</h4>
         </div>
         <div class="row mb-3">
             <div class="col-md-9 px-1">
