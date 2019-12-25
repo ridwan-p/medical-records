@@ -50,7 +50,7 @@
                                     </tr>                        
                                 @empty
                                     <tr>
-                                        <td colspan="9">This is empty ....</td>
+                                        <td colspan="9">{{__('Data is empty')}} ....</td>
                                     </tr>
                                 @endforelse
                             </tbody>
