@@ -6,7 +6,7 @@ use App\Helpers\CSVConverter;
 use App\Http\Controllers\Controller;
 use App\Journal;
 use App\Patient;
-use App\Code;
+use App\Repositories\Code;
 use DB;
 use Illuminate\Http\Request;
 
@@ -68,7 +68,7 @@ class PatientController extends Controller
             ->paginate();
 
         $patient->setRelation('journals', $journals);
-        
+
     	return view('dashboard.patients.show', compact('patient', 'journals'));
     }
 
@@ -106,8 +106,13 @@ class PatientController extends Controller
 
     public function destroy(Patient $patient)
     {
-        $patient->journals()->delete();
-    	$patient->delete();
+        $patient = DB::transaction(function () use ($patient) {
+            $patient->journals()->delete();
+            $patient->diagnosis()->delete();
+            $patient->delete();
+
+            return $patient;
+        });
         session()->flash('success', 'Data has been deleted');
     	return redirect()->route('dashboard.patients.index');
     }
@@ -121,21 +126,21 @@ class PatientController extends Controller
     public function storeJournal(Request $request, Patient $patient)
     {
         $request->validate([
-            // 'therapy' => 'required|array|min:1',
+            'action' => 'nullable|array',
             'anamnese' => 'required|array|min:1',
             'diagnosis' => 'required|array|min:1',
             'medications' => 'required|array|min:1',
-            // 'therapy.*' => 'required|max:255',
+            // 'action.*' => 'string',
             'anamnese.*' => 'required|max:255',
-            'diagnosis.*' => 'required|max:255',
+            'diagnosis.*.name' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
             'note' => 'nullable',
         ]);
 
         $journal = DB::transaction(function () use ($request, $patient) {
-            $journal = new Journal($request->except('medications'));
+            $journal = new Journal($request->except('medications', 'diagnosis'));
             $patient->journals()->save($journal);
-            $journal->storeToMany($request->only('medications'));
+            $journal->storeToMany($request->only('medications', 'diagnosis'));
 
             return $journal;
         });
@@ -154,19 +159,21 @@ class PatientController extends Controller
     public function updateJournal(Request $request, Journal $journal)
     {
         $request->validate([
-            // 'therapy' => 'required|array',
-            'anamnese' => 'required|array',
-            'diagnosis' => 'required|array',
-            // 'therapy.*' => 'required|max:255',
+            'action' => 'nullable|array',
+            'anamnese' => 'required|array|min:1',
+            'diagnosis' => 'required|array|min:1',
+            'medications' => 'required|array|min:1',
+            // 'action.*' => 'string',
             'anamnese.*' => 'required|max:255',
-            'diagnosis.*' => 'required|max:255',
+            'diagnosis.*.name' => 'required|max:255',
             'medications.*.name' => 'required|max:255',
             'note' => 'nullable',
         ]);
 
         $journal = DB::transaction(function () use ($request, $journal) {
-            $journal->fill($request->except('medications'));
-            $journal->saveMany($request->only('medications'));
+            $journal->fill($request->except('medications', 'diagnosis'));
+            $journal->save();
+            $journal->storeToMany($request->only('medications', 'diagnosis'));
 
             return $journal;
         });
@@ -198,7 +205,7 @@ class PatientController extends Controller
             $data = array_map(function($item) use (&$codes, &$templates) {
                 $key = ucfirst(substr($item['name'], 0, 1));
                 $codes[$key] = isset($codes[$key]) ? ++$codes[$key] : 0;
-                $templates[$key] = $templates[$key] ?? Code::firstOrCreate(['code_key' => $key ]);
+                $templates[$key] = $templates[$key] ?? Code::create($key);
                 $templates[$key]->code_value = $codes[$key];
 
                 $item['code'] = $templates[$key]->template();

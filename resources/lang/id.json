@@ -26,6 +26,8 @@
   "Search" : "Cari",
   "Details" : "Detail",
   "Patient" : "Pasien",
+  "Back" : "Kembali",
+  "List Patient" : "Daftar Pasien",
   "Place of birth" : "Tempat Lahir",
   "Date of birth" : "Tanggal Lahir",
   "Gender" : "Jenis Kelamin",
@@ -37,7 +39,9 @@
   "Photo" : "Foto",
   "Parent" : "Orang Tua",
   "Journal" : "Jurnal",
+  "List Journal" : "Daftar Jurnal",
   "History" : "Riwayat",
+  "List History" : "Daftar Riwayat",
   "Blood" : "Golongan Darah",
   "Medical": "Medis",
   "Record": "Rekam",
@@ -59,6 +63,7 @@
   "Data has been updated" : "Data berhasil diperbaharui",
   "Data has been deleted" : "Data berhasil dihapus",
   "Choose file": "Pilih file",
-  "Action": "Aksi",
-  "Are you sure delete it": "Apa kamu yakin hapus data ini"
+  "Action": "Tindakan",
+  "Are you sure delete it": "Apa kamu yakin hapus data ini",
+  "items": "butir"
 }

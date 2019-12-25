@@ -15,18 +15,9 @@
 		@csrf
 		@method('PUT')
 		<div class="row">
-			<div class="col-md-12"><h3>{{__('Edit')}} <strong>{{$patient->name}}</strong>  {{__('Medical Journal')}}</h3></div>
+			<div class="col-md-12"><h3>{{__('Edit')}} {{__('Medical Journal')}} <strong>{{$patient->name}}</strong></h3></div>
 		</div>
 		<div class="row">
-{{-- 			<div class="form-group col-md-12">
-				<label for="therapy">{{ __('Therapy') }} <span class="text-danger">*</span></label>
-				<tags-input valid="@error('therapy.*') is-invalid @enderror" value="{{old('therapy-text', implode(', ', $journal->therapy))}}" name="therapy"></tags-input>
-				@error('therapy.*')
-	                <small class="d-block text-danger" role="alert">
-	                    <strong>{{ $message }}</strong>
-	                </small>
-	            @enderror
-			</div> --}}
 
 			<div class="form-group col-md-12">
 				<label for="anamnese">{{ __('Anamnese') }} <span class="text-danger">*</span></label>
@@ -40,7 +31,7 @@
 
 			<div class="form-group col-md-12">
 				<label for="diagnosis">{{ __('Diagnosis') }} <span class="text-danger">*</span></label>
-				<tags-input valid="@error('diagnosis.*') is-invalid @enderror" value="{{old('diagnosis-text', implode(', ', $journal->diagnosis))}}" name="diagnosis"></tags-input>
+				<tags-input valid="@error('diagnosis.*') is-invalid @enderror" value="{{old('diagnosis-text', $journal->diagnosis->implode('name', ', ')) }}" name="diagnosis" object="name"></tags-input>
 				@error('diagnosis.*')
 	                <small class="d-block text-danger" role="alert">
 	                    <strong>{{ $message }}</strong>
@@ -59,6 +50,17 @@
 			</div>
 
 			<div class="form-group col-md-12">
+				<label for="action">{{ __('Action') }}</label>
+				<tags-input valid="@error('action.*') is-invalid @enderror" value="{{old('action-text', implode(', ', $journal->action))}}" name="action"></tags-input>
+
+				@error('action.*')
+	                <small class="d-block text-danger" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </small>
+	            @enderror
+			</div>
+
+			<div class="form-group col-md-12">
 				<label for="note">{{ __("Note") }}</label>
 				<textarea name="note" id="note" cols="30" rows="10" class="form-control @error('note') is-invalid @enderror">{{ old('note', $journal->note) }}</textarea>
 				@error('note')
@@ -70,6 +72,7 @@
 
 			<div class="form-group col-md-12">
 				<button class="btn btn-primary">{{__('Submit')}}</button>
+				<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}" class="btn btn-outline-primary">{{ __('Back') }}</a>
 			</div>
 		</div>
 	</form>

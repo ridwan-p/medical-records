@@ -11,7 +11,7 @@
 			</div>
 		@endif
 		<div class="row mb-3">
-			<h4 class="p-2 m-0">{{ __('Patient') }}</h4>
+			<h4 class="p-2 m-0">{{ __('List Patient') }}</h4>
 		</div>
 		<div class="row mb-3">
 			<div class="col-md-9 p-2 d-inline-flex flex-row">
@@ -28,7 +28,7 @@
                     <div class="input-group">
                         <input type="search" name="search" class="form-control" placeholder="{{ __('Search') }}" value="{{request()->search}}">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" id="button-addon2">{{ __('Search') }}</button>
+                            <button class="btn btn-primary" type="submit" id="button-addon2"><i class="material-icons">search</i> </button>
                         </div>
                     </div>
                 </form>
@@ -50,7 +50,7 @@
 						<th>{{__('Address')}}</th>
 						<th>{{__('Date of birth')}}</th>
 						<th>{{__('Age')}}</th>
-						<th>{{__('Action')}}</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -74,8 +74,9 @@
 								<div class="dropdown">
 								    <button class="btn btn-outline-primary btn-icon material-icons" type="button" id="dropdownMenuButton" data-toggle="dropdown">more_horiz</button>
 								    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								        <a class="dropdown-item" href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}">{{ __('Edit') }}</a>
-								        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="{{ __('Are you sure delete it') }} !!!" href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}">{{ __('Delete') }}</a>
+								        <a class="dropdown-item" href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}"><i class="material-icons">remove_red_eye</i> {{ __('Show') }}</a>
+								        <a class="dropdown-item" href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}"><i class="material-icons">edit</i>  {{ __('Edit') }}</a>
+								        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="{{ __('Are you sure delete it') }} !!!" href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}"><i class="material-icons">delete_outline</i> {{ __('Delete') }}</a>
 								    </div>
 								</div>
 							</td>

@@ -8,7 +8,7 @@
 			<div class="col-md-12"><h3>{{__('Create')}}</h3></div>
 		</div>
 		<div class="row">
-			
+
 			<div class="form-group col-md-6">
 				<label for="name">{{ __("Name") }} <span class="text-danger">*</span></label>
 				<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{old('name')}}" autofocus>
@@ -89,7 +89,7 @@
 	                </small>
 	            @enderror
 			</div>
-			
+
 
 			<div class="form-group col-md-12">
 				<label for="address">{{ __("Address") }} <span class="text-danger">*</span></label>
@@ -138,6 +138,7 @@
 
 			<div class="form-group col-md-12">
 				<button class="btn btn-primary">{{__('Submit')}}</button>
+				<a href="{{ route('dashboard.patients.index') }}" class="btn btn-outline-primary">{{ __('Back') }}</a>
 			</div>
 		</div>
 	</form>

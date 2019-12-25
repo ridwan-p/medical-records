@@ -44,7 +44,7 @@ Route::prefix('dashboard')
 
 	// export patient
 	Route::post('patients/import/list', "PatientController@importList")->name('patients.import.list');
-	Route::post('patients/import/stroe', "PatientController@importStore")->name('patients.import.store');
+	Route::post('patients/import/store', "PatientController@importStore")->name('patients.import.store');
 
 	// Journal
 	Route::resource('journals', "JournalController");

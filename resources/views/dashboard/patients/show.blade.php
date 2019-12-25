@@ -17,8 +17,8 @@
 				<h4><strong>{{$patient->name}}</strong> {{ __('Medical Record') }}</h4>
 			</div>
 			<div class="col-md-6 my-3 d-flex justify-content-end">
-				<a href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}" class="btn btn-primary mx-1">{{__('Edit')}}</a>
-				<a href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}" data-action='destroy' data-target="#form-delete-patient" data-message="{{ __('Are you sure delete it') }} !!!" class="btn btn-danger mx-1">{{__('Delete')}}</a>
+				<a href="{{ route('dashboard.patients.edit', ['patient' => $patient]) }}" class="btn btn-primary mx-1"><i class="material-icons">edit</i>  {{__('Edit')}}</a>
+				<a href="{{ route('dashboard.patients.destroy', ['patient' => $patient]) }}" data-action='destroy' data-target="#form-delete-patient" data-message="{{ __('Are you sure delete it') }} !!!" class="btn btn-danger mx-1"><i class="material-icons">delete_outline</i>  {{__('Delete')}}</a>
 				<form id='form-delete-patient' method="POST">
 					@method('DELETE')
 					@csrf
@@ -64,7 +64,7 @@
 			</div>
 			<div class="col-md-9 px-2">
 				<h5 class="my-3"><strong>{{$patient->name}}</strong> {{__('Medical Journal')}}</h5>
-				<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3">{{__('Add')}}</a>
+				<a href="{{ route('dashboard.patients.journals.add', ['patient' => $patient]) }}" class="btn btn-primary mb-3"><i class="material-icons">post_add</i> {{__('Add')}}</a>
 				@php
 	                $color=[ 'primary', 'info', 'warning', 'danger' , 'success'];
 	            @endphp
@@ -74,7 +74,7 @@
 	                    	<h5 class="my-0">{{__('Anamnese')}}</h5>
                             <p class="mb-1">{{ implode(', ', $journal->anamnese) }}</p>
                             <h5 class="my-0">{{__('Diagnosis')}}</h5>
-                            <p class="mb-1">{{ implode(', ', $journal->diagnosis) }}</p>
+                            <p class="mb-1">{{ $journal->diagnosis->implode('name', ', ') }}</p>
                             <p class="mb-1">{{__('Created at')}} : {{ $journal->created_at->diffForHumans() }}</p>
 	                    </div>
 	                    <div class="card-footer">

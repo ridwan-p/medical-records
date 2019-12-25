@@ -11,21 +11,21 @@
             </div>
         @endif
     </div>
-    
+
     <div class="container">
         <div class="row mb-3">
-            <h4>{{ __('Journal') }}</h4>
+            <h4>{{ __('List Journal') }}</h4>
         </div>
         <div class="row mb-3">
             <div class="col-md-9 px-1">
-                <a href="{{ route('dashboard.journals.create') }}" class="btn btn-primary">{{ __('Add') }}</a>
+                <a href="{{ route('dashboard.journals.create') }}" class="btn btn-primary"><i class="material-icons">post_add</i> {{ __('Add') }}</a>
             </div>
             <div class="col-md-3 px-1">
                 <form action="{{ route('dashboard.journals.index') }}" method="GET">
                     <div class="input-group">
                         <input type="search" name="search" class="form-control" placeholder="{{ __('Search') }}" value="{{request()->search}}">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" id="button-addon2">{{ __('Search') }}</button>
+                            <button class="btn btn-primary" type="submit" id="button-addon2"><i class="material-icons">search</i> </button>
                         </div>
                     </div>
                 </form>
@@ -43,7 +43,7 @@
                                 <h5 class="my-0">{{__('Anamnese')}}</h5>
                                 <p class="mb-1">{{ implode(', ', $journal->anamnese) }}</p>
                                 <h5 class="my-0">{{__('Diagnosis')}}</h5>
-                                <p class="mb-1">{{ implode(', ', $journal->diagnosis) }}</p>
+                                <p class="mb-1">{{ $journal->diagnosis->implode('name', ', ') }}</p>
                             </div>
                             <div class="col-3 border-left border-light">
                                 <h5 class="font-weight-bold"><i class="material-icons">access_time</i> {{$journal->created_at->format("d F Y h:m")}}</h5>
@@ -53,7 +53,7 @@
                                 <img src="{{ asset(asset($journal->patient->photo['medium'] ?? 'images/user.svg')) }}" alt="avatar" width="50" class="rounded-circle">
                                 <div class="ml-3">
                                     <h5 class="font-weight-bold">{{$journal->patient->name}}</h5>
-                                    <p class="my-0"><i class="material-icons text-secondary">people</i> {{$journal->patient->parent}}</p>
+                                    <p class="my-0"><i class="material-icons text-secondary">location_city</i> {{optional($journal->patient)->address}}</p>
                                     <p class="my-0"><i class="material-icons text-secondary">date_range</i> {{optional($journal->patient->date_of_birth)->format('d F Y')}}</p>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
             @empty
                 {{__('Data is empty')}}
             @endforelse
-            
+
             {{$journals->links()}}
         </div>
     </div>

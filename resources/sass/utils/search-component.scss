@@ -1,0 +1,20 @@
+.list-search li:first-child {
+  border-top-left-radius:0;
+  border-top-right-radius:0;
+  border-top:0;
+}
+
+.rounded-bottom-0 {
+  border-bottom-left-radius:0;
+  border-bottom-right-radius:0;
+}
+
+.list-search li:hover {
+	background-color: #eaeaea;
+}
+
+.list-search {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+}

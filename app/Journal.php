@@ -8,16 +8,16 @@ class Journal extends Model
 {
     protected $fillable = [
     	'patient_id',
-    	'therapy',
+    	'action',
     	'anamnese',
-    	'diagnosis',
+    	// 'diagnosis',
     	'note',
     ];
 
     protected $casts = [
-    	'therapy' => 'array',
+    	'action' => 'array',
     	'anamnese' => 'array',
-    	'diagnosis' => 'array',
+    	// 'diagnosis' => 'array',
     ];
 
     // protected $dates = [
@@ -31,6 +31,11 @@ class Journal extends Model
     		->using(JournalMedication::class)
     		->withPivot(['note'])
             ->withTimestamps();
+    }
+
+    public function diagnosis()
+    {
+        return $this->belongsToMany(Diagnose::class);
     }
 
     public function patient()
