@@ -58,7 +58,7 @@ class PatientController extends Controller
     	});
 
     	session()->flash('success', 'Data has been created');
-    	return redirect()->route('dashboard.patients.index');
+    	return redirect()->route('dashboard.patients.show', ['patient' => $patient]);
     }
 
     public function show(Patient $patient)
