@@ -34,13 +34,13 @@ Route::prefix('dashboard')
 	Route::patch('profile', "ProfileController@update")->name('profile.update');
 
 	Route::resource('patients', "PatientController");
-	Route::get('patients/{patient}/journals/add', "PatientController@createJournal")->name('patients.journals.add');
-	Route::post('patients/{patient}/journals/add', "PatientController@storeJournal")->name('patients.journals.store');
+	Route::get('patients/{patient}/journals/create', "PatientController@createJournal")->name('patients.journals.add');
+	Route::post('patients/{patient}/journals', "PatientController@storeJournal")->name('patients.journals.store');
 
 	// Journal in patient
 	Route::get('patients/{journal}/journals/edit', "PatientController@editJournal")->name('patients.journals.edit');
-	Route::put('patients/{journal}/journals/add', "PatientController@updateJournal")->name('patients.journals.update');
-	Route::patch('patients/{journal}/journals/add', "PatientController@updateJournal")->name('patients.journals.update');
+	Route::put('patients/{journal}/journals', "PatientController@updateJournal")->name('patients.journals.update');
+	Route::patch('patients/{journal}/journals', "PatientController@updateJournal")->name('patients.journals.update');
 
 	// export patient
 	Route::post('patients/import/list', "PatientController@importList")->name('patients.import.list');

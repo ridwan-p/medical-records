@@ -158,6 +158,12 @@ class PatientController extends Controller
     public function editJournal(Journal $journal)
     {
         $patient = $journal->patient;
+        $journals = $patient->journals()
+            ->orderBy('created_at', 'desc')
+            ->paginate();
+
+        $patient->setRelation('journals', $journals);
+
         return view('dashboard.patients.edit_journal', compact('journal', 'patient'));
     }
 
