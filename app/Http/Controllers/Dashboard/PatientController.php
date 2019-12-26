@@ -119,6 +119,12 @@ class PatientController extends Controller
 
     public function createJournal(Patient $patient)
     {
+        $journals = $patient->journals()
+            ->orderBy('created_at', 'desc')
+            ->paginate();
+
+        $patient->setRelation('journals', $journals);
+
         return view('dashboard.patients.create_journal', compact('patient'));
     }
 
