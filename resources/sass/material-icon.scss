@@ -1,2 +1,12 @@
-$material-icons-font-size: 15px !default;
+$material-icons-font-size: 16px !default;
 @import '~material-icons/iconfont/material-icons.scss';
+
+.btn-icon {
+	font-size: 1.5rem;
+	padding: .1rem .3rem;
+	border: none;
+}
+
+.material-icons {
+	line-height: 1.5 !important;
+}

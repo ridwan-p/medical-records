@@ -34,6 +34,7 @@ Route::prefix('dashboard')
 	Route::patch('profile', "ProfileController@update")->name('profile.update');
 
 	Route::resource('patients', "PatientController");
+	Route::post('patients/destroyAll', "PatientController@destroyAll")->name('patients.destroyAll');
 	Route::get('patients/{patient}/journals/create', "PatientController@createJournal")->name('patients.journals.add');
 	Route::post('patients/{patient}/journals', "PatientController@storeJournal")->name('patients.journals.store');
 

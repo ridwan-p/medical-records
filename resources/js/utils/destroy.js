@@ -10,4 +10,23 @@ document.addEventListener('click', (event) => {
       form.submit()
 		}
 	}
-})
+
+  if(target.matches(".checkbox-selected")) {
+    // event.preventDefault()
+    const table = target.closest('table')
+    const checks = table.querySelectorAll('tbody .checkbox-selected');
+    const checkHead = table.querySelector('thead .checkbox-selected');
+
+    if(target.dataset.action === 'all') {
+      for(let i of checks) {
+        i.checked = checkHead.checked ? true : false
+      }
+    } else {
+      checkHead.checked = false;
+      for(let i of checks) {
+        if(i.checked) { checkHead.checked = true;  }
+      }
+    }
+
+  }
+}, false)
