@@ -108,7 +108,6 @@ class PatientController extends Controller
     {
         $patient = DB::transaction(function () use ($patient) {
             $patient->journals()->delete();
-            $patient->diagnosis()->delete();
             $patient->delete();
 
             return $patient;
