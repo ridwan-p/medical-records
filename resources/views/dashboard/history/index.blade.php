@@ -39,7 +39,7 @@
                                 <tr>
                                     <td>{{$index + $journals->firstItem()}}</td>
                                     <td>{{ $journal->patient->name }}</td>
-                                    <td>{{$journal->patient->age}}/ {{ $journal->patient->gender ? __('Male') : __("Female") }}</td>
+                                    <td>{{$journal->patient->age}}/ {{ $journal->patient->gender === 'm' ? __('Male') : __("Female") }}</td>
                                     <td>{{ $journal->patient->address }}</td>
                                     <td>{{ implode(',', $journal->anamnese) }}</td>
                                     <td>{{ $journal->diagnosis->implode('name', ', ') }}</td>
