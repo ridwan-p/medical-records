@@ -36,7 +36,7 @@
 						<p class="my-0 font-italic">{{ __('Code') }}  : {{ $patient->code }}</p>
 						<p class="m-0"><i class="material-icons text-primary">date_range</i> {{ $patient->place_of_birth }} {{optional($patient->date_of_birth)->format('d M Y')}}</p>
 						<p class="my-0">{{ $patient->age }} {{ __('Year') }}</p>
-						<p class="my-0">{{ $patient->gender ? __('Male') : __("Female") }}</p>
+						<p class="my-0">{{ $patient->gender === 'm' ? __('Male') : __("Female") }}</p>
 					</div>
 				</div>
 				<div class="card my-3">
