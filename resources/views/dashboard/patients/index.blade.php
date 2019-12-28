@@ -38,13 +38,13 @@
 			<table class="table table-striped">
 				<thead class="bg-primary text-white">
 					<tr>
-						<th>
+						{{-- <th>
 							<div class="custom-control custom-checkbox">
 								<input type="checkbox" class="custom-control-input checkbox-selected" data-action="all" id="all-patient">
 								<label class="custom-control-label" for="all-patient"></label>
 							</div>
-						</th>
-						{{-- <th>{{__('No')}}</th> --}}
+						</th> --}}
+						<th>{{__('No')}}</th>
 						<th>{{__('Name')}}</th>
 						<th>{{__('Code')}}</th>
 						<th>{{__('Address')}}</th>
@@ -56,13 +56,13 @@
 				<tbody>
 					@forelse ($patients as $index => $patient)
 						<tr>
-							<td>
+							{{-- <td>
 								<div class="custom-control custom-checkbox">
 									<input type="checkbox" class="custom-control-input patient checkbox-selected" name="patient[{{$index}}]" data-action="single" id="patient-{{$index}}">
 									<label class="custom-control-label" for="patient-{{$index}}"></label>
 								</div>
-							</td>
-							{{-- <td>{{ $patients->firstItem() + $index }}</td> --}}
+							</td> --}}
+							<td>{{ $patients->firstItem() + $index }}</td>
 							<td>
 								<a href="{{ route('dashboard.patients.show', ['patient' => $patient]) }}"><img src="{{ asset($patient->photo['medium'] ?? 'images/user.svg') }}" alt="defaul avatar" width="30" class="rounded-circle"> {{$patient->name}}</a>
 							</td>
@@ -87,24 +87,24 @@
 						</tr>
 					@endforelse
 				</tbody>
-				<tfoot>
+				{{-- <tfoot>
 					<tr>
-						{{-- <td>
+						<td>
 							<div class="custom-control custom-checkbox">
 								<input type="checkbox" class="custom-control-input" id="all-patient">
 								<label class="custom-control-label" for="all-patient"></label>
 							</div>
-						</td> --}}
+						</td>
 						<td colspan="5">
 							<div class="dropdown">
-								    <button class="btn btn-link btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">{{ __('Event') }}</button>
-								    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="{{ __('Are you sure delete it') }} !!!" href="{{ route('dashboard.patients.destroyAll') }}"><i class="material-icons">delete_outline</i> {{ __('Delete') }}</a>
-								    </div>
-								</div>
+							    <button class="btn btn-link btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">{{ __('Event') }}</button>
+							    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="{{ __('Are you sure delete it') }} !!!" href="{{ route('dashboard.patients.destroyAll') }}"><i class="material-icons">delete_outline</i> {{ __('Delete') }}</a>
+							    </div>
+							</div>
 						</td>
 					</tr>
-				</tfoot>
+				</tfoot> --}}
 			</table>
 		</div>
 		{{ $patients->links() }}
