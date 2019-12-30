@@ -51,7 +51,7 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label for="date_of_birth">{{ __("Date of birth") }}</label>
-				<input type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" id="date_of_birth" value="{{old('date_of_birth', $patient->date_of_birth->format("Y-m-d"))}}" autofocus>
+				<input type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" id="date_of_birth" value="{{old('date_of_birth', optional($patient->date_of_birth)->format("Y-m-d"))}}" autofocus>
 				@error('date_of_birth')
 	                <span class="invalid-feedback" role="alert">
 	                    <strong>{{ $message }}</strong>
