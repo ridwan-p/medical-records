@@ -94,5 +94,7 @@
             </nav>
         </footer>
     </div>
+
+    @stack('js')
 </body>
 </html>
