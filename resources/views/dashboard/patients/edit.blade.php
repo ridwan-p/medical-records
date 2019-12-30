@@ -41,25 +41,6 @@
 			</div>
 
 			<div class="form-group col-md-6">
-				<label for="place_of_birth">{{ __("Place of birth") }}</label>
-				<input type="text" class="form-control @error('place_of_birth') is-invalid @enderror" name="place_of_birth" id="place_of_birth" value="{{old('place_of_birth', $patient->place_of_birth)}}" autofocus>
-				@error('place_of_birth')
-	                <span class="invalid-feedback" role="alert">
-	                    <strong>{{ $message }}</strong>
-	                </span>
-	            @enderror
-			</div>
-			<div class="form-group col-md-6">
-				<label for="date_of_birth">{{ __("Date of birth") }}</label>
-				<input type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" id="date_of_birth" value="{{old('date_of_birth', optional($patient->date_of_birth)->format("Y-m-d"))}}" autofocus>
-				@error('date_of_birth')
-	                <span class="invalid-feedback" role="alert">
-	                    <strong>{{ $message }}</strong>
-	                </span>
-	            @enderror
-			</div>
-
-			<div class="form-group col-md-6">
 				<label for="gender" class="d-block">{{ __("Gender") }} <span class="text-danger">*</span></label>
 				<div class="custom-control custom-radio custom-control-inline">
 					<input type="radio" id="gender-m" name="gender" value="m" class="custom-control-input @error('gender') is-invalid @enderror" @if(old('gender', $patient->gender) === 'm') checked @endif>
@@ -101,6 +82,35 @@
 	            @enderror
 			</div>
 
+
+			<div class="form-group col-md-4">
+				<label for="place_of_birth">{{ __("Place of birth") }}</label>
+				<input type="text" class="form-control @error('place_of_birth') is-invalid @enderror" name="place_of_birth" id="place_of_birth" value="{{old('place_of_birth', $patient->place_of_birth)}}" autofocus>
+				@error('place_of_birth')
+	                <span class="invalid-feedback" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </span>
+	            @enderror
+			</div>
+			<div class="form-group col-md-4">
+				<label for="date_of_birth">{{ __("Date of birth") }}</label>
+				<input type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" id="date_of_birth" value="{{old('date_of_birth', optional($patient->date_of_birth)->format("Y-m-d"))}}" autofocus>
+				@error('date_of_birth')
+	                <span class="invalid-feedback" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </span>
+	            @enderror
+			</div>
+
+			<div class="form-group col-md-4">
+				<label for="age_of_birth">{{ __("Age") }}</label>
+				<input type="number" class="form-control @error('age_of_birth') is-invalid @enderror" name="age_of_birth" id="age_of_birth" value="{{old('age_of_birth', $patient->age)}}" autofocus>
+				@error('age_of_birth')
+	                <span class="invalid-feedback" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </span>
+	            @enderror
+			</div>
 
 			<div class="form-group col-md-12">
 				<label for="address">{{ __("Address") }} <span class="text-danger">*</span></label>

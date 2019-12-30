@@ -22,7 +22,8 @@ class Patient extends Model
     	'phone',
     	'parent',
         'allergies',
-        'photo'
+        'photo',
+        'age_of_birth'
     ];
 
     protected $appends = [
@@ -35,12 +36,7 @@ class Patient extends Model
         'date_of_birth' => 'date'
     ];
 
-    public function getAgeAttribute()
-    {
-        if(empty($this->date_of_birth)) return 0;
 
-        return Carbon::parse($this->date_of_birth)->age;
-    }
 
     public function journals()
     {
@@ -59,6 +55,13 @@ class Patient extends Model
         return json_decode($allergies) ?? [];
     }
 
+    public function getAgeAttribute()
+    {
+        if(empty($this->date_of_birth)) return '';
+
+        return Carbon::parse($this->date_of_birth)->age;
+    }
+
     // mutator
     public function setPhotoAttribute($photo)
     {
@@ -68,6 +71,14 @@ class Patient extends Model
     public function setNameAttribute($name)
     {
         $this->attributes['name'] = ucwords($name);
+    }
+
+    public function setAgeOfBirthAttribute($age)
+    {
+        if(empty(request()->date_of_birth)) {
+            $time = strtotime("-{$age} year", time());
+            $this->attributes['date_of_birth'] = date("Y-m-d", $time);
+        }
     }
 
     // other
