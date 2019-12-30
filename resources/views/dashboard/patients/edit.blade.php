@@ -103,7 +103,7 @@
 			</div>
 
 			<div class="form-group col-md-4">
-				<label for="age_of_birth">{{ __("Age") }}</label>
+				<label for="age_of_birth">{{ __("Age") }} ({{__("Year")}})</label>
 				<input type="number" class="form-control @error('age_of_birth') is-invalid @enderror" name="age_of_birth" id="age_of_birth" value="{{old('age_of_birth', $patient->age)}}" autofocus>
 				@error('age_of_birth')
 	                <span class="invalid-feedback" role="alert">
