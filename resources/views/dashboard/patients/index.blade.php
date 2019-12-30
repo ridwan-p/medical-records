@@ -16,7 +16,7 @@
 		<div class="row mb-3">
 			<div class="col-md-9 p-2 d-inline-flex flex-row">
 				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary mr-2"><i class="material-icons">post_add</i> {{ __('Add') }}</a>
-				<button class="btn btn-info import-file" data-target=".import-file-upload"><i class="material-icons">library_add</i> Import</button>
+				{{-- <button class="btn btn-info import-file" data-target=".import-file-upload"><i class="material-icons">library_add</i> Import</button> --}}
 
 				<form action="{{ route('dashboard.patients.import.list') }}" id="form-import" method="POST" enctype='multipart/form-data'>
 					@csrf
