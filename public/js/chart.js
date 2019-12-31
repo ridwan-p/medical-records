@@ -4036,15 +4036,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var frappe_charts_dist_frappe_charts_esm_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! frappe-charts/dist/frappe-charts.esm.js */ "./node_modules/frappe-charts/dist/frappe-charts.esm.js");
 
 var data = {
-  labels: ["12am-3am", "3am-6pm", "6am-9am", "9am-12am", "12pm-3pm", "3pm-6pm", "6pm-9pm", "9am-12am"],
+  labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
   datasets: [{
-    name: "Some Data",
-    type: "bar",
-    values: [25, 40, 30, 35, 8, 52, 17, -4]
-  }, {
-    name: "Another Set",
-    type: "line",
-    values: [25, 50, -10, 15, 18, 32, 27, 14]
+    values: [18, 40, 30, 35, 8, 52, 17, -4]
   }]
 };
 var chart = new frappe_charts_dist_frappe_charts_esm_js__WEBPACK_IMPORTED_MODULE_0__["Chart"]("#chart", {
@@ -4054,7 +4048,15 @@ var chart = new frappe_charts_dist_frappe_charts_esm_js__WEBPACK_IMPORTED_MODULE
   type: 'axis-mixed',
   // or 'bar', 'line', 'scatter', 'pie', 'percentage'
   height: 250,
-  colors: ['#7cd6fd', '#743ee2']
+  colors: ['#7cd6fd'],
+  lineOptions: {
+    dotSize: 1,
+    // default: 4
+    heatline: 1,
+    // default: 0
+    regionFill: 1,
+    xIsSeries: true
+  }
 });
 
 /***/ }),
