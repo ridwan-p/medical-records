@@ -4049,7 +4049,6 @@ var data = {
 };
 var chart = new frappe_charts_dist_frappe_charts_esm_js__WEBPACK_IMPORTED_MODULE_0__["Chart"]("#chart", {
   // or a DOM element,
-  // new Chart() in case of ES6 module with above usage
   title: "My Awesome Chart",
   data: data,
   type: 'axis-mixed',

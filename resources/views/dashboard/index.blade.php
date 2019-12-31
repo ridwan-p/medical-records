@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('css')
+    <link href="{{ asset('css/chart.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
     <div class="container">
         <div id="chart"></div>
