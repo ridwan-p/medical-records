@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container px-1">
+    <div class="container">
         @if(session('success'))
             <div class="alert alert-success">
                 <strong>{{ __('Success') }} !</strong> {{ __(session('success')) }}
@@ -10,13 +10,10 @@
                   </button>
             </div>
         @endif
-    </div>
 
-    <div class="container">
-        <div class="row mb-3">
-            <h4>{{ __('List Journal') }}</h4>
-        </div>
-        <div class="row mb-3">
+        <h4 class="my-3">{{ __('List Journal') }}</h4>
+
+        <div class="d-flex mb-3">
             <div class="col-md-9 px-1">
                 <a href="{{ route('dashboard.journals.create') }}" class="btn btn-primary"><i class="material-icons">post_add</i> {{ __('Add') }}</a>
             </div>
@@ -31,7 +28,7 @@
                 </form>
             </div>
         </div>
-        <div class="row mb-3">
+        <div class="d-flex flex-column mb-3">
             @php
                 $color=[ 'primary', 'info', 'warning', 'danger' , 'success'];
             @endphp
@@ -67,7 +64,7 @@
                 {{__('Data is empty')}}
             @endforelse
 
-            {{$journals->links()}}
         </div>
+        {{$journals->links()}}
     </div>
 @endsection
