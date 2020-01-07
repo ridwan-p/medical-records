@@ -10,11 +10,10 @@
 				  </button>
 			</div>
 		@endif
-		<div class="row mb-3">
-			<h4 class="p-2 m-0">{{ __('List Patient') }}</h4>
-		</div>
-		<div class="row mb-3">
-			<div class="col-md-9 p-2 d-inline-flex flex-row">
+		<h4 class="my-2">{{ __('List Patient') }}</h4>
+
+		<div class="d-flex justify-content-between align-items-center mb-3">
+			<div>
 				<a href="{{ route('dashboard.patients.create') }}" class="btn btn-primary mr-2"><i class="material-icons">post_add</i> {{ __('Add') }}</a>
 				{{-- <button class="btn btn-info import-file" data-target=".import-file-upload"><i class="material-icons">library_add</i> Import</button> --}}
 
@@ -23,16 +22,14 @@
 					<input type="file" name="file" class="d-none import-file-upload">
 				</form>
 			</div>
-			<div class="col-md-3 p-2">
-				<form action="{{ route('dashboard.patients.index') }}" method="GET">
-                    <div class="input-group">
-                        <input type="search" name="search" class="form-control" placeholder="{{ __('Search') }}" value="{{request()->search}}">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" id="button-addon2"><i class="material-icons">search</i> </button>
-                        </div>
+			<form action="{{ route('dashboard.patients.index') }}" method="GET">
+                <div class="input-group">
+                    <input type="search" name="search" class="form-control" placeholder="{{ __('Search') }}" value="{{request()->search}}">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" id="button-addon2"><i class="material-icons">search</i> </button>
                     </div>
-                </form>
-			</div>
+                </div>
+            </form>
 		</div>
 		<div class="table-responsive rounded-top">
 			<table class="table table-striped">
