@@ -1,0 +1,119 @@
+<template>
+	<div>
+		<div class="row justify-content-between align-items-center mb-3">
+			<div class="col-md-6">
+				<!-- <slot name="add"></slot> -->
+				<a href="/dashboard/patients/create" class="btn btn-primary mr-2"><i class="material-icons">post_add</i>Add</a>
+				<!-- <button class="btn btn-info import-file" data-target=".import-file-upload"><i class="material-icons">library_add</i> Import</button> -->
+
+				<!-- <form action="{{ route('dashboard.patients.import.list') }}" id="form-import" method="POST" enctype='multipart/form-data'>
+					<input type="file" name="file" class="d-none import-file-upload">
+				</form> -->
+			</div>
+			<div class="col-md-6">
+		        <div class="input-group">
+		            <input type="search" name="search" class="form-control" placeholder="search" v-model="query" @keyup="handleSearch">
+		            <div class="input-group-append">
+		                <button class="btn btn-primary" type="submit" id="button-addon2" @click="handleSearch"><i class="material-icons">search</i> </button>
+		            </div>
+		        </div>
+			</div>
+		</div>
+		<div class="table-responsive rounded-top">
+			<table class="table table-striped">
+				<thead class="bg-primary text-white">
+					<tr>
+						<!-- <th>
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input checkbox-selected" data-action="all" id="all-patient">
+								<label class="custom-control-label" for="all-patient"></label>
+							</div>
+						</th> -->
+						<th>No</th>
+						<th>Name</th>
+						<th>Code</th>
+						<th>Address</th>
+						<th>Date of birth</th>
+						<th>Age</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody v-if="isGetting">
+					<tr>
+						<td colspan="8">Loading...</td>
+					</tr>
+				</tbody>
+
+				<tbody v-else-if="items.data.length">
+					<tr v-for="(item, index) in items.data">
+						<!-- <td>
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input patient">
+								<label class="custom-control-label"></label>
+							</div>
+						</td> -->
+						<td>{{ items.from + index }}</td>
+						<td>
+							<a href="#"><img src="/images/user.svg" alt="defaul avatar" width="30" class="rounded-circle"> {{item.name}}</a>
+						</td>
+						<td>{{ item.code }}</td>
+						<td>{{ item.address }}</td>
+						<td>{{ item.date_of_birth }}</td>
+						<td>{{ item.age }} </td>
+						<td>
+							<div class="dropdown">
+							    <button class="btn btn-outline-primary btn-icon material-icons btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown">more_horiz</button>
+							    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							        <a class="dropdown-item" :href="`/dashboard/patients/${item.id}`"><i class="material-icons">remove_red_eye</i> Show</a>
+							        <a class="dropdown-item" :href="`/dashboard/patients/${item.id}/edit`"><i class="material-icons">edit</i>  Edit</a>
+							        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="Are you sure delete it !!!" :href="`/dashboard/patients/${item.id}`"><i class="material-icons">delete_outline</i> Delete</a>
+							    </div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tbody v-else>
+					<tr>
+						<td colspan="8">Data is empty...</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<slot></slot>
+	</div>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				items: { data: [] },
+				isGetting: false,
+				query: '',
+				timer: null
+			}
+		},
+		mounted() {
+			this.getData()
+		},
+		methods: {
+			getData : function(params) {
+				this.isGetting = true
+				return axios.get(`/local-api/patients`, { params })
+					.then(res => {
+						this.items = res.data
+						this.isGetting = false
+						return res
+					})
+			},
+			handleSearch: function() {
+				if (this.timer) {
+			        clearTimeout(this.timer);
+			        this.timer = null;
+			    }
+				this.timer = setTimeout(() => this.getData( { q: this.query } ), 800)
+			}
+		}
+	}
+</script>
