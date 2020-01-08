@@ -65,7 +65,7 @@
 
 			<div class="form-group col-md-12">
 				<label for="action">{{ __('Action') }}</label>
-				<tags-input valid="@error('action.*') is-invalid @enderror" value="{{old('action-text', implode(', ', $journal->action))}}" name="action"></tags-input>
+				<tags-input valid="@error('action.*') is-invalid @enderror" value="{{old('action-text', implode(', ', $journal->action ?? []))}}" name="action"></tags-input>
 
 				@error('action.*')
 	                <small class="d-block text-danger" role="alert">

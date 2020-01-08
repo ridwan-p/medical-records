@@ -90,9 +90,11 @@
 				            			<td>{{ optional($journal->created_at)->diffForHumans() }}</td>
 				            		</tr>
 				            @empty
+				                <tr>
+				                	<td colspan="5">{{__('Data is empty')}}</td>
+				                </tr>
+				            @endforelse
 		            	</tbody>
-			                {{__('Data is empty')}}
-			            @endforelse
 					</table>
 				</div>
 	            {{ $patient->journals->links() }}
