@@ -22640,17 +22640,21 @@ var render = function() {
                     _c("td", [_vm._v(_vm._s(_vm.items.from + index))]),
                     _vm._v(" "),
                     _c("td", [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", {
-                          staticClass: "rounded-circle",
-                          attrs: {
-                            src: "/images/user.svg",
-                            alt: "defaul avatar",
-                            width: "30"
-                          }
-                        }),
-                        _vm._v(" " + _vm._s(item.name))
-                      ])
+                      _c(
+                        "a",
+                        { attrs: { href: "/dashboard/patients/" + item.id } },
+                        [
+                          _c("img", {
+                            staticClass: "rounded-circle",
+                            attrs: {
+                              src: "/images/user.svg",
+                              alt: "defaul avatar",
+                              width: "30"
+                            }
+                          }),
+                          _vm._v(" " + _vm._s(item.name))
+                        ]
+                      )
                     ]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(item.code))]),

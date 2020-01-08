@@ -55,7 +55,7 @@
 						</td> -->
 						<td>{{ items.from + index }}</td>
 						<td>
-							<a href="#"><img src="/images/user.svg" alt="defaul avatar" width="30" class="rounded-circle"> {{item.name}}</a>
+							<a :href="`/dashboard/patients/${item.id}`"><img src="/images/user.svg" alt="defaul avatar" width="30" class="rounded-circle"> {{item.name}}</a>
 						</td>
 						<td>{{ item.code }}</td>
 						<td>{{ item.address }}</td>
