@@ -158,5 +158,6 @@ return [
         'place_of_birth' => 'Tempat Lahir',
         'date_of_birth' => 'Tanggal Lahir',
         'blood' => 'Golongan darah',
+        'physical_report' => 'Pemeriksaan fisik'
     ],
 ];

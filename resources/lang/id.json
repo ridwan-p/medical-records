@@ -50,6 +50,7 @@
   "Anamnese" : "Anamnese",
   "Diagnosis" : "Diagnosa",
   "Medications" : "Terapi",
+  "Physical Report": "Pemeriksaan fisik",
   "Created at" : "Tgl Buat",
   "Updated at" : "Tgl Sunting",
   "Medical Journal": "Jurnal Medis",
@@ -63,7 +64,6 @@
   "Data has been updated" : "Data berhasil diperbaharui",
   "Data has been deleted" : "Data berhasil dihapus",
   "Choose file": "Pilih file",
-  "Action": "Tindakan",
   "Are you sure delete it": "Apa kamu yakin hapus data ini",
   "items": "butir"
 }

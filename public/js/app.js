@@ -2357,11 +2357,12 @@ __webpack_require__.r(__webpack_exports__);
       },
       isGetting: false,
       query: '',
-      timer: null
+      timer: null,
+      lang: lang
     };
   },
   mounted: function mounted() {
-    this.getData();
+    this.getData(); // console.log(lang)
   },
   methods: {
     getData: function getData(params) {
@@ -23952,9 +23953,23 @@ var render = function() {
         "div",
         { staticClass: "row justify-content-between align-items-center mb-3" },
         [
-          _vm._m(0),
+          _c("div", { staticClass: "col-md-9" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary mr-2",
+                attrs: { href: "/dashboard/patients/create" }
+              },
+              [
+                _c("i", { staticClass: "material-icons" }, [
+                  _vm._v("post_add")
+                ]),
+                _vm._v(" " + _vm._s(_vm.lang["Add"]))
+              ]
+            )
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "col-md-3" }, [
             _c("div", { staticClass: "input-group" }, [
               _c("input", {
                 directives: [
@@ -23969,7 +23984,7 @@ var render = function() {
                 attrs: {
                   type: "search",
                   name: "search",
-                  placeholder: "search"
+                  placeholder: _vm.lang["Search"]
                 },
                 domProps: { value: _vm.query },
                 on: {
@@ -24008,10 +24023,26 @@ var render = function() {
           "table",
           { staticClass: "table table-striped" },
           [
-            _vm._m(1),
+            _c("thead", { staticClass: "bg-primary text-white" }, [
+              _c("tr", [
+                _c("th", [_vm._v("No")]),
+                _vm._v(" "),
+                _c("th", [_vm._v(_vm._s(_vm.lang["Name"]))]),
+                _vm._v(" "),
+                _c("th", [_vm._v(_vm._s(_vm.lang["Code"]))]),
+                _vm._v(" "),
+                _c("th", [_vm._v(_vm._s(_vm.lang["Address"]))]),
+                _vm._v(" "),
+                _c("th", [_vm._v(_vm._s(_vm.lang["Date of birth"]))]),
+                _vm._v(" "),
+                _c("th", [_vm._v(_vm._s(_vm.lang["Age"]))]),
+                _vm._v(" "),
+                _c("th")
+              ])
+            ]),
             _vm._v(" "),
             _vm.isGetting
-              ? _c("tbody", [_vm._m(2)])
+              ? _c("tbody", [_vm._m(0)])
               : _vm.items.data.length
               ? [
                   _c(
@@ -24085,7 +24116,7 @@ var render = function() {
                                     _c("i", { staticClass: "material-icons" }, [
                                       _vm._v("remove_red_eye")
                                     ]),
-                                    _vm._v(" Show")
+                                    _vm._v(" " + _vm._s(_vm.lang["Show"]))
                                   ]
                                 ),
                                 _vm._v(" "),
@@ -24104,7 +24135,7 @@ var render = function() {
                                     _c("i", { staticClass: "material-icons" }, [
                                       _vm._v("edit")
                                     ]),
-                                    _vm._v("  Edit")
+                                    _vm._v("  " + _vm._s(_vm.lang["Edit"]))
                                   ]
                                 ),
                                 _vm._v(" "),
@@ -24116,7 +24147,8 @@ var render = function() {
                                       "data-action": "destroy",
                                       "data-target": "#form-delete-patient",
                                       "data-message":
-                                        "Are you sure delete it !!!",
+                                        _vm.lang["Are you sure delete it"] +
+                                        " !!!",
                                       href: "/dashboard/patients/" + item.id
                                     }
                                   },
@@ -24124,7 +24156,7 @@ var render = function() {
                                     _c("i", { staticClass: "material-icons" }, [
                                       _vm._v("delete_outline")
                                     ]),
-                                    _vm._v(" Delete")
+                                    _vm._v(" " + _vm._s(_vm.lang["Delete"]))
                                   ]
                                 )
                               ]
@@ -24178,7 +24210,7 @@ var render = function() {
                       ])
                     : _vm._e()
                 ]
-              : _c("tbody", [_vm._m(3)])
+              : _c("tbody", [_vm._m(1)])
           ],
           2
         )
@@ -24190,46 +24222,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-primary mr-2",
-          attrs: { href: "/dashboard/patients/create" }
-        },
-        [
-          _c("i", { staticClass: "material-icons" }, [_vm._v("post_add")]),
-          _vm._v("Add")
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "bg-primary text-white" }, [
-      _c("tr", [
-        _c("th", [_vm._v("No")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Code")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Address")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Date of birth")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Age")]),
-        _vm._v(" "),
-        _c("th")
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -24591,6 +24583,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 __webpack_require__(/*! ./utils */ "./resources/js/utils/index.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.lang = __webpack_require__(/*! ../lang/id.json */ "./resources/lang/id.json");
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -24611,6 +24604,7 @@ files.keys().map(function (key) {
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// console.log(require('../lang/id.json'))
 
 var app = new Vue({
   el: '#app'
@@ -25286,6 +25280,17 @@ document.addEventListener('change', function (event) {
 __webpack_require__(/*! ./destroy */ "./resources/js/utils/destroy.js");
 
 __webpack_require__(/*! ./import-file */ "./resources/js/utils/import-file.js"); // require('./chart')
+
+/***/ }),
+
+/***/ "./resources/lang/id.json":
+/*!********************************!*\
+  !*** ./resources/lang/id.json ***!
+  \********************************/
+/*! exports provided: Confirm Password, E-Mail Address, Forgot Your Password?, If you did not request a password reset, no further action is required., Login, Logout, Name, Password, Register, Remember Me, Reset Password, Reset Password Notification, Send Password Reset Link, You are receiving this email because we received a password reset request for your account., failed, success, Forbbiden Access, Unauthorized, Code, Add, Create, Edit, Delete, Show, Search, Details, Patient, Back, List Patient, Place of birth, Date of birth, Gender, Male, Female, Address, Contact, Allergies, Photo, Parent, Journal, List Journal, History, List History, Blood, Medical, Record, Medical Record, Toggle navigation, Anamnese, Diagnosis, Medications, Physical Report, Created at, Updated at, Medical Journal, Note, Age, Year, Save, Submit, Data is empty, Data has been created, Data has been updated, Data has been deleted, Choose file, Are you sure delete it, items, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"Confirm Password\":\"Konfirmasi Kata Sandi\",\"E-Mail Address\":\"Alamat E-mail\",\"Forgot Your Password?\":\"Lupa Kata Sandi Anda?\",\"If you did not request a password reset, no further action is required.\":\"Jika anda tidak meminta pengaturan ulang kata sandi, anda tidak perlu melakukan apapun.\",\"Login\":\"Masuk\",\"Logout\":\"Keluar\",\"Name\":\"Nama\",\"Password\":\"Kata Sandi\",\"Register\":\"Daftar\",\"Remember Me\":\"Ingatkan Saya\",\"Reset Password\":\"Atur Ulang Kata Sandi\",\"Reset Password Notification\":\"Pemberitahuan Pengaturan Ulang Kata Sandi\",\"Send Password Reset Link\":\"Kirim Tautan Pengaturan Ulang Kata Sandi\",\"You are receiving this email because we received a password reset request for your account.\":\"Anda menerima surel ini karena kami menerima permintan pengaturan ulang kata sandi untuk akun anda.\",\"failed\":\"gagal\",\"success\":\"berhasil\",\"Forbbiden Access\":\"Akses Tidak diijinkan\",\"Unauthorized\":\"User tidak ada\",\"Code\":\"Kode\",\"Add\":\"Tambah\",\"Create\":\"Buat\",\"Edit\":\"Sunting\",\"Delete\":\"Hapus\",\"Show\":\"Lihat\",\"Search\":\"Cari\",\"Details\":\"Detail\",\"Patient\":\"Pasien\",\"Back\":\"Kembali\",\"List Patient\":\"Daftar Pasien\",\"Place of birth\":\"Tempat Lahir\",\"Date of birth\":\"Tanggal Lahir\",\"Gender\":\"Jenis Kelamin\",\"Male\":\"Laki-laki\",\"Female\":\"Perempuan\",\"Address\":\"Alamat\",\"Contact\":\"Kontak\",\"Allergies\":\"Alergi\",\"Photo\":\"Foto\",\"Parent\":\"Orang Tua\",\"Journal\":\"Jurnal\",\"List Journal\":\"Daftar Jurnal\",\"History\":\"Riwayat\",\"List History\":\"Daftar Riwayat\",\"Blood\":\"Golongan Darah\",\"Medical\":\"Medis\",\"Record\":\"Rekam\",\"Medical Record\":\"Rekam Medis\",\"Toggle navigation\":\"Navigasi peralihan\",\"Anamnese\":\"Anamnese\",\"Diagnosis\":\"Diagnosa\",\"Medications\":\"Terapi\",\"Physical Report\":\"Pemeriksaan fisik\",\"Created at\":\"Tgl Buat\",\"Updated at\":\"Tgl Sunting\",\"Medical Journal\":\"Jurnal Medis\",\"Note\":\"Catatan\",\"Age\":\"Umur\",\"Year\":\"Tahun\",\"Save\":\"Simpan\",\"Submit\":\"Simpan\",\"Data is empty\":\"Data kosong\",\"Data has been created\":\"Data berhasil dibuat\",\"Data has been updated\":\"Data berhasil diperbaharui\",\"Data has been deleted\":\"Data berhasil dihapus\",\"Choose file\":\"Pilih file\",\"Are you sure delete it\":\"Apa kamu yakin hapus data ini\",\"items\":\"butir\"}");
 
 /***/ }),
 

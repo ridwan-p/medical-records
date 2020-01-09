@@ -8,6 +8,8 @@ require('./bootstrap');
 require('./utils');
 
 window.Vue = require('vue');
+window.lang = require('../lang/id.json')
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,6 +30,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// console.log(require('../lang/id.json'))
 
 const app = new Vue({
   el: '#app',

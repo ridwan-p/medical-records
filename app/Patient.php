@@ -33,7 +33,7 @@ class Patient extends Model
     protected $casts = [
         'allergies' => 'array',
         'photo' => 'array',
-        'date_of_birth' => 'date'
+        'date_of_birth' => 'date:d M Y'
     ];
 
 

@@ -1,18 +1,18 @@
 <template>
 	<div>
 		<div class="row justify-content-between align-items-center mb-3">
-			<div class="col-md-6">
+			<div class="col-md-9">
 				<!-- <slot name="add"></slot> -->
-				<a href="/dashboard/patients/create" class="btn btn-primary mr-2"><i class="material-icons">post_add</i>Add</a>
+				<a href="/dashboard/patients/create" class="btn btn-primary mr-2"><i class="material-icons">post_add</i> {{ lang['Add'] }}</a>
 				<!-- <button class="btn btn-info import-file" data-target=".import-file-upload"><i class="material-icons">library_add</i> Import</button> -->
 
 				<!-- <form action="{{ route('dashboard.patients.import.list') }}" id="form-import" method="POST" enctype='multipart/form-data'>
 					<input type="file" name="file" class="d-none import-file-upload">
 				</form> -->
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-3">
 		        <div class="input-group">
-		            <input type="search" name="search" class="form-control" placeholder="search" v-model="query" @keyup="handleSearch">
+		            <input type="search" name="search" class="form-control" :placeholder="lang['Search']" v-model="query" @keyup="handleSearch">
 		            <div class="input-group-append">
 		                <button class="btn btn-primary" type="submit" id="button-addon2" @click="handleSearch"><i class="material-icons">search</i> </button>
 		            </div>
@@ -30,11 +30,11 @@
 							</div>
 						</th> -->
 						<th>No</th>
-						<th>Name</th>
-						<th>Code</th>
-						<th>Address</th>
-						<th>Date of birth</th>
-						<th>Age</th>
+						<th>{{ lang["Name"] }}</th>
+						<th>{{ lang["Code"] }}</th>
+						<th>{{ lang["Address"] }}</th>
+						<th>{{ lang["Date of birth"] }}</th>
+						<th>{{ lang["Age"] }}</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -68,9 +68,9 @@
 								<div class="dropdown">
 								    <button class="btn btn-outline-primary btn-icon material-icons btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown">more_horiz</button>
 								    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								        <a class="dropdown-item" :href="`/dashboard/patients/${item.id}`"><i class="material-icons">remove_red_eye</i> Show</a>
-								        <a class="dropdown-item" :href="`/dashboard/patients/${item.id}/edit`"><i class="material-icons">edit</i>  Edit</a>
-								        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="Are you sure delete it !!!" :href="`/dashboard/patients/${item.id}`"><i class="material-icons">delete_outline</i> Delete</a>
+								        <a class="dropdown-item" :href="`/dashboard/patients/${item.id}`"><i class="material-icons">remove_red_eye</i> {{ lang['Show'] }}</a>
+								        <a class="dropdown-item" :href="`/dashboard/patients/${item.id}/edit`"><i class="material-icons">edit</i>  {{ lang['Edit'] }}</a>
+								        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" :data-message="`${lang['Are you sure delete it']} !!!`" :href="`/dashboard/patients/${item.id}`"><i class="material-icons">delete_outline</i> {{ lang['Delete'] }}</a>
 								    </div>
 								</div>
 							</td>
@@ -93,8 +93,8 @@
 								    :prev-link-class="'page-link'"
 								    :next-link-class="'page-link'"
 								    :page-link-class="'page-link'"
-								    >
-								  </paginate>
+							    >
+								</paginate>
 							</td>
 						</tr>
 					</tfoot>
@@ -119,11 +119,13 @@
 				items: { data: [] },
 				isGetting: false,
 				query: '',
-				timer: null
+				timer: null,
+				lang:lang
 			}
 		},
 		mounted() {
 			this.getData()
+			// console.log(lang)
 		},
 		methods: {
 			getData : function(params) {

@@ -8,14 +8,14 @@ class Journal extends Model
 {
     protected $fillable = [
     	'patient_id',
-    	'action',
+    	'physical_report',
     	'anamnese',
     	// 'diagnosis',
     	'note',
     ];
 
     protected $casts = [
-    	'action' => 'array',
+    	'physical_report' => 'array',
     	'anamnese' => 'array',
     	// 'diagnosis' => 'array',
     ];
