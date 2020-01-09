@@ -101,7 +101,7 @@
 				</template>
 				<tbody v-else>
 					<tr>
-						<td colspan="8">Data is empty...</td>
+						<td colspan="8">{{ lang['Data is empty'] }}...</td>
 					</tr>
 				</tbody>
 			</table>

@@ -29,7 +29,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                     <img src="{{ asset('images/heart.svg') }}" width="30" height="30" alt="logo-brand">
+                     <img src="{{ asset('images/logo.svg') }}" width="30" height="30" alt="logo-brand">
                     {{ __(config('app.name', 'Laravel')) }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -91,7 +91,7 @@
         <footer class="mt-auto">
             <nav class="navbar navbar-light bg-light d-flex justify-content-center">
                 <a href="{{ url('/') }}" class="text-dark">
-                    <img src="{{ asset('images/heart.svg') }}" width="30" height="30" alt="logo-brand" />
+                    <img src="{{ asset('images/logo.svg') }}" width="30" height="30" alt="logo-brand" />
                     {{ __(config('app.name', 'Laravel')) }} Copyright © {{now()->format('Y')}}
                 </a>
             </nav>

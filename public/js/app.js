@@ -24210,7 +24210,13 @@ var render = function() {
                       ])
                     : _vm._e()
                 ]
-              : _c("tbody", [_vm._m(1)])
+              : _c("tbody", [
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "8" } }, [
+                      _vm._v(_vm._s(_vm.lang["Data is empty"]) + "...")
+                    ])
+                  ])
+                ])
           ],
           2
         )
@@ -24235,14 +24241,6 @@ var staticRenderFns = [
         }),
         _vm._v("\n\t\t\t\t\t\tLoading...\n\t\t\t\t\t")
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { attrs: { colspan: "8" } }, [_vm._v("Data is empty...")])
     ])
   }
 ]
