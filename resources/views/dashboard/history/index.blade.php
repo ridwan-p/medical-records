@@ -26,6 +26,7 @@
                             <th>{{ __('Age')}} / {{ __('Gender') }}</th>
                             <th>{{ __('Address') }}</th>
                             <th>{{ __('Anamnese') }}</th>
+                            <th>{{ __('Physical Report') }}</th>
                             <th>{{ __('Diagnosis') }}</th>
                             <th>{{ __('Medications') }}</th>
                             <th>{{ __('Note') }}</th>
@@ -39,9 +40,34 @@
                                 <td>{{ $journal->patient->name }}</td>
                                 <td>{{$journal->patient->age}}/ {{ $journal->patient->gender === 'm' ? __('Male') : __("Female") }}</td>
                                 <td>{{ $journal->patient->address }}</td>
-                                <td>{{ implode(',', $journal->anamnese) }}</td>
-                                <td>{{ $journal->diagnosis->implode('name', ', ') }}</td>
-                                <td>{{ $journal->medications->implode('name', ',') }}</td>
+                                <td>
+                                    <ol>
+                                        @foreach ($journal->anamnese as $item)
+                                            <li>{{ $item }}</li>
+                                        @endforeach
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol>
+                                        @foreach ($journal->physical_report as $item)
+                                            <li>{{ $item }}</li>
+                                        @endforeach
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol>
+                                        @foreach ($journal->diagnosis as $item)
+                                            <li>{{ $item->name }}</li>
+                                        @endforeach
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol>
+                                        @foreach ($journal->medications as $item)
+                                            <li>{{ $item->name }}</li>
+                                        @endforeach
+                                    </ol>
+                                </td>
                                 <td>{{ $journal->note }}</td>
                                 <td>{{ $journal->created_at->format("d M Y h:m:s") }}</td>
                             </tr>

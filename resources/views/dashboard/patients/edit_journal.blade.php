@@ -26,6 +26,18 @@
 		                </small>
 		            @enderror
 				</div>
+
+				<div class="form-group">
+					<label for="physical_report">{{ __('Physical Report') }}</label>
+					<tags-input valid="@error('physical_report.*') is-invalid @enderror" value="{{old('physical_report-text', implode(', ', $journal->physical_report))}}" name="physical_report"></tags-input>
+
+					@error('physical_report.*')
+		                <small class="d-block text-danger" role="alert">
+		                    <strong>{{ $message }}</strong>
+		                </small>
+		            @enderror
+				</div>
+
 				<div class="form-group">
 					<label for="diagnosis">{{ __('Diagnosis') }} <span class="text-danger">*</span></label>
 					<tags-input valid="@error('diagnosis.*.name') is-invalid @enderror" value="{{ old('diagnosis-text', $journal->diagnosis->implode('name', ', ')) }}" name="diagnosis" object="name"></tags-input>
@@ -39,16 +51,6 @@
 					<label for="medications">{{ __('Medications') }} <span class="text-danger">*</span></label>
 					<tags-input valid="@error('medications.*.name') is-invalid @enderror" value="{{old('medications-text', $journal->medications->implode('name', ', '))}}" name="medications" object="name"></tags-input>
 					@error('medications.*.name')
-		                <small class="d-block text-danger" role="alert">
-		                    <strong>{{ $message }}</strong>
-		                </small>
-		            @enderror
-				</div>
-				<div class="form-group">
-					<label for="action">{{ __('Action') }}</label>
-					<tags-input valid="@error('action.*') is-invalid @enderror" value="{{old('action-text', implode(', ', $journal->action ?? []))}}" name="action"></tags-input>
-
-					@error('action.*')
 		                <small class="d-block text-danger" role="alert">
 		                    <strong>{{ $message }}</strong>
 		                </small>

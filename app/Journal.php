@@ -62,4 +62,9 @@ class Journal extends Model
             $this->{$key}()->sync($ids);
         }
     }
+
+    public function getPhysicalReportAttribute($item)
+    {
+        return isset($item) ? json_decode($item) : [];
+    }
 }

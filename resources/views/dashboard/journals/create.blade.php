@@ -21,20 +21,21 @@
 	            @enderror
 			</div>
 
-{{-- 			<div class="form-group col-md-12">
-				<label for="therapy">{{ __('Therapy') }} <span class="text-danger">*</span></label>
-				<tags-input valid="@error('therapy.*') is-invalid @enderror" value="{{old('therapy-text')}}" name="therapy"></tags-input>
-				@error('therapy.*')
-	                <small class="d-block text-danger" role="alert">
-	                    <strong>{{ $message }}</strong>
-	                </small>
-	            @enderror
-			</div> --}}
-
 			<div class="form-group col-md-12">
 				<label for="anamnese">{{ __('Anamnese') }} <span class="text-danger">*</span></label>
 				<tags-input valid="@error('anamnese.*') is-invalid @enderror" value="{{old('anamnese-text')}}" name="anamnese"></tags-input>
 				@error('anamnese.*')
+	                <small class="d-block text-danger" role="alert">
+	                    <strong>{{ $message }}</strong>
+	                </small>
+	            @enderror
+			</div>
+
+			<div class="form-group col-md-12">
+				<label for="physical_report">{{ __('Physical Report') }}</label>
+				<tags-input valid="@error('physical_report.*') is-invalid @enderror" value="{{old('physical_report-text')}}" name="physical_report"></tags-input>
+
+				@error('physical_report.*')
 	                <small class="d-block text-danger" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </small>
@@ -55,17 +56,6 @@
 				<label for="medications">{{ __('Medications') }} <span class="text-danger">*</span></label>
 				<tags-input valid="@error('medications.*.name') is-invalid @enderror" value="{{old('medications-text')}}" name="medications" object="name"></tags-input>
 				@error('medications.*.name')
-	                <small class="d-block text-danger" role="alert">
-	                    <strong>{{ $message }}</strong>
-	                </small>
-	            @enderror
-			</div>
-
-			<div class="form-group col-md-12">
-				<label for="action">{{ __('Action') }}</label>
-				<tags-input valid="@error('action.*') is-invalid @enderror" value="{{old('action-text')}}" name="action"></tags-input>
-
-				@error('action.*')
 	                <small class="d-block text-danger" role="alert">
 	                    <strong>{{ $message }}</strong>
 	                </small>
