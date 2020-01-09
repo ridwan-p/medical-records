@@ -41,38 +41,64 @@
 
 				<tbody v-if="isGetting">
 					<tr>
-						<td colspan="8">Loading...</td>
-					</tr>
-				</tbody>
-
-				<tbody v-else-if="items.data.length">
-					<tr v-for="(item, index) in items.data">
-						<!-- <td>
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input patient">
-								<label class="custom-control-label"></label>
-							</div>
-						</td> -->
-						<td>{{ items.from + index }}</td>
-						<td>
-							<a :href="`/dashboard/patients/${item.id}`"><img src="/images/user.svg" alt="defaul avatar" width="30" class="rounded-circle"> {{item.name}}</a>
-						</td>
-						<td>{{ item.code }}</td>
-						<td>{{ item.address }}</td>
-						<td>{{ item.date_of_birth }}</td>
-						<td>{{ item.age }} </td>
-						<td>
-							<div class="dropdown">
-							    <button class="btn btn-outline-primary btn-icon material-icons btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown">more_horiz</button>
-							    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							        <a class="dropdown-item" :href="`/dashboard/patients/${item.id}`"><i class="material-icons">remove_red_eye</i> Show</a>
-							        <a class="dropdown-item" :href="`/dashboard/patients/${item.id}/edit`"><i class="material-icons">edit</i>  Edit</a>
-							        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="Are you sure delete it !!!" :href="`/dashboard/patients/${item.id}`"><i class="material-icons">delete_outline</i> Delete</a>
-							    </div>
-							</div>
+						<td colspan="8">
+							<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="vertical-align: middle;"></span>
+							Loading...
 						</td>
 					</tr>
 				</tbody>
+				<template v-else-if="items.data.length">
+					<tbody>
+						<tr v-for="(item, index) in items.data">
+							<!-- <td>
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input patient">
+									<label class="custom-control-label"></label>
+								</div>
+							</td> -->
+							<td>{{ items.from + index }}</td>
+							<td>
+								<a :href="`/dashboard/patients/${item.id}`"><img src="/images/user.svg" alt="defaul avatar" width="30" class="rounded-circle"> {{item.name}}</a>
+							</td>
+							<td>{{ item.code }}</td>
+							<td>{{ item.address }}</td>
+							<td>{{ item.date_of_birth }}</td>
+							<td>{{ item.age }} </td>
+							<td>
+								<div class="dropdown">
+								    <button class="btn btn-outline-primary btn-icon material-icons btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown">more_horiz</button>
+								    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								        <a class="dropdown-item" :href="`/dashboard/patients/${item.id}`"><i class="material-icons">remove_red_eye</i> Show</a>
+								        <a class="dropdown-item" :href="`/dashboard/patients/${item.id}/edit`"><i class="material-icons">edit</i>  Edit</a>
+								        <a class="dropdown-item" data-action='destroy' data-target="#form-delete-patient" data-message="Are you sure delete it !!!" :href="`/dashboard/patients/${item.id}`"><i class="material-icons">delete_outline</i> Delete</a>
+								    </div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot v-if="items.last_page > 1">
+						<tr>
+							<td colspan="8">
+								<paginate
+									v-model="items.current_page"
+								    :page-count="items.last_page"
+								    :page-range="5"
+								    :click-handler="(page) => getData({page, q:query})"
+								    :prev-text="'‹'"
+								    :next-text="'›'"
+								    :container-class="'pagination'"
+								    :prev-class="'page-item'"
+								    :next-class="'page-item'"
+								    :page-class="'page-item'"
+								    :prev-link-class="'page-link'"
+								    :next-link-class="'page-link'"
+								    :page-link-class="'page-link'"
+								    >
+								  </paginate>
+							</td>
+						</tr>
+					</tfoot>
+				</template>
 				<tbody v-else>
 					<tr>
 						<td colspan="8">Data is empty...</td>
@@ -85,7 +111,9 @@
 </template>
 
 <script>
+	import Paginate from './Paginate'
 	export default {
+		components:{ Paginate },
 		data() {
 			return {
 				items: { data: [] },
@@ -104,10 +132,13 @@
 					.then(res => {
 						this.items = res.data
 						this.isGetting = false
+						// console.log(res.data)
 						return res
 					})
 			},
 			handleSearch: function() {
+				this.isGetting = true
+
 				if (this.timer) {
 			        clearTimeout(this.timer);
 			        this.timer = null;
