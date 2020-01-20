@@ -52,6 +52,22 @@
 	                     </div>
 	                </div>
 	            </div>
+	            <paginate
+					v-model="items.current_page"
+				    :page-count="items.last_page"
+				    :page-range="5"
+				    :click-handler="(page) => getData({page, q:query})"
+				    :prev-text="'‹'"
+				    :next-text="'›'"
+				    :container-class="'pagination'"
+				    :prev-class="'page-item'"
+				    :next-class="'page-item'"
+				    :page-class="'page-item'"
+				    :prev-link-class="'page-link'"
+				    :next-link-class="'page-link'"
+				    :page-link-class="'page-link'"
+			    >
+				</paginate>
 	        </template>
             <div v-else class="col-md-12 p-1">{{ lang['Data is empty'] }} ...</div>
         </div>

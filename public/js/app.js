@@ -2469,6 +2469,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -24633,136 +24649,169 @@ var render = function() {
               _vm._v("\n\t\t\t\tLoading...\n\t\t\t")
             ])
           : _vm.items.data.length
-          ? _vm._l(_vm.items.data, function(item, key) {
-              return _c("div", { staticClass: "col-md-12 p-1" }, [
-                _c(
-                  "div",
-                  {
-                    class: "card border-" + _vm.colors[key % 5],
-                    staticStyle: { "border-left": "1em solid" }
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "card-body row align-items-center" },
-                      [
-                        _c("div", { staticClass: "col-3" }, [
-                          _c("h5", { staticClass: "my-0" }, [
-                            _vm._v(_vm._s(_vm.lang["Anamnese"]))
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "ol",
-                            { staticClass: "px-2" },
-                            _vm._l(item.anamnese, function(anamnese) {
-                              return _c("li", [_vm._v(_vm._s(anamnese))])
-                            }),
-                            0
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-3 border-left border-light" },
-                          [
+          ? [
+              _vm._l(_vm.items.data, function(item, key) {
+                return _c("div", { staticClass: "col-md-12 p-1" }, [
+                  _c(
+                    "div",
+                    {
+                      class: "card border-" + _vm.colors[key % 5],
+                      staticStyle: { "border-left": "1em solid" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "card-body row align-items-center" },
+                        [
+                          _c("div", { staticClass: "col-3" }, [
                             _c("h5", { staticClass: "my-0" }, [
-                              _vm._v(_vm._s(_vm.lang["Diagnosis"]))
+                              _vm._v(_vm._s(_vm.lang["Anamnese"]))
                             ]),
                             _vm._v(" "),
                             _c(
                               "ol",
                               { staticClass: "px-2" },
-                              _vm._l(item.diagnosis, function(diagnosis) {
-                                return _c("li", [
-                                  _vm._v(_vm._s(diagnosis.name))
-                                ])
+                              _vm._l(item.anamnese, function(anamnese) {
+                                return _c("li", [_vm._v(_vm._s(anamnese))])
                               }),
                               0
                             )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col-4 border-left border-light d-flex"
-                          },
-                          [
-                            _c("img", {
-                              staticClass: "rounded-circle",
-                              attrs: {
-                                src: "/images/user.svg",
-                                alt: "avatar",
-                                width: "50"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "ml-3" }, [
-                              _c("h5", { staticClass: "font-weight-bold" }, [
-                                _vm._v(_vm._s(item.patient.name))
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-3 border-left border-light" },
+                            [
+                              _c("h5", { staticClass: "my-0" }, [
+                                _vm._v(_vm._s(_vm.lang["Diagnosis"]))
                               ]),
                               _vm._v(" "),
-                              _c("p", { staticClass: "my-0" }, [
-                                _c(
-                                  "i",
-                                  {
-                                    staticClass: "material-icons text-secondary"
-                                  },
-                                  [_vm._v("location_city")]
-                                ),
-                                _vm._v(" " + _vm._s(item.patient.address))
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "my-0" }, [
-                                _c(
-                                  "i",
-                                  {
-                                    staticClass: "material-icons text-secondary"
-                                  },
-                                  [_vm._v("date_range")]
-                                ),
-                                _vm._v(" " + _vm._s(item.patient.date_of_birth))
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "my-0" }, [
-                                _vm._v(
-                                  _vm._s(_vm.lang["Created at"]) +
-                                    " : " +
-                                    _vm._s(item.created_at)
-                                )
-                              ])
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-2 border-left border-light" },
-                          [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-primary",
+                              _c(
+                                "ol",
+                                { staticClass: "px-2" },
+                                _vm._l(item.diagnosis, function(diagnosis) {
+                                  return _c("li", [
+                                    _vm._v(_vm._s(diagnosis.name))
+                                  ])
+                                }),
+                                0
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-4 border-left border-light d-flex"
+                            },
+                            [
+                              _c("img", {
+                                staticClass: "rounded-circle",
                                 attrs: {
-                                  href:
-                                    "/dashboard/journals/" + item.id + "/edit"
+                                  src: "/images/user.svg",
+                                  alt: "avatar",
+                                  width: "50"
                                 }
-                              },
-                              [
-                                _c("i", { staticClass: "material-icons" }, [
-                                  _vm._v("edit")
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "ml-3" }, [
+                                _c("h5", { staticClass: "font-weight-bold" }, [
+                                  _vm._v(_vm._s(item.patient.name))
                                 ]),
-                                _vm._v(" " + _vm._s(_vm.lang["Edit"]))
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            })
+                                _vm._v(" "),
+                                _c("p", { staticClass: "my-0" }, [
+                                  _c(
+                                    "i",
+                                    {
+                                      staticClass:
+                                        "material-icons text-secondary"
+                                    },
+                                    [_vm._v("location_city")]
+                                  ),
+                                  _vm._v(" " + _vm._s(item.patient.address))
+                                ]),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "my-0" }, [
+                                  _c(
+                                    "i",
+                                    {
+                                      staticClass:
+                                        "material-icons text-secondary"
+                                    },
+                                    [_vm._v("date_range")]
+                                  ),
+                                  _vm._v(
+                                    " " + _vm._s(item.patient.date_of_birth)
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "my-0" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.lang["Created at"]) +
+                                      " : " +
+                                      _vm._s(item.created_at)
+                                  )
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-2 border-left border-light" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: {
+                                    href:
+                                      "/dashboard/journals/" + item.id + "/edit"
+                                  }
+                                },
+                                [
+                                  _c("i", { staticClass: "material-icons" }, [
+                                    _vm._v("edit")
+                                  ]),
+                                  _vm._v(" " + _vm._s(_vm.lang["Edit"]))
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              }),
+              _vm._v(" "),
+              _c("paginate", {
+                attrs: {
+                  "page-count": _vm.items.last_page,
+                  "page-range": 5,
+                  "click-handler": function(page) {
+                    return _vm.getData({ page: page, q: _vm.query })
+                  },
+                  "prev-text": "‹",
+                  "next-text": "›",
+                  "container-class": "pagination",
+                  "prev-class": "page-item",
+                  "next-class": "page-item",
+                  "page-class": "page-item",
+                  "prev-link-class": "page-link",
+                  "next-link-class": "page-link",
+                  "page-link-class": "page-link"
+                },
+                model: {
+                  value: _vm.items.current_page,
+                  callback: function($$v) {
+                    _vm.$set(_vm.items, "current_page", $$v)
+                  },
+                  expression: "items.current_page"
+                }
+              })
+            ]
           : _c("div", { staticClass: "col-md-12 p-1" }, [
               _vm._v(_vm._s(_vm.lang["Data is empty"]) + " ...")
             ])
