@@ -3,20 +3,20 @@
 @section('content')
     <div class="container-fluid">
         <h4 class="col-12 my-3">{{ __('List History') }}</h4>
-
-        <div class="col-12 d-flex justify-content-end mb-3">
-            <form action="{{ route('dashboard.history.index') }}" method="GET" class="d-inline-flex">
-            <input type="date" class="form-control" name="date_start" placeholder="{{ __('date start') }}" value="{{request()->date_start}}">
-            <input type="date" class="form-control mx-3" name="date_end" placeholder="{{ __('date end') }}" value="{{request()->date_end}}">
-            <div class="input-group">
-                <input type="search" name="search" class="form-control" placeholder="{{ __('Search') }}" value="{{request()->search}}">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit" id="button-addon2"><i class="material-icons">search</i> </button>
-                </div>
+        <table-history class="col-12"></table-history>
+        {{-- <div class="col-12">
+            <div class="d-flex justify-content-end mb-3">
+                <form action="{{ route('dashboard.history.index') }}" method="GET" class="d-inline-flex">
+                    <input type="date" class="form-control" name="date_start" placeholder="{{ __('date start') }}" value="{{request()->date_start}}">
+                    <input type="date" class="form-control mx-3" name="date_end" placeholder="{{ __('date end') }}" value="{{request()->date_end}}">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control" placeholder="{{ __('Search') }}" value="{{request()->search}}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit" id="button-addon2"><i class="material-icons">search</i> </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
-        </div>
-        <div class="col-12">
             <div class="table-responsive rounded-top">
                 <table class="table table-striped">
                     <thead class="bg-primary text-white">
@@ -80,11 +80,11 @@
                     <tfoot>
                         <tr>
                             <td colspan="3">{{__('Total')}} : {{$journals->total()}} {{__('items')}}</td>
-                            <td colspan="6"><nav class="float-right"> {{ $journals->links() }} </nav></td>
+                            <td colspan="7"><nav class="float-right"> {{ $journals->links() }} </nav></td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Local;
 
 use App\Http\Controllers\Controller;
 use App\Journal;
@@ -10,10 +10,11 @@ class HistoryController extends Controller
 {
     public function index(Request $request)
     {
-    	$journals = Journal::whereHas('patient', function ($query) use ( $request ) {
-        		if($request->has('search')) {
-    	    		$query->where('name', 'like', "%{$request->search}%")
-    	    			->orWhere('code','like', "%{$request->search}%");
+    	$journals = Journal::with('patient')
+            ->whereHas('patient', function ($query) use ( $request ) {
+        		if($request->has('q')) {
+    	    		$query->where('name', 'like', "%{$request->q}%")
+    	    			->orWhere('code','like', "%{$request->q}%");
         		}
         	})
         	->when($request->date_start, function($query, $date_start) {
@@ -25,6 +26,6 @@ class HistoryController extends Controller
             ->orderBy($request->column ?? 'created_at', $request->direction ?? 'desc')
             ->paginate($request->per_page);
 
-    	return view('dashboard.history.index', compact('journals'));
+        return response()->json($journals);
     }
 }

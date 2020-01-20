@@ -65,5 +65,6 @@
   "Data has been deleted" : "Data berhasil dihapus",
   "Choose file": "Pilih file",
   "Are you sure delete it": "Apa kamu yakin hapus data ini",
-  "items": "butir"
+  "items": "butir",
+  "Total" : "Total"
 }
