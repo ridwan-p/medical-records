@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-column mb-3">
+        <div class="d-flex flex-column">
 			<div v-if="isGetting" class="col-md-12 p-1">
 				<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="vertical-align: middle;"></span>
 				Loading...
@@ -59,7 +59,7 @@
 				    :click-handler="(page) => getData({page, q:query})"
 				    :prev-text="'‹'"
 				    :next-text="'›'"
-				    :container-class="'pagination'"
+				    :container-class="'pagination mt-3'"
 				    :prev-class="'page-item'"
 				    :next-class="'page-item'"
 				    :page-class="'page-item'"
