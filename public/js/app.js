@@ -24352,7 +24352,7 @@ var render = function() {
                             },
                             "prev-text": "‹",
                             "next-text": "›",
-                            "container-class": "pagination",
+                            "container-class": "pagination float-right",
                             "prev-class": "page-item",
                             "next-class": "page-item",
                             "page-class": "page-item",
