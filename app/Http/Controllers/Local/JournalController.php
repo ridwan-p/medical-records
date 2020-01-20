@@ -10,14 +10,15 @@ class JournalController extends Controller
 {
     public function index(Request $request)
     {
-        $journals = Journal::whereHas('patient', function ($query) use ( $request ) {
-    		if($request->has('search')) {
-	    		$query->where('name', 'like', "%{$request->se´arch}%");
-    		}
-    	})
-        ->orderBy($request->column ?? 'created_at', $request->direction ?? 'desc')
-        ->paginate();
+        $journals = Journal::with('patient', 'diagnosis')
+            ->whereHas('patient', function ($query) use ( $request ) {
+        		if($request->has('q')) {
+    	    		$query->where('name', 'like', "%{$request->q}%");
+        		}
+        	})
+            ->orderBy($request->column ?? 'created_at', $request->direction ?? 'desc')
+            ->paginate($request->per_page);
 
-        return response()->json(compact('journals'));
+        return response()->json($journals);
     }
 }

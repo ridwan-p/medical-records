@@ -12,8 +12,8 @@
         @endif
 
         <h4 class="my-3">{{ __('List Journal') }}</h4>
-
-        <div class="d-flex mb-3">
+        <table-journals></table-journals>
+        {{-- <div class="d-flex mb-3">
             <div class="col-md-9 px-1">
                 <a href="{{ route('dashboard.journals.create') }}" class="btn btn-primary"><i class="material-icons">post_add</i> {{ __('Add') }}</a>
             </div>
@@ -65,6 +65,6 @@
             @endforelse
 
         </div>
-        {{$journals->links()}}
+        {{$journals->links()}} --}}
     </div>
 @endsection
