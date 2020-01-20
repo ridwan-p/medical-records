@@ -12,7 +12,7 @@
 			</div>
 			<div class="col-md-3">
 		        <div class="input-group">
-		            <input type="search" name="search" class="form-control" :placeholder="lang['Search']" v-model="query" @keyup="handleSearch">
+		            <input type="search" name="search" class="form-control" :placeholder="lang['Search']" v-model="query">
 		            <div class="input-group-append">
 		                <button class="btn btn-primary" type="submit" id="button-addon2" @click="handleSearch"><i class="material-icons">search</i> </button>
 		            </div>
@@ -126,6 +126,11 @@
 		mounted() {
 			this.getData()
 			// console.log(lang)
+		},
+		watch: {
+			query: function(newQuery, oldQuery) {
+				this.handleSearch()
+			}
 		},
 		methods: {
 			getData : function(params) {

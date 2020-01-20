@@ -2540,6 +2540,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.getData(); // console.log(lang)
   },
+  watch: {
+    query: function query(newQuery, oldQuery) {
+      this.handleSearch();
+    }
+  },
   methods: {
     getData: function getData(params) {
       var _this = this;
@@ -24477,7 +24482,6 @@ var render = function() {
                 },
                 domProps: { value: _vm.query },
                 on: {
-                  keyup: _vm.handleSearch,
                   input: function($event) {
                     if ($event.target.composing) {
                       return
