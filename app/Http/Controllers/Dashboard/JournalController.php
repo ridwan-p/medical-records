@@ -12,16 +12,7 @@ class JournalController extends Controller
 {
     public function index(Request $request)
     {
-    	$journals = Journal::whereHas('patient', function ($query) use ( $request ) {
-    		if($request->has('search')) {
-	    		$query->where('name', 'like', "%{$request->search}%")
-	    			->orWhere('parent','like', "%{$request->search}%");
-    		}
-    	})
-        ->orderBy($request->column ?? 'created_at', $request->direction ?? 'desc')
-        ->paginate();
-
-    	return view('dashboard.journals.index', compact('journals'));
+    	return view('dashboard.journals.index');
     }
 
     public function create()
