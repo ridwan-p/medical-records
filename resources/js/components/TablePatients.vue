@@ -58,7 +58,7 @@
 							</td> -->
 							<td>{{ items.from + index }}</td>
 							<td>
-								<a :href="`/dashboard/patients/${item.id}`"><img src="/images/user.svg" alt="defaul avatar" width="30" class="rounded-circle"> {{item.name}}</a>
+								<a :href="`/dashboard/patients/${item.id}`"><img :src="avatar(item)" alt="defaul avatar" width="30" class="rounded-circle"> {{item.name}}</a>
 							</td>
 							<td>{{ item.code }}</td>
 							<td>{{ item.address }}</td>
@@ -151,6 +151,9 @@
 			        this.timer = null;
 			    }
 				this.timer = setTimeout(() => this.getData( { q: this.query } ), 800)
+			},
+			avatar: function(patient, size = 'small') {
+				return patient.photo ? `/${patient.photo[size]}` : '/images/user.svg'
 			}
 		}
 	}

@@ -21,7 +21,7 @@
         	<template v-else-if="items.data.length">
 	            <div class="col-md-12 p-1" v-for="(item, key) in items.data">
 	                <div :class="`card border-${colors[key % 5]}`" style="border-left: 1em solid">
-	                    <div class="card-body row align-items-center">
+	                    <div class="card-body row">
 	                        <div class="col-3">
 	                            <h5 class="my-0">{{ lang['Anamnese'] }}</h5>
 	                            <ol class="px-2">
@@ -38,7 +38,7 @@
 	                        </div>
 	                        <div class="col-4 border-left border-light d-flex">
 	                            <!-- <h5 class="font-weight-bold"><i class="material-icons">access_time</i> {{ item.created_at }}</h5> -->
-	                            <img src="/images/user.svg" alt="avatar" width="50" class="rounded-circle">
+	                            <img :src="avatar(item.patient)" alt="avatar" width="50" height="50" class="rounded-circle align-self-center">
 	                            <div class="ml-3">
 	                                <h5 class="font-weight-bold">{{ item.patient.name }}</h5>
 	                                <p class="my-0"><i class="material-icons text-secondary">location_city</i> {{ item.patient.address }}</p>
@@ -46,7 +46,7 @@
 	                            	<p class="my-0">{{ lang['Created at'] }} : {{ item.created_at }}</p>
 	                            </div>
 	                        </div>
-	                        <div class="col-2 border-left border-light">
+	                        <div class="col-2 border-left border-light align-self-center">
 	                            <a :href="`/dashboard/journals/${item.id}/edit`" class="btn btn-primary"> <i class="material-icons">edit</i> {{ lang['Edit'] }}</a>
 	                        </div>
 	                     </div>
@@ -115,6 +115,9 @@
 			        this.timer = null;
 			    }
 				this.timer = setTimeout(() => this.getData( { q: this.query } ), 800)
+			},
+			avatar: function(patient, size = 'small') {
+				return patient.photo ? `/${patient.photo[size]}` : '/images/user.svg'
 			}
 		}
 	}
