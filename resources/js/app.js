@@ -22,7 +22,7 @@ window.lang = require('../lang/id.json')
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('tags-input', require('./components/TagsInput.vue').default);
+// Vue.component('v-select', require('vue-select').default);
 // Vue.component('search-component', require('./components/SearchComponent.vue').default);
 
 /**
@@ -33,5 +33,28 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 // console.log(require('../lang/id.json'))
 
 const app = new Vue({
-  el: '#app',
+	el: '#app',
+	// data() {
+	// 	return {
+	// 		diagnosis: [],
+	// 		timeRequest : null,
+	// 	}
+	// },
+	// methods: {
+	// 	onSearchDiagnosis: function( search, loading ) {
+	// 		loading(true);
+	// 		if (this.timeRequest) {
+	// 	        clearTimeout(this.timeRequest);
+	// 	        this.timeRequest = null;
+	// 	    }
+	// 		this.timeRequest = setTimeout(() => this.searchDiagnosis( { q: search, per_page:5 }, loading ), 800)
+	// 	},
+	// 	searchDiagnosis: function(params, loading) {
+	// 		return axios.get(`/local-api/diagnosis`, { params } )
+	// 		.then(res => {
+	// 			this.diagnosis = res.data.data
+	// 			loading(false)
+	// 		})
+	// 	}
+	// }
 });

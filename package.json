@@ -27,6 +27,7 @@
     "dependencies": {
         "apexcharts": "^3.15.2",
         "material-icons": "^0.3.1",
-        "vue-apexcharts": "^1.5.2"
+        "vue-apexcharts": "^1.5.2",
+        "vue-select": "^3.4.0"
     }
 }

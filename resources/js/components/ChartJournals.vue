@@ -1,6 +1,6 @@
 <template>
 	<div v-if="isLoading" class="bg-chart-loading"></div>
-	<apexcharts v-else type="line" height="350" :options="chartOptions" :series="series"></apexcharts>
+	<apexcharts v-else type="area" height="350" :options="chartOptions" :series="series"></apexcharts>
 </template>
 
 <script>
@@ -17,7 +17,10 @@
 					stroke: {
 						curve: 'smooth',
 					},
-					colors: ["#23408e"],
+					markers: {
+						size: 1,
+					},
+					colors: ["#18b1a8"],
 					xaxis: {
 						categories: []
 					}

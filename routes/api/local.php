@@ -13,6 +13,8 @@ Route::middleware('auth')
 
 		Route::get('medications', "MedicationController@index")->name('medications.index');
 		Route::get('medications-show-all', 'MedicationController@showAll')->name('medications.showAll');
+		Route::get('medications-count', 'MedicationController@count')->name('medications.count');
 		Route::get('diagnosis', "DiagnoseController@index")->name('diagnosis.index');
 		Route::get('diagnosis-show-all', 'DiagnoseController@showAll')->name('diagnosis.showAll');
+		Route::get('diagnosis-count', 'DiagnoseController@count')->name('diagnosis.count');
 	});

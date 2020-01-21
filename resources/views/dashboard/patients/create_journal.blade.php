@@ -38,6 +38,9 @@
 				<div class="form-group">
 					<label for="diagnosis">{{ __('Diagnosis') }} <span class="text-danger">*</span></label>
 					<tags-input valid="@error('diagnosis.*.name') is-invalid @enderror" value="{{ old('diagnosis-text') }}" name="diagnosis" object="name"></tags-input>
+
+					{{-- <autocomplate-select url="{{ route('local-api.diagnosis.index') }}" label="name" name="diagnosis"></autocomplate-select> --}}
+
 					@error('diagnosis.*.name')
 		                <small class="d-block text-danger" role="alert">
 		                    <strong>{{ $message }}</strong>
