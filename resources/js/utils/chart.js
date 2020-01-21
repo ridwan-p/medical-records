@@ -1,22 +1,21 @@
-import { Chart } from 'frappe-charts/dist/frappe-charts.esm.js'
+import ApexCharts from 'apexcharts'
 
-const data = {
-    labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    datasets: [
-        { values: [18, 40, 30, 35, 8, 52, 17, -4] }
-    ]
+var options = {
+  chart: {
+    type: 'line',
+    stroke: {
+      curve: 'smooth',
+    }
+  },
+  series: [{
+    name: 'sales',
+    data: [30,40,35,50,49,60,70,91,125]
+  }],
+  xaxis: {
+    categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+  }
 }
 
-const chart = new Chart("#chart", {  // or a DOM element,
-    title: "My Awesome Chart",
-    data: data,
-    type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-    height: 250,
-    colors: ['#7cd6fd'],
-    lineOptions: {
-        dotSize: 1, // default: 4
-        heatline: 1, // default: 0
-        regionFill: 1,
-        xIsSeries: true
-    },
-})
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();

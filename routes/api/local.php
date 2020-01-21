@@ -12,5 +12,7 @@ Route::middleware('auth')
 
 
 		Route::get('medications', "MedicationController@index")->name('medications.index');
+		Route::get('medications-show-all', 'MedicationController@showAll')->name('medications.showAll');
 		Route::get('diagnosis', "DiagnoseController@index")->name('diagnosis.index');
+		Route::get('diagnosis-show-all', 'DiagnoseController@showAll')->name('diagnosis.showAll');
 	});
