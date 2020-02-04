@@ -122,7 +122,6 @@ class PatientController extends Controller
 
     public function storeJournal(Request $request, Patient $patient)
     {
-        dd($request->all());
         $request->validate([
             'action' => 'nullable|array',
             'anamnese' => 'required|array|min:1',

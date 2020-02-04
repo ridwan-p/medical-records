@@ -26,7 +26,7 @@ class HistoryController extends Controller
 
     private function getJournals(Request $request)
     {
-        return Journal::with('patient')
+        return Journal::with('patient', 'diagnosis', 'medications')
             ->whereHas('patient', function ($query) use ( $request ) {
                 if($request->has('q')) {
                     $query->where('name', 'like', "%{$request->q}%")

@@ -55,12 +55,12 @@
                             </td>
                             <td>
                                 <ol>
-                                	<li v-for="diagnosis in item.diagnosis">{{ diagnosis }}</li>
+                                	<li v-for="diagnosis in item.diagnosis">{{ diagnosis.name }}</li>
                                 </ol>
                             </td>
                             <td>
                                 <ol>
-                                	<li v-for="medications in item.medications">{{ medications }}</li>
+                                	<li v-for="medication in item.medications">{{ medication.name }}</li>
                                 </ol>
                             </td>
                             <td>{{ item.note }}</td>

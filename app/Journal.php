@@ -65,6 +65,6 @@ class Journal extends Model
 
     public function getPhysicalReportAttribute($item)
     {
-        return isset($item) ? json_decode($item) : [];
+        return isset($item) ? json_decode($item) : "";
     }
 }
