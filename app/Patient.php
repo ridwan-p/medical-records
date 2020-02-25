@@ -85,12 +85,9 @@ class Patient extends Model
     public function deletePhoto()
     {
         $id = $this->attributes['id'] ?? 'undefined';
-        if (!empty($account->photo)) {
-            Storage::delete("public/photo/{$id}/s-{$this->attributes['photo']}");
-            Storage::delete("public/photo/{$id}/m-{$this->attributes['photo']}");
-            Storage::delete("public/photo/{$id}/l-{$this->attributes['photo']}");
-        }
-
+        Storage::delete("public/photo/{$id}/s-{$this->attributes['photo']}");
+        Storage::delete("public/photo/{$id}/m-{$this->attributes['photo']}");
+        Storage::delete("public/photo/{$id}/l-{$this->attributes['photo']}");
     }
 
     public function storePhoto($photo)
